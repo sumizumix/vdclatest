@@ -37,7 +37,14 @@
                         class="rounded h-240px w-100 object-fit-cover" />
                         <h2 class="card-title text-dark fw-700">{{ $packages->name }}</h2>
                         <div class="card-text">
-                            <p><strong>Description:</strong> {{ $packages->description }}</p>
+                            <p><strong>Description:</strong> 
+                                Test code:{{ $packages->testcode }}<br>
+                                Schedule:{{ $packages->Schedule }}<br>
+                                pre-requisite:{{ $packages->prerequisite }}<br>
+                                Report time:{{ $packages->reporttime }}<br>
+                            
+                            </p>
+                            <p><strong>parameter:</strong> {{ $packages->parameter }}</p>
                             <p><strong>Price:</strong> ${{ $packages->price }}</p>
                         </div>
                         <div class="mt-auto">

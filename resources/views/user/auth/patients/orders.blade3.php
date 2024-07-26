@@ -2,26 +2,7 @@
 
 
 @include('layout.header')
-{{-- <section class="page-title-big-typography bg-dark-gray ipad-top-space-margin cover-background md-py-0 pb-0"
-    style="background-image: url({{ asset('frontend/vdc_images/vdc-pages-banner.webp') }})">
-    <div class="container">
-        <div class="row align-items-center small-screen -extra-very-small-screen -extra-small-screen">
-            <div class="col-lg-12 col-sm-12 position-relative page-title-extra-small">
-                <h2 class="m-auto pb-5px pt-5px text-white fw-600 ls-minus-1px overflow-hidden text-center">
-                    <span class="d-inline-block"
-                        data-anime='{ "translateY": [30, 0], "opacity": [0, 1], "easing": "easeOutCubic", "duration": 500, "staggervalue": 300 }'>Cart</span>
-                </h2>
-                <div class="mt-auto justify-content-center breadcrumb breadcrumb-style-01 fs-14 text-white"
-                    data-anime='{ "translateY": [30, 0], "opacity": [0, 1], "easing": "easeOutCubic", "duration": 500, "staggervalue": 300, "delay": 300 }'>
-                    <ul>
-                        <li><a href="{{ url('/') }}" class="text-white text-white-hover">Home</a></li>
-                        <li>Cart</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> --}}
+
 
 <section class="pt-20px pb-20px top-space-margin page-title-big-typography cover-background round-cursor"
         style="background-image: url({{ asset('frontend/vdc_images/vdc-pages-banner.webp') }}); margin-top: 141px;">

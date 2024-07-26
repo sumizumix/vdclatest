@@ -186,24 +186,6 @@ class CartController extends Controller
 
 
 
-    // public function pdfindex($id)
-    // {
-    //     $report=Report::find($id);
-    //     $data = [
-    //         'title' => 'orders',
-    //         'date' => date('m/d/Y') ,
-    //         'orders'=>$report
-    //     ];
-
-
-    //     $pdf = PDF::loadView('pdf', $data);
-
-    //     return $pdf->download('movieticket.pdf');
-    // }
-
-
-
-
 
 
 
@@ -257,7 +239,10 @@ class CartController extends Controller
             ->where('users.id', Auth::id())
             ->get();
 
-        return view('user.auth.patients.orderstatus', compact('cart'));
+
+            $groupedCart = $cart->groupBy('razorid');
+
+        return view('user.auth.patients.orderstatus', compact('cart','groupedCart'));
     }
 
 
@@ -276,4 +261,8 @@ class CartController extends Controller
 
         return view('user.auth.patients.receipt', compact('paymentDetails', 'cart'));
     }
+
+
+   
+
 }

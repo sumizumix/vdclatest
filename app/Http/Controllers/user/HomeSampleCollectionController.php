@@ -10,91 +10,85 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use DB;
 use Toastr;
-
+use Illuminate\Support\Facades\Auth;
 class HomeSampleCollectionController extends Controller
 {
-    public function index()
-    {
-        $product = Product::all();
 
-        return view('admin.auth.product.index',compact('product'));
-    }
-
-    public function create()
-    {
-        return view('admin.auth.product.create');
-    }
-
-    public function store(Request $request)
-    {
-        // if(env('PROJECT_MODE') == 0) {
-        //     return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
-        // }
-        // dd('h');
-        
-        $samplecollection = new Samplecollection();
-        $data = $request->only($samplecollection->getFillable());
-
-        $request->validate([
-           
-            'name'=>'required',
-            'address'=>'required'
-        ]);
-
+    // public function store(Request $request)
+    // {
       
+    //     $samplecollection = new Samplecollection();
+    //     $data = $request->only($samplecollection->getFillable());
 
-        $samplecollection->fill($data)->save();
-        // Toastr::success('Sample Collection details added successfully!');
-        return redirect()->route('dashboard')->with('success', 'Sample Collection details added successfully!');
+    //     $request->validate([
+           
+    //         'name'=>'required',
+    //         'address'=>'required'
+    //     ]);
+    //     $samplecollection->fill($data)->save();
+    //     return redirect()->route('dashboard')->with('success', 'Sample Collection details added successfully!');
+    // }
+
+   
+
+    public function homesamplecollection()
+    {
+
+
+        $test=DB::table('test')->get();
+        $pro=DB::table('product')->get();     
+        $booksamplecollection = DB::table('booksamplecollection')
+        ->select('booksamplecollection.*','users.*','booksamplecollection.id as bid')
+        ->join('users', 'users.id', '=', 'booksamplecollection.userid')
+        ->where('users.id', Auth::id())
+        ->get();
+
+        return view('user.auth.patients.homesamplecollection', compact('booksamplecollection','test','pro'));
     }
 
-    public function edit($id)
-    {
-        $product = Product::findOrFail($id);
-        return view('admin.auth.product.edit', compact('product'));
-    }
 
-    public function update(Request $request, $id)
-    {
-        // Find the product by its ID
-        $product = Product::findOrFail($id);
+
+public function store(Request $request)
+{
+    $samplecollection = new Samplecollection();
+
+    $request->validate([
+        'name' => 'required',
+        'address' => 'required'
+    ]);
+
+    $userId = Auth::id();
+    $data = $request->only($samplecollection->getFillable());
+    $data['userid'] =  $userId;  // Add the logged-in user's ID to the data array
+
+    $samplecollection->fill($data)->save();
+    return redirect()->route('dashboard')->with('success', 'Sample Collection details added successfully!');
+}
+
     
-        // Validate the incoming request data
-        $request->validate([
-            'name' => 'required',
-        ]);
+public function destroysample($bid)
+{
+    DB::table('booksamplecollection')->where('id', $bid)->delete();
+    return redirect()->route('cart.homesamplecollection')->with('success', 'Home sample collection is deleted successfully!');
+
+}
+
+
+// public function editsample($bid)
+// {
+//     $location = Samplecollection::findOrFail($bid);
+//     return view('admin.auth.center.edit', compact('location'));
+// }
+
+// public function updatesample(Request $request, $bid)
+// {
     
-        // Update the product data
-        $data = $request->only($product->getFillable());
-        
-        // If a new image file is uploaded, update the image
-        if ($request->hasFile('image')) {
-            // Remove the existing image file
-            unlink(public_path('uploads/' . $product->image));
-    
-            // Upload the new image file
-            $ext = $request->file('image')->extension();
-            $final_name = 'package-' . $id . '.' . $ext;
-            $request->file('image')->move(public_path('uploads/'), $final_name);
-            $data['image'] = $final_name;
-        }
-    
-        // Save the updated product data
-        $product->update($data);
-    
-        // Redirect back with success message
-        return redirect()->route('admin.product.index')->with('success', 'Product is updated successfully!');
-    }
-    
-    public function destroy($id)
-    {
-        // if(env('PROJECT_MODE') == 0) {
-        //     return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
-        // }
-        
-        $product = Product::findOrFail($id);
-        unlink(public_path('uploads/'.$product->image));
-        $product->delete();
-        return Redirect()->back()->with('success', 'Package  deleted successfully!');
-    }
+//     $location = Samplecollection::findOrFail($bid);
+//     $data = $request->only($location->getFillable());
+
+//     $location->update($data);
+   
+//     return redirect()->route('admin.auth.center.index')->with('success', 'Center is updated successfully!');
+// }
+
 }

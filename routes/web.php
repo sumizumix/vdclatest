@@ -230,6 +230,13 @@ Route::get('cart-status', [CartController::class, 'cartorderindex'])->name('cart
 Route::post('carttest/add', [CartController::class, 'addToCartTest'])->name('carttest.add');
 Route::post('cart/orderdelete/{id}', [CartController::class, 'destroyordershow'])->name('cartorderdelete.delete');
 
+
+// homesamplecollection
+Route::get('homesamplecollection', [HomeSampleCollectionController::class, 'homesamplecollection'])->name('cart.homesamplecollection');
+Route::get('homesamplecollectionremove/{id}', [HomeSampleCollectionController::class,'destroysample']);
+
+
+
 Route::get('download-result', [CartController::class,'downloadpage'])->name('user.downloadpage');
 Route::get('/download-pdf/{id}', [CartController::class, 'generatePdf'])->name('download.pdf');
 Route::get('admin/booking/cartindex', [BookingController::class,'cartindex'])->name('admin.auth.booking.cartindex');

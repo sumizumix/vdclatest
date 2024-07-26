@@ -45,11 +45,11 @@
                     
             <!--            <p>Contact Us on WhatsApp</p>-->
                     
-            <!--<a id="whatsapp-link"-->
-            <!--   target="_blank"-->
-            <!--   class="btn btn-success">-->
-            <!--   <i class="bi bi-whatsapp"></i> Chat on WhatsApp-->
-            <!--</a>-->
+        <a id="whatsapp-link"
+               target="_blank"
+            class="btn btn-success">
+          <i class="bi bi-whatsapp"></i> Chat on WhatsApp
+            </a>
             <!--        </div>-->
                     {{-- whatsapp --}}
                 </div>
@@ -66,12 +66,40 @@
         <div
             class="row justify-content-between overlap-section border-radius-6px overflow-hidden row-gap-3 lg-p-20px p-30px bg-white g-0 box-shadow-extra-large">
             <div class="col-6 col-lg-2 process-step-style-07 position-relative p-0 float-left">
-                <a href="#" class="process-step-item d-flex align-items-center" data-bs-toggle="modal"
-                    data-bs-target="#bookSampleModal">
+
+          
+
+
+
+
+
+            @if (Auth::check())
+            <a href="{{ route('cart.homesamplecollection') }}" class="process-step-item d-flex align-items-center"    >
+                <div class="process-step-icon-wrap position-relative">
+                    <div
+                        class="process-step-icon d-flex justify-content-center align-items-center mx-auto rounded-circle -bg-black h-40px w-40px bg-base-color fs-17 fw-500">
+                        
+                        <img class="-bg-vdc-orange rounded p-10px"
+                            src="{{ asset('frontend/vdc_images/blood-tube.png') }}" style="filter: invert(1);">
+                    </div>
+                </div>
+                <div class="process-content ps-10px last-paragraph-no-margin">
+                    <span class="d-block fw-600 text-dark-gray fs-14 ls-minus-05px lh-sm alt-font">Book Home
+                        Collection</span>
+                </div>
+            </a>
+        @else
+          
+               
+
+
+
+            <a href="#" class="process-step-item d-flex align-items-center" 
+            data-bs-toggle="modal" data-bs-target="#loginModal">
                     <div class="process-step-icon-wrap position-relative">
                         <div
                             class="process-step-icon d-flex justify-content-center align-items-center mx-auto rounded-circle -bg-black h-40px w-40px bg-base-color fs-17 fw-500">
-                            <!-- <span class="number position-relative z-index-1 text-white">01</span> -->
+                            
                             <img class="-bg-vdc-orange rounded p-10px"
                                 src="{{ asset('frontend/vdc_images/blood-tube.png') }}" style="filter: invert(1);">
                         </div>
@@ -81,6 +109,28 @@
                             Collection</span>
                     </div>
                 </a>
+        @endif
+
+
+
+
+
+
+                {{-- <a href="#" class="process-step-item d-flex align-items-center" data-bs-toggle="modal"
+                    data-bs-target="#bookSampleModal">
+                    <div class="process-step-icon-wrap position-relative">
+                        <div
+                            class="process-step-icon d-flex justify-content-center align-items-center mx-auto rounded-circle -bg-black h-40px w-40px bg-base-color fs-17 fw-500">
+                            
+                            <img class="-bg-vdc-orange rounded p-10px"
+                                src="{{ asset('frontend/vdc_images/blood-tube.png') }}" style="filter: invert(1);">
+                        </div>
+                    </div>
+                    <div class="process-content ps-10px last-paragraph-no-margin">
+                        <span class="d-block fw-600 text-dark-gray fs-14 ls-minus-05px lh-sm alt-font">Book Home
+                            Collection</span>
+                    </div>
+                </a> --}}
             </div>
             <div class="col-6 col-lg-2 process-step-style-07 position-relative p-0 float-left">
                 <a href="#" class="process-step-item d-flex align-items-center" data-bs-toggle="modal"

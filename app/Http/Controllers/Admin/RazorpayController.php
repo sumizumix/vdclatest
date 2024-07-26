@@ -44,6 +44,8 @@ class RazorpayController extends Controller
                 
                 $userId = Auth::id();
                 $razorid = $response['id'];
+                $method = $response['method'];
+                $amount = $response['amount'];
                 
                 $cartStatus = DB::table('cart')
                                 ->where('user_id', $userId)
@@ -51,7 +53,9 @@ class RazorpayController extends Controller
                                 ->where('razorid', null)
                                 ->update([
                                     'paystatus' => 1,
-                                    'razorid' => $razorid
+                                    'razorid' => $razorid,
+                                    'method' =>$method,
+                                    'amount'=>$amount
                                 ]);
                 
                

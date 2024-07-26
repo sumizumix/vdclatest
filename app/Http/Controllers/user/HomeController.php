@@ -12,9 +12,10 @@ class HomeController extends Controller
     {
     	$pageaboutitem = DB::table('pageaboutitem')->get();
         $product=DB::table('product')->limit(3)->get();
-        $pro=DB::table('product')->get();
+       
         $packages =Product::all();
         $test=DB::table('test')->get();
+        $pro=DB::table('product')->get();
         $testimonial=DB::table('testimonial')->get();
         // dd($test);
         

@@ -15,7 +15,8 @@ class Samplecollection extends Authenticatable
         'phone',
         'email',
         'package',
-        'test'
+        'test',
+        'userid'
         
     ];
 }

@@ -25,34 +25,69 @@ class ProductController extends Controller
         return view('admin.auth.product.create');
     }
 
+    // public function store(Request $request)
+    // {
+       
+        
+    //     $photo = new Product();
+    //     $data = $request->only($photo->getFillable());
+
+    //     $request->validate([
+    //         // 'photo' => 'numeric|min:0|max:32767'
+    //         'name'=>'required'
+    //     ]);
+
+    //     // $statement = DB::select("SHOW TABLE STATUS LIKE 'product'");
+    //     $count = DB::table('product')->count();
+
+    //     $ai_id =$count+1;
+    //     // dd($ai_id);
+    //     $ext = $request->file('image')->extension();
+    //     $final_name = 'package-'.$ai_id.'.'.$ext;
+    //     $request->file('image')->move(public_path('uploads/'), $final_name);
+    //     $data['image'] = $final_name;
+
+    //     $photo->fill($data)->save();
+    //     return redirect()->route('admin.product.index')->with('success', 'Package is added successfully!');
+    // }
+
     public function store(Request $request)
     {
-        // if(env('PROJECT_MODE') == 0) {
-        //     return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
-        // }
-        // dd('h');
-        
         $photo = new Product();
         $data = $request->only($photo->getFillable());
-
+    
         $request->validate([
-            // 'photo' => 'numeric|min:0|max:32767'
-            'name'=>'required'
+            'name' => 'required',
+            'parameter' => 'required|array',
+            
         ]);
-
-        // $statement = DB::select("SHOW TABLE STATUS LIKE 'product'");
+    
+        // Count the number of records in the 'product' table to generate a new id
         $count = DB::table('product')->count();
-
-        $ai_id =$count+1;
-        // dd($ai_id);
+        $ai_id = $count + 1;
+    
+        // Handle image upload
         $ext = $request->file('image')->extension();
-        $final_name = 'package-'.$ai_id.'.'.$ext;
+        $final_name = 'package-' . $ai_id . '.' . $ext;
         $request->file('image')->move(public_path('uploads/'), $final_name);
         $data['image'] = $final_name;
-
+    
+        // Convert the array of parameters into a comma-separated string
+        $data['parameter'] = implode(',', $request->input('parameter'));
+    
         $photo->fill($data)->save();
         return redirect()->route('admin.product.index')->with('success', 'Package is added successfully!');
     }
+    
+
+
+
+
+
+
+
+
+
     // public function search(Request $request)
     // {
     //     $query = $request->input('s');
@@ -141,7 +176,7 @@ public function testsearch(Request $request)
             $request->file('image')->move(public_path('uploads/'), $final_name);
             $data['image'] = $final_name;
         }
-    
+        $data['parameter'] = implode(',', $request->input('parameter'));
         // Save the updated product data
         $product->update($data);
     

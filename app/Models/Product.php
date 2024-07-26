@@ -15,7 +15,21 @@ class Product extends Authenticatable
         'image',
         'price',
         'seotitle',
-        'seodescription'
+        'seodescription',
+        'parameter',
+        'noparameter',
+        'prerequisite',
+        'reporttime'
 
     ];
+    public function up()
+{
+    Schema::table('product', function (Blueprint $table) {
+        $table->string('parameters')->nullable();
+    });
 }
+}
+
+
+
+

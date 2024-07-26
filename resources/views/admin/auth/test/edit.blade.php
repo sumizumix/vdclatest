@@ -16,13 +16,35 @@
                                         name="name" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="description">Description</label>
-                                    <textarea class="form-control" id="description" name="description" rows="3" required>{{ $test->description }}</textarea>
+                                    <label class="form-label" for="price">parameter</label>
+                                    <input type="text" class="form-control" id="price" value="{{ $test->parameter }}"
+                                        name="parameter" required>
+                                        <div id="parameters-container">
+                                          
+                                        <button type="button" class="btn btn-primary" id="add-field">Add Parameter</button>
+                                      
+                                    </div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="price">Price</label>
                                     <input type="number" class="form-control" id="price" value="{{ $test->price }}"
                                         name="price" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="name">Test code</label>
+                                    <input type="text" class="form-control" id="testcode" name="testcode"  value="{{ $test->testcode }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="name">Schedule </label>
+                                    <input type="text" class="form-control" id="Schedule" name="Schedule"  value="{{ $test->Schedule }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="name">Pre-requisite</label>
+                                    <input type="text" class="form-control" id="prerequisite" name="prerequisite"  value="{{ $test->prerequisite }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="name">Report time</label>
+                                    <input type="text" class="form-control" id="reporttime" name="reporttime"  value="{{ $test->reporttime }}">
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="">Featured Photo</label>
@@ -57,4 +79,18 @@
         </div>
     </div>
     </div>
+
+    <script>
+        document.getElementById('add-field').addEventListener('click', function() {
+            const container = document.getElementById('parameters-container');
+            const index = container.children.length + 1;
+            const newField = document.createElement('div');
+            newField.classList.add('mb-3');
+            newField.innerHTML = `
+               
+                <input type="text" class="form-control col-3" name="parameter[]" style="width: 300px;"  required>
+            `;
+            container.appendChild(newField);
+        });
+    </script>
 @endsection

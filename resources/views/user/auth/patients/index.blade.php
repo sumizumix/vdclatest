@@ -63,26 +63,26 @@
                             <h4 class="fw-600 lh-sm mb-10px text-dark-gray fs-18 line-2">{{ $product->name }}</h4>
                             <p class="mb-10px lh-sm fs-18 fw-bold text-base-color">₹ {{ $product->price }}</p>
                         </div>
-                        <!--<div class="mt-30px">-->
+                        <div class="mt-30px">
                             
                        
 
 
-                        <!--<a href="{{ URL::to('packages-knowmore/' . $product->id) }}"-->
-                        <!--    class="btn btn-very-small btn-dark-gray btn-hover-animation-switch btn-round-edge btn-box-shadow"><i class="ti ti-pencil"></i>-->
-                        <!--    Know More</a>-->
+                        <a href="{{ URL::to('packages-knowmore/' . $product->id) }}"
+                           class="btn btn-very-small btn-dark-gray btn-hover-animation-switch btn-round-edge btn-box-shadow"><i class="ti ti-pencil"></i>
+                         Know More</a>
 
-                        <!--    <button-->
-                        <!--        class="btn btn-very-small btn-base-color btn-hover-animation-switch btn-round-edge btn-box-shadow ms-5px"-->
-                        <!--        onclick="handleAddToCart({{ $product->id }})">-->
-                        <!--        <span>-->
-                        <!--            <span class="btn-text">Add to Cart</span>-->
-                        <!--            <span class="btn-icon"><i class="feather icon-feather-shopping-cart"></i></span>-->
-                        <!--            <span class="btn-icon"><i class="feather icon-feather-shopping-cart"></i></span>-->
-                        <!--        </span>-->
-                        <!--    </button>-->
-                        <!--</div>-->
-                        <div class="mt-30px">
+                            <button
+                                class="btn btn-very-small btn-base-color btn-hover-animation-switch btn-round-edge btn-box-shadow ms-5px"
+                                onclick="handleAddToCart({{ $product->id }})">
+                                <span>
+                                   <span class="btn-text">Add to Cart</span>
+                                   <span class="btn-icon"><i class="feather icon-feather-shopping-cart"></i></span>
+                                   <span class="btn-icon"><i class="feather icon-feather-shopping-cart"></i></span>
+                                </span>
+                            </button>
+                        </div>
+                        {{-- <div class="mt-30px">
                             <button
                                 class="btn btn-very-small btn-dark-gray btn-hover-animation-switch btn-round-edge btn-box-shadow"
                                 data-bs-toggle="modal" data-bs-target="#productModal" data-name="{{ $product->name }}"
@@ -102,7 +102,7 @@
                                     <span class="btn-icon"><i class="feather icon-feather-shopping-cart"></i></span>
                                 </span>
                             </button>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             @endforeach

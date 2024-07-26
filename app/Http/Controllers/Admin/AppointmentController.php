@@ -24,27 +24,51 @@ class AppointmentController extends Controller
     {
         $booksamplecollection = Samplecollection::all();
 
-        return view('admin.auth.appointment.index',compact('booksamplecollection'));
+
+        return view('admin.auth.appointment.index', compact('booksamplecollection'));
     }
+
+
+
+    public function updateuploadresult(Request $request, $id)
+    {
+        $team = Samplecollection::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            // Delete old file if exists
+            if ($request->existing) {
+                $path = public_path('uploads/' . $request->existing);
+                unlink($path);
+            }
+
+            // Store new file
+            $file = $request->file('image');
+            $fileName = 'team-' . $id . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('uploads/'), $fileName);
+            $team->update(['image' => $fileName]);
+        }
+
+        return redirect()->route('admin.auth.appointement.index')->with('success', 'Upload result successfully!');
+    }
+
 
     public function approve($id)
     {
-       
 
-        $sample = Samplecollection::find($id);     
+
+        $sample = Samplecollection::find($id);
         // dd($sample);    
-            $sample->status = 'approved';
-            $sample->save();
-            
-            Mail::to($sample->email)->send(new SampleApproved($sample));
-            return redirect()->back()->with('success', 'Sample Collection approved and confirmation email sent.');
-        
+        $sample->status = 'approved';
+        $sample->save();
+
+        Mail::to($sample->email)->send(new SampleApproved($sample));
+        return redirect()->back()->with('success', 'Sample Collection approved and confirmation email sent.');
     }
 
     public function reject($id)
     {
         $sample = Samplecollection::find($id);
-        
+
         if ($sample) {
             $sample->status = 'rejected';
             $sample->save();
@@ -55,7 +79,6 @@ class AppointmentController extends Controller
 
         return redirect()->back()->with('success', 'Sample Collection Not Found');
     }
-   
 }
 
     // public function store(Request $request)
@@ -109,4 +132,3 @@ class AppointmentController extends Controller
     //     $location->delete();
     //     return Redirect()->back()->with('success', 'Location  deleted successfully!');
     // }
-

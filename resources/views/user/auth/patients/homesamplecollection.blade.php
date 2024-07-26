@@ -32,8 +32,8 @@
         <div class="row align-items-center">
             <div class="col-lg-12">
                 <div class="right-fixed-end ">
-                 
-                    <a href="#" class="btn btn-success btn-rounded  float-end me-3 mt-3" data-bs-toggle="modal" data-bs-target="#bookSampleModal">
+             
+                    <a href="{{ route('cart.previoushomesamplecollection') }}" class="btn btn-success btn-rounded  float-end me-3 mt-3">
                         Previous Booking
                     </a>
                     
@@ -99,7 +99,7 @@
 </section>
 
 
-<div class="modal fade" id="bookSampleModal" tabindex="-1" aria-labelledby="bookSampleModalLabel"
+{{-- <div class="modal fade" id="bookSampleModal" tabindex="-1" aria-labelledby="bookSampleModalLabel"
     aria-hidden="true" style="background-color: rgba(0, 0, 0, 0.8)">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
@@ -117,7 +117,7 @@
                             <th scope="col">Name</th>
                            
                             <th scope="col">Address</th>
-                            {{-- <th scope="col">Email</th> --}}
+                         
                             <th scope="col">Package</th>
                             <th scope="col">Test</th>
                             <th scope="col">Action</th>
@@ -130,7 +130,7 @@
                                 <td>{{ $row->name }}</td>
                               
                                 <td>{{ $row->address }}</td>
-                                {{-- <td>{{ $row->email }}</td> --}}
+                               
                                 <td>{{ $row->package }}</td>
                                 <td>{{ $row->test }}</td>
                                 <td class="text-nowrap">
@@ -144,8 +144,7 @@
                                         </button>
                                     @else
 
-                                    {{-- <a href="{{ URL::to('homesamplecollectionedit/' . $row->bid) }}"
-                                        class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a> --}}
+                                    
                                     <a href="{{ URL::to('homesamplecollectionremove/' . $row->bid) }}"
                                         class="btn btn-danger btn-sm"
                                         onClick="return confirm('Are you sure?');"><i
@@ -159,7 +158,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 @include('layout.footer')
 
 

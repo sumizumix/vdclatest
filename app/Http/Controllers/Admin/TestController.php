@@ -38,7 +38,8 @@ class TestController extends Controller
 
         $request->validate([
             // 'photo' => 'numeric|min:0|max:32767'
-            'name'=>'required'
+            'name'=>'required',
+          
         ]);
 
         // $statement = DB::select("SHOW TABLE STATUS LIKE 'product'");
@@ -50,7 +51,7 @@ class TestController extends Controller
         $final_name = 'test-'.$ai_id.'.'.$ext;
         $request->file('image')->move(public_path('uploads/'), $final_name);
         $data['image'] = $final_name;
-
+        $data['parameter'] = implode(',', $request->input('parameter'));
         $test->fill($data)->save();
         return redirect()->route('admin.auth.test.index')->with('success', 'Test Details  added successfully!');
     }

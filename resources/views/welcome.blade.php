@@ -45,11 +45,11 @@
                     
             <!--            <p>Contact Us on WhatsApp</p>-->
                     
-        <a id="whatsapp-link"
+        {{-- <a id="whatsapp-link"
                target="_blank"
             class="btn btn-success">
           <i class="bi bi-whatsapp"></i> Chat on WhatsApp
-            </a>
+            </a> --}}
             <!--        </div>-->
                     {{-- whatsapp --}}
                 </div>
@@ -229,35 +229,35 @@
                                 class="d-inline-block fw-600 text-dark-gray fs-18 ls-minus-05px">{{ $rows->name }}</span>
                             <p class="mb-10px fs-20">Rs {{ $rows->price }}/-</p>
                         </div>
-                        <!--<div class="d-flex justify-content-between w-100">-->
+                        <div class="d-flex justify-content-between w-100">
                             
 
 
-                        <!--    <a href="{{ URL::to('packages-knowmore/' . $rows->id) }}"-->
-                        <!--        class="btn btn-small btn-vdc-gray  btn-rounded btn-hover-animation-switch btn-round btn-box-shadow">-->
-                        <!--        Know More</a>-->
+                            <a href="{{ URL::to('packages-knowmore/' . $rows->id) }}"
+                                class="btn btn-small btn-vdc-gray  btn-rounded btn-hover-animation-switch btn-round btn-box-shadow">
+                                Know More</a>
 
 
-                        <!--    </button>-->
-                        <!--    @if (Auth::check())-->
-                        <!--        <button-->
-                        <!--            class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600"-->
-                        <!--            onclick="handleAddToCart({{ $rows->id }},'package')">-->
-                        <!--            <span>-->
-                        <!--                <span class="btn-text">Book Now</span>-->
+                            </button>
+                            @if (Auth::check())
+                            <button
+                                class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600"
+                                    onclick="handleAddToCart({{ $rows->id }},'package')">
+                                    <span>
+                                        <span class="btn-text">Book Now</span>
 
-                        <!--            </span>-->
-                        <!--        @else-->
-                        <!--            <button-->
-                        <!--                class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600"-->
-                        <!--                data-bs-toggle="modal" data-bs-target="#loginModal">-->
-                        <!--                <span>-->
-                        <!--                    <span class="btn-double-text" data-text="Login">Book Now</span>-->
-                        <!--                </span>-->
-                        <!--            </button>-->
-                        <!--    @endif-->
-                        <!--</div>-->
-<div class="d-flex justify-content-between w-100">
+                                    </span>
+                                @else
+                                    <button
+                                    class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600"
+                                    data-bs-toggle="modal" data-bs-target="#loginModal">
+                                        <span>
+                                            <span class="btn-double-text" data-text="Login">Book Now</span>
+                                        </span>
+                                   </button>
+                            @endif
+                        </div>
+{{-- <div class="d-flex justify-content-between w-100">
                             <button
                                 class="btn btn-vdc-gray btn-small btn-rounded btn-box-shadow btn-switch-text fw-600"
                                 data-bs-toggle="modal" data-bs-target="#knowMoreModal"
@@ -284,7 +284,7 @@
                                     </span>
                                 </button>
                             @endif
-</div>
+</div> --}}
                     </div>
                 </div>
             @endforeach
@@ -415,67 +415,36 @@
                                                     {{ $row->name }}</h4>
                                                 <p class="mb-10px lh-sm fs-15">{{ $row->description }}</p>
                                             </div>
-                                            <!--<div class="d-flex justify-content-between w-100">-->
-
-                                            <!--    <a href="{{ URL::to('test-knowmore/' . $row->id) }}"-->
-                                            <!--        class="btn btn-very-small btn-vdc-gray btn-hover-animation-switch btn-rounded btn-box-shadow">-->
-                                            <!--        Know More</a>-->
-
-
-                                            <!--    @if (Auth::check())-->
-                                            <!--        <button-->
-                                            <!--            class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600"-->
-                                            <!--            onclick="handleAddToCart({{ $row->id }},'test')">-->
-                                            <!--            <span>-->
-                                            <!--                <span class="btn-double-text"-->
-                                            <!--                    data-text="Book-->
-                                            <!--    Now">Book-->
-                                            <!--                    Now</span>-->
-
-                                            <!--            </span>-->
-                                            <!--        </button>-->
-                                            <!--    @else-->
-                                            <!--        <button-->
-                                            <!--            class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600"-->
-                                            <!--            data-bs-toggle="modal" data-bs-target="#loginModal">-->
-                                            <!--            <span>-->
-                                            <!--                <span class="btn-double-text" data-text="Login">Book-->
-                                            <!--                    Now</span>-->
-                                            <!--            </span>-->
-                                            <!--        </button>-->
-                                            <!--    @endif-->
-                                            <!--</div>-->
+                                           
                                             <div class="d-flex justify-content-between w-100">
-                                                <button
-                                                    class="btn btn-vdc-gray btn-small btn-rounded btn-box-shadow btn-switch-text fw-600"
-                                                    data-bs-toggle="modal" data-bs-target="#testKnowMoreModal"
-                                                    data-name="{{ $row->name }}" data-description="{{ $row->description }}"
-                                                    data-price="₹{{ $row->price }}" data-image="{{ asset('uploads/' . $row->image) }}">
-                                                    <span>
-                                                        <span class="btn-double-text" data-text="Know more">Know
-                                                            more</span>
-                                                    </span>
-                                                </button>
+                                        
+
+                                                <a href="{{ URL::to('test-knowmore/' . $row->id) }}"
+                                                    class="btn btn-very-small btn-vdc-gray btn-hover-animation-switch btn-rounded btn-box-shadow">
+                                                Know More</a>
+ 
+ 
                                                 @if (Auth::check())
-                                                    <button
-                                                        class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600"
-                                                        onclick="handleAddToCart({{ $row->id }})">
-                                                        <span>
-                                                            <span class="btn-double-text"
-                                                                data-text="Book
-                                                        Now">Book
-                                                                Now</span>
+                                                  <button
+                                                    class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600"
+                                                       onclick="handleAddToCart({{ $row->id }},'test')">
+                                                         <span>
+                                                         <span class="btn-double-text"
+                                                              data-text="Book
+                                               Now">Book
+                                                               Now</span>
+ 
                                                         </span>
-                                                    </button>
-                                                @else
-                                                    <button
-                                                        class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600"
-                                                        data-bs-toggle="modal" data-bs-target="#loginModal">
-                                                        <span>
-                                                            <span class="btn-double-text" data-text="Login">Book
-                                                                Now</span>
-                                                        </span>
-                                                    </button>
+                                                     </button>
+                                                 @else
+                                                     <button
+                                                     class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600"
+                                                         data-bs-toggle="modal" data-bs-target="#loginModal">
+                                                         <span>
+                                                             <span class="btn-double-text" data-text="Login">Book
+                                                                 Now</span>
+                                                         </span>
+                                                     </button>
                                                 @endif
 </div>
                                         </div>
@@ -1133,7 +1102,7 @@
 
     document.addEventListener('DOMContentLoaded', function() {
         var whatsappLink = document.getElementById('whatsapp-link');
-        var phone = '9605347997';
+        var phone = '00000000';
         var message = encodeURIComponent('Hello, I need some information.');
         var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 

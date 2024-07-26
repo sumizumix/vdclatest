@@ -31,8 +31,8 @@
             <div class="col-6 col-lg-2 col-sm-4 xs-mb-30px order-sm-3 order-lg-2">
                 <span class="fs-17 fw-500 d-block text-white mb-5px">Quick Links</span>
                 <ul>
-                <!--<li><a href="{{ route('user.about') }}">About</a></li>-->
-                  <li><a href="{{ route('dashboard') }}">About</a></li>
+                <li><a href="{{ route('user.about') }}">About</a></li>
+                  {{-- <li><a href="{{ route('dashboard') }}">About</a></li> --}}
                     <li><a href="{{ route('user.contactss') }}">Contact Us</a></li>
 
 

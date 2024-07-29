@@ -19,9 +19,7 @@
                 </div>
                 <div class="fs-18 fw-300 mb-30px w-80 sm-w-100 opacity-6 d-block mx-auto mx-lg-0 overflow-hidden">
                     <span class="d-inline-block lh-32"
-                        data-anime='{ "translateY": [100, 0], "easing": "easeOutCubic", "duration": 900, "delay": 300 }'>Lorem
-                        ipsum dolor sit amet consectetur adipisicing elit. Quis a cumque omnis esse cum, facilis porro
-                        inventore.</span>
+                        data-anime='{ "translateY": [100, 0], "easing": "easeOutCubic", "duration": 900, "delay": 300 }'>Discover the most trusted and advanced diagnostic laboratories dedicated to providing accurate and reliable testing services.</span>
                 </div>
                 <div class="overflow-hidden pt-5px">
                     <a href="{{ route('user.patientspage') }}"
@@ -329,7 +327,7 @@
                         Diagnostic
                         Center</h2>
                     <p class="w-90 sm-w-100">{{ $row->description }}</p>
-                    <a href="#"
+                    <a href="{{ route('user.about') }}"
                         class="btn btn-large btn-dark-gray btn-box-shadow btn-rounded btn-switch-text mt-4">
                         <span>
                             <span class="btn-double-text" data-text="Know more">Know more</span>
@@ -350,8 +348,7 @@
         <div class="row align-items-center mb-3 sm-mb-9 text-start -text-lg-start">
             <div class="col-lg-5 md-mb-20px">
                 <h3 class="text-black fw-700 mb-0 +ls-minus-1px mb-20px">Individual Tests</h3>
-                <p class="fs-16 lh-base text-black">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis,
-                    veniam commodi? Facilis, ratione minus! Vero.</p>
+                <p class="fs-16 lh-base text-black">Experience cutting-edge diagnostics at laboratories that set the standard for excellence</p>
             </div>
             <div class="col-lg-7 d-flex justify-content-start justify-content-lg-end">
                 <div

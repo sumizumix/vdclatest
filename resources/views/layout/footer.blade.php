@@ -5,7 +5,7 @@
             <div class="col-6 col-lg-4 last-paragraph-no-margin order-sm-1 md-mb-40px xs-mb-30px">
                 <a href="#" class="footer-logo mb-15px d-inline-block"><img
                         src="{{ asset('frontend/vdc_images/vdc-logo.png') }}" alt /></a>
-                <p class="w-90 lg-w-100">Lorem ipsum amet adipiscing elit to eiusmod ad tempor incididunt enim.</p>
+                <p class="w-90 lg-w-100">Explore top-tier diagnostic labs committed to delivering precise and dependable results</p>
                 <div class="elements-social social-icon-style-02 mt-20px xs-mt-15px">
                     <ul class="small-icon light">
                         <li class="my-0">

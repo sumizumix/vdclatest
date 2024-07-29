@@ -19,17 +19,17 @@
                                     <label class="form-label" for="description">Description</label>
                                     <textarea class="form-control" id="description" name="description" rows="3" required>{{ $product->description }}</textarea>
                                 </div> --}}
-                                <div class="mb-3">
-                                    <label class="form-label" for="price">parameter</label>
-                                    <input type="text" class="form-control" id="price" value="{{ $product->parameter }}"
-                                        name="parameter" required>
-                                        <div id="parameters-container">
-                                          
-                                        <button type="button" class="btn btn-primary" id="add-field">Add Parameter</button>
-                                      
-                                    </div>
+                                
+                                <label class="form-label" for="name">Test Name</label>
+                                <div class="mb-3" id="test-div">
+                                    @foreach(explode(",", $product->parameter) as $param)
+                                        <input type="text" class="form-control mb-3 col-12" name="parameter[]"
+                                            style="width: 300px;" required value="<?php    echo $param ?>">
+                                        <button type="button" class="btn btn-danger mb-3 remove-div">Delete</button>
+                                    @endforeach
                                 </div>
-                                <div class="mb-3">
+                            <button type="button" class="btn btn-primary" id="add-field">Add Tests</button>
+                            <div class="mb-3">
                                     <label class="form-label" for="price">Price</label>
                                     <input type="number" class="form-control" id="price" value="{{ $product->price }}"
                                         name="price" required>
@@ -79,17 +79,24 @@
             </div>
         </div>
     </div>
-    <script>
-        document.getElementById('add-field').addEventListener('click', function() {
-            const container = document.getElementById('parameters-container');
-            const index = container.children.length + 1;
-            const newField = document.createElement('div');
-            newField.classList.add('mb-3');
-            newField.innerHTML = `
-               
-                <input type="text" class="form-control col-3" name="parameter[]" style="width: 300px;"  required>
-            `;
-            container.appendChild(newField);
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        // Event listener for adding new fields
+        $('#add-field').click(function () {
+            let div = `
+                <div class="mb-3">
+                    <input type="text" class="form-control mb-3" name="parameter[]" style="width: 300px;" required>
+                    <button type="button" class="btn btn-danger mb-3 remove-div">Delete</button>
+                </div>`;
+            $('#test-div').append(div);
         });
-    </script>
+
+        // Delegate the click event to dynamically added delete buttons
+        $(document).on('click', '.remove-div', function () {
+            $(this).parent().remove();
+        });
+    });
+</script>
 @endsection

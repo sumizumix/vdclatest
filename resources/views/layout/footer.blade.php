@@ -32,7 +32,7 @@
                 <span class="fs-17 fw-500 d-block text-white mb-5px">Quick Links</span>
                 <ul>
                 <!--<li><a href="{{ route('user.about') }}">About</a></li>-->
-                  <li><a href="{{ route('dashboard') }}">About</a></li>
+                  <li><a href="{{ route('user.about') }}">About</a></li>
                     <li><a href="{{ route('user.contactss') }}">Contact Us</a></li>
 
 

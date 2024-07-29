@@ -21,7 +21,7 @@
     </div>
 </section>
 
-<div class="service -page-content">
+<div class="service -page-content pt-4">
     <div class="container">
         <div class="row rounded align-items-center">
             <div class="col-lg-6 wow fadeInUp">
@@ -36,15 +36,15 @@
 
     @if(!empty($page_about->mission)||!empty($page_about->vision))
     <div class="container">
-        <div class="bg-sg-dark mt-5 rounded p-4 p-md-5">
-            <div class="row rounded-3 g-4">
-                <div class="col-lg-6 wow fadeInUp">
-                    <h4 class="text border-start border-4 border-warning ps-3 lh-1">Vision</h4>
-                    <p class="text  mt-4 mb-0">{!! strip_tags($page_about->vision) !!}</p>
+        <div class="bg-sg-dark mt-5 rounded -p-4 -p-md-5">
+            <div class="row rounded-3 -gx-5 justify-content-evenly d-flex -border-radius-6px">
+                <div class="col-lg-6 wow fadeInUp bg-vdc-light-purple p-4 rounded-3">
+                    <h4 class="text-vdc-purple border-start border-4 border-warning ps-3 lh-1 fw-600">Vision</h4>
+                    <p class="text-white ps-4 fw-700 fs-16 mt-4 mb-0">{!! strip_tags($page_about->vision) !!}</p>
                 </div>
-                <div class="col-lg-6 wow fadeInUp">
-                    <h4 class="text border-start border-4 border-warning ps-3 lh-1">Mission</h4>
-                    <p class="text mt-4 mb-0">{!! strip_tags($page_about->mission) !!}</p>
+                <div class="col-lg-6 wow fadeInUp bg-vdc-light-purple p-4 rounded-3">
+                    <h4 class="text-vdc-purple border-start border-4 border-warning ps-3 lh-1 fw-600">Mission</h4>
+                    <p class="text-white ps-4 fw-700 fs-16 mt-4 mb-0">{!! strip_tags($page_about->mission) !!}</p>
                 </div>
             </div>
         </div>

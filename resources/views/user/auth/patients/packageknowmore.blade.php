@@ -23,7 +23,6 @@
 </section>
 
 <section>
-
     <div class="service -page-content">
         <div class="container">
             <div class="row rounded">
@@ -58,13 +57,7 @@
                                                     <span class="btn-icon"><i class="feather icon-feather-shopping-cart"></i></span>
                                                 </span>
                                             </button>
-                                            <button class="btn btn-very-small -btn-base-color fw-700 bg-vdc-medium-light-purple btn-hover-animation-switch btn-round-edge btn-box-shadow">
-                                                <span>
-                                                    <span class="btn-text">Book Now</span>
-                                                    <span class="btn-icon"><i class="feather icon-feather-shopping-cart"></i></span>
-                                                    <span class="btn-icon"><i class="feather icon-feather-shopping-cart"></i></span>
-                                                </span>
-                                            </button>
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -88,58 +81,63 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-4 wow fadeInUp mt-0">
+                
+                <div class="col-lg-4 wow fadeInUp mt-0 sm-mt-4">
                     <div class="card shadow-sm h-100">
                         <div class="card-body d-flex flex-column -ps-4">
                              <h6 class="text-base-color fw-700 fs-28 text-center text-uppercase">Patients Packages</h6>
                              <div class="-outside-box-right-15 -xl-outside-box-right-20 -sm-outside-box-right-0 overflow-hidden">
                         <div class="swiper slider-one-slide -slider-shadow-right sm-slider-shadow-none -magic-cursor overflow-hidden p-2 -ps-25px sm-p-0" data-slider-options='{ "slidesPerView": 1, "spaceBetween": 40, "loop": true, "pagination": { "el": ".slider-one-slide-pagination", "clickable": true, "dynamicBullets": false }, "navigation": { "nextEl": ".slider-one-slide-next-1", "prevEl": ".slider-one-slide-prev-1" }, "autoplay": { "delay": 3000, "disableOnInteraction": false }, "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "992": { "slidesPerView": 1 }, "768": { "slidesPerView": 1 }, "320": { "slidesPerView": 1 } }, "effect": "slide" }'>
                         <div class="swiper-wrapper pt-30px pb-30px">
-                          
+                  
                             <div class="swiper-slide">
-                                <div class="box-shadow-extra-large services-box-style-01 hover-box last-paragraph-no-margin border-radius-6px overflow-hidden">
+                                <div class="box-shadow-extra-large services-box-style-01 hover-box last-paragraph-no-margin border-radius-6px overflow-hidden border-bottom border-4 border-base-color">
                                     <div class="position-relative box-image">
                                         <img src="{{ asset('frontend/vdc_images/pack-04.webp') }}" alt />
                                     </div>
                                     <div class="bg-white">
-                                        <div class="ps-50px min-h-150px pe-50px pt-35px sm-p-35px sm-pb-0">
+                                        <div class="ps-20px min-h-150px pe-20px pt-35px sm-p-35px sm-pb-0">
+                                            <h5 class="fw-600 lh-sm mb-10px text-dark-gray fs-18 line-2">Test</h5>
+                                            <p class="mb-10px lh-sm fs-18 fw-bold text-base-color">₹ 100</p>
                                             <a href="#"
                                                 class="d-inline-block fs-20 primary-font fw-600 text-dark-gray mb-5px"></a>
                                         </div>
                                         
                                     </div>
                                 </div>
-                            </div>
+                            </div>                                                                        
                             <div class="swiper-slide">
-                                <div class="box-shadow-extra-large services-box-style-01 hover-box last-paragraph-no-margin border-radius-6px overflow-hidden">
+                                <div class="box-shadow-extra-large services-box-style-01 hover-box last-paragraph-no-margin border-radius-6px overflow-hidden border-bottom border-4 border-base-color">
                                     <div class="position-relative box-image">
                                         <img src="{{ asset('frontend/vdc_images/pack-04.webp') }}" alt />
                                     </div>
                                     <div class="bg-white">
-                                        <div class="ps-50px min-h-150px pe-50px pt-35px sm-p-35px sm-pb-0">
+                                        <div class="ps-20px min-h-150px pe-20px pt-35px sm-p-35px sm-pb-0">
+                                            <h5 class="fw-600 lh-sm mb-10px text-dark-gray fs-18 line-2">Test</h5>
+                                            <p class="mb-10px lh-sm fs-18 fw-bold text-base-color">₹ 100</p>
                                             <a href="#"
                                                 class="d-inline-block fs-20 primary-font fw-600 text-dark-gray mb-5px"></a>
                                         </div>
                                         
                                     </div>
                                 </div>
-                            </div>
+                            </div>                                                                        
                             <div class="swiper-slide">
-                                <div class="box-shadow-extra-large services-box-style-01 hover-box last-paragraph-no-margin border-radius-6px overflow-hidden">
+                                <div class="box-shadow-extra-large services-box-style-01 hover-box last-paragraph-no-margin border-radius-6px overflow-hidden border-bottom border-4 border-base-color">
                                     <div class="position-relative box-image">
                                         <img src="{{ asset('frontend/vdc_images/pack-04.webp') }}" alt />
                                     </div>
                                     <div class="bg-white">
-                                        <div class="ps-50px min-h-150px pe-50px pt-35px sm-p-35px sm-pb-0">
+                                        <div class="ps-20px min-h-150px pe-20px pt-35px sm-p-35px sm-pb-0">
+                                            <h5 class="fw-600 lh-sm mb-10px text-dark-gray fs-18 line-2">Test</h5>
+                                            <p class="mb-10px lh-sm fs-18 fw-bold text-base-color">₹ 100</p>
                                             <a href="#"
                                                 class="d-inline-block fs-20 primary-font fw-600 text-dark-gray mb-5px"></a>
                                         </div>
                                         
                                     </div>
                                 </div>
-                            </div>
-                           
+                            </div>                                                                        
 
                         </div>
                     </div>

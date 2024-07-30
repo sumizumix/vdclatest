@@ -18671,3 +18671,9 @@ footer .footer-navbar .nav-item:last-child a {
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+.h-img{
+    width: 100%;
+    /* aspect-ratio: 3/2 auto; */
+    height: 280px;
+    object-fit: cover;
+}

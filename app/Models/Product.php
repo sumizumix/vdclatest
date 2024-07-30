@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Str;
 
 class Product extends Authenticatable
 {
@@ -19,14 +20,31 @@ class Product extends Authenticatable
         'parameter',
         'noparameter',
         'prerequisite',
-        'reporttime'
+        'reporttime',
+        'slug',
+
 
     ];
+
+
+
     public function up()
 {
     Schema::table('product', function (Blueprint $table) {
         $table->string('parameters')->nullable();
     });
+}
+
+
+protected static function boot() {
+    parent::boot();
+
+    static::creating(function ($product) {
+        $product->slug = Str::slug($product->name);
+    });
+    static::updating(function ($product) {
+        $product->slug = Str::slug($product->name);
+});
 }
 }
 

@@ -126,10 +126,6 @@ class UserRegistrationController extends Controller
     //     $http_result = $info ['http_code'];
     //     curl_close ($ch);
 
-    
-
-
-
 
     //     if ($http_result == 200) {
     //         // OTP sent successfully
@@ -144,9 +140,7 @@ class UserRegistrationController extends Controller
     //             $test = DB::table('test')->get();
     //             $testimonial = DB::table('testimonial')->get();
     //             $authUser = $user;
-    //             // Return the view with required data
-    //             // return view('welcome', compact('pageaboutitem', 'product', 'test', 'testimonial', 'pro', 'authUser'));
-    //             return redirect()->back();
+    //                   return redirect()->back();
     //         } else {
     //             // Failed login attempt
     //             $authUser = null;

@@ -48,7 +48,7 @@
                                             <th scope="col">Product Name</th>
                                             <th scope="col">Quantity</th>
                                             <th scope="col">Date</th>
-                                            <th scope="col">Razorid</th>
+                                            <th scope="col">Payment Id</th>
                                             <!--<th scope="col">Action</th>-->
                                             <th scope="col">Payment Status</th>
                                         </tr>
@@ -61,7 +61,17 @@
                                                 <td>{{ $row->tname ? $row->tname : $row->pname }}</td>
                                                 <td>{{ $row->quantity }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($row->created_at)->format('d-m-Y') }}</td>
-                                                <td>{{ $row->razorid }}</td>
+
+
+                                                <td>@if ($row->razorid == NULL)
+                                                    <button class="btn btn-success btn-sm" disabled>Not Paid
+                                                             <i class="fa-solid fa-check-circle"></i> 
+                                                    </button>
+                                                    @else
+                                                    {{ $row->razorid }}</td>
+                                                    @endif
+
+
                                                 <!--<td class="text-nowrap">-->
                                                 <!--    @if ($row->status == 'approved')-->
                                                 <!--        <button class="btn btn-success btn-sm" disabled>-->

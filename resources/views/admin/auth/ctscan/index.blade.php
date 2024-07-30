@@ -40,7 +40,7 @@
                                     <th scope="col">Email</th>
                                     <th scope="col">Date</th>
                                     <th scope="col">Additional Information</th>
-                                    <th scope="col">Action</th>
+                                    {{-- <th scope="col">Action</th> --}}
                                 </tr>
                             </thead>
                             <tbody id="tableContent">
@@ -53,7 +53,7 @@
                                         <td>{{ \Carbon\Carbon::parse($row->date)->format('d-m-Y') }}</td>
                                         {{-- <td>{{ $row->date }}</td> --}}
                                         <td>{{ $row->additional }}</td>
-                                        <td class="text-nowrap">
+                                        {{-- <td class="text-nowrap">
                                             @if ($row->status == 'approved')
                                                 <button class="btn btn-success btn-sm" disabled>
                                                     <i class="fa-solid fa-check-circle"></i> Approved
@@ -73,7 +73,7 @@
                                                     <i class="fas fa-trash-alt"></i> Reject
                                                 </a>
                                             @endif
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                 @endforeach
                             </tbody>

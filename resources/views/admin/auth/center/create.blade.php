@@ -23,11 +23,21 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="name">Email</label>
-                                    <input type="text" class="form-control" id="name" name="email" required>
+                                   
+                                    <input type="email" class="form-control" id="name" name="email"  pattern="^[^\.].*" required>
+                                    {{-- <input
+                                    class="fs-15 ps-0 border-radius-0px border-color-dark-gray bg-transparent form-control required"
+                                    id="exampleInputEmail2" type="email" name="email"
+                                    placeholder="Enter your email address"
+                                    pattern="^[^\.].*"
+                                    title="Email address should not start with a dot."
+                                    required /> --}}
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="description">Phone</label>
-                                    <input type="text" class="form-control" id="name" name="phone" required>
+                                    <input type="number" class="form-control" id="name" name="phone">
+                                    <div class="error text-danger">{{ $errors->first('phone') }}</div>
+
                                 </div>
                                 
                                 <div class="mb-3">

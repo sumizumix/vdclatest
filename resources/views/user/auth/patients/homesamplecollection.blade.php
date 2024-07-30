@@ -32,17 +32,18 @@
         <div class="row align-items-center">
             <div class="col-lg-12">
                 <div class="right-fixed-end ">
-             
-                    <a href="{{ route('cart.previoushomesamplecollection') }}" class="btn btn-success btn-rounded  float-end me-3 mt-3">
+
+                    <a href="{{ route('cart.previoushomesamplecollection') }}"
+                        class="btn btn-success btn-rounded  float-end me-3 mt-3">
                         Previous Booking
                     </a>
-                    
+
                 </div>
-                
 
 
-                <form id="bookSampleForm" class="row g-3" action="{{ route('user.booksample.store') }}"
-                    method="POST" enctype="multipart/form-data">
+
+                <form id="bookSampleForm" class="row g-3" action="{{ route('user.booksample.store') }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     <div class="col-md-6">
                         <label for="name" class="form-label">Name</label>
@@ -62,20 +63,36 @@
                     </div>
                     <div class="col-md-6">
                         <label for="prescription" class="form-label">Select Package</label>
-                        <select class="form-control" id="prescription" name="package" required>
-                            
-                            
-                            <option value="null" selected>Select</option>
+                        {{-- <select class="form-control" id="prescription" name=""> --}}
+                        <select data-placeholder="Select Packages" multiple class="form-control" id="prescription"
+                            name="package[]" required>
                             @foreach ($pro as $row)
                                 <option value="{{ $row->name }}">{{ $row->name }}</option>
                             @endforeach
                         </select>
 
 
-                        
-                        
+
+
                     </div>
+
                     <div class="col-md-6">
+                        <label for="prescription" class="form-label">Select Package</label>
+                        {{-- <select class="form-control" id="prescription" name=""> --}}
+                        <select data-placeholder="Select Tests" multiple class="form-control" id="test"
+                            name="test[]" required>
+                            @foreach ($test as $row)
+                                <option value="{{ $row->name }}">{{ $row->name }}</option>
+                            @endforeach
+                        </select>
+
+
+
+
+                    </div>
+
+
+                    {{-- <div class="col-md-6">
                         <label for="test" class="form-label">Select Test</label>
                         <select class="form-control" id="test" name="test" required>
                             <option value="null" selected>Select</option>
@@ -83,7 +100,7 @@
                                 <option value="{{ $row->name }}">{{ $row->name }}</option>
                             @endforeach
                         </select>
-                    </div>
+                    </div> --}}
                     <div class="col">
                         <button type="submit"
                             class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600 mt-20px">
@@ -159,6 +176,6 @@
         </div>
     </div>
 </div> --}}
+
+
 @include('layout.footer')
-
-

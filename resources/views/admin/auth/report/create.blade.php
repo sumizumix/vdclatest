@@ -22,13 +22,16 @@
                             </div>
                             <div class="form-group">
                                 <label for="description">Phone</label>
-                                <input type="text" class="form-control" id="name" name="phone" required>
+                                <input type="number" class="form-control" id="name" name="phone" >
+
+                                <div class="error text-danger">{{ $errors->first('phone') }}</div>
                             </div>
 
                             <div class="form-group">
                                 <label for="">Photo *</label>
                                 <div>
                                     <input type="file" name="report">
+                                    <div class="error text-danger">{{ $errors->first('report') }}</div>
                                 </div>
                             </div>
 

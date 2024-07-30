@@ -22,7 +22,12 @@ class CenterController extends Controller
     public function store(Request $request)
     {
       
-        
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required|digits_between:10,15',
+            'email' =>'required '
+       
+        ]);
         $location = new center();
         $data = $request->only($location->getFillable());
         $location->fill($data)->save();
@@ -37,7 +42,11 @@ class CenterController extends Controller
 
     public function update(Request $request, $id)
     {
-        
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required|digits_between:10,15',
+       
+        ]);
         $location = center::findOrFail($id);
         $data = $request->only($location->getFillable());
   

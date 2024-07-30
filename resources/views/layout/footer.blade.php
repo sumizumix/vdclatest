@@ -5,7 +5,8 @@
             <div class="col-6 col-lg-4 last-paragraph-no-margin order-sm-1 md-mb-40px xs-mb-30px">
                 <a href="#" class="footer-logo mb-15px d-inline-block"><img
                         src="{{ asset('frontend/vdc_images/vdc-logo.png') }}" alt /></a>
-                <p class="w-90 lg-w-100">Explore top-tier diagnostic labs committed to delivering precise and dependable results</p>
+                <p class="w-90 lg-w-100">Explore top-tier diagnostic labs committed to delivering precise and dependable
+                    results</p>
                 <div class="elements-social social-icon-style-02 mt-20px xs-mt-15px">
                     <ul class="small-icon light">
                         <li class="my-0">
@@ -31,8 +32,8 @@
             <div class="col-6 col-lg-2 col-sm-4 xs-mb-30px order-sm-3 order-lg-2">
                 <span class="fs-17 fw-500 d-block text-white mb-5px">Quick Links</span>
                 <ul>
-                <li><a href="{{ route('user.about') }}">About</a></li>
-                  {{-- <li><a href="{{ route('dashboard') }}">About</a></li> --}}
+                    <li><a href="{{ route('user.about') }}">About</a></li>
+                    {{-- <li><a href="{{ route('dashboard') }}">About</a></li> --}}
                     <li><a href="{{ route('user.contactss') }}">Contact Us</a></li>
 
 
@@ -132,7 +133,17 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+<link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet" />
+<script>
+    $("#prescription").chosen({
+        no_results_text: "Oops, nothing found!"
+    })
+    $("#test").chosen({
+        no_results_text: "Oops, nothing found!"
+    })
+</script>
 
 
 {{-- dropdown --}}
@@ -140,4 +151,5 @@
 {{-- dropdown --}}
 
 </body>
+
 </html>

@@ -38,7 +38,8 @@ class DepartmentController extends Controller
 
         $request->validate([
             // 'photo' => 'numeric|min:0|max:32767'
-            'name'=>'required'
+            'name'=>'required',
+            'image' => 'nullable|image|required|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         // $statement = DB::select("SHOW TABLE STATUS LIKE 'product'");

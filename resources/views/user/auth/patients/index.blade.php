@@ -68,7 +68,7 @@
                        
 
 
-                        <a href="{{ URL::to('packages-knowmore/' . $product->id) }}"
+                        <a href="{{ URL::to('packages-knowmore/' . $product->slug) }}"
                            class="btn btn-very-small btn-dark-gray btn-hover-animation-switch btn-round-edge btn-box-shadow"><i class="ti ti-pencil"></i>
                          Know More</a>
 

@@ -42,6 +42,7 @@
                             <div class="mb-3">
                                 <label class="form-label" for="">Photo *</label>
                                 <input type="file" class="form-control" name="image">
+                                <div class="error text-danger">{{ $errors->first('image') }}</div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="name">Test code</label>

@@ -262,12 +262,15 @@
                                         </span>
 
                                     </a>
-
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                         class="d-none">
                                         @csrf
                                     </form>
+
+                        
+
+                        
+
                                 @else
                                     <a href="#"
                                         class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600"
@@ -281,6 +284,14 @@
                     @endif
                 </div>
 
+                @if(auth::check())
+                <a href="#" class="process-step-item d-flex align-items-center" data-bs-toggle="modal"
+                data-bs-target="#changepassword">
+                            <i class="ti ti-user fs-6"></i>
+                         
+                        </a>
+                        @endif
+
             </div>
         </nav>
     </header>
@@ -290,11 +301,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
 
-                {{-- <div class="modal-header">
-                        <h5 class="modal-title" id="callbackModalLabel">Request Call Back</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                    </div> --}}
+        
                 <div class="modal-body">
                     <div class="modal-header p-0 border-0 pb-20px">
                         <img src="{{ asset('frontend/vdc_images/vdc-logo.png') }}" class="h-20px" />
@@ -331,55 +338,58 @@
             </div>
         </div>
     </div>
-
-    {{-- <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="uploadModalLabel">Download Result</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    @if(auth::check())
+   
+    <div class="modal fade" id="changepassword" tabindex="-1" aria-labelledby="changepassword"
+    aria-hidden="true" style="background-color: rgba(0, 0, 0, 0.8)">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body p-40px">
+                <div class="modal-header p-0 border-0 pb-15px">
+                    <img src="{{ asset('frontend/vdc_images/vdc-logo.png') }}" class="h-20px" />
+              
+                    <span class="px-2 opacity-5">|</span>
+                    <span class="fw-bold text-orange">Edit Profile</span>
+                    <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                @if (Auth::check())
-                    <div class="modal-body">
-                        <h3 style="color: red; font-weight: bold; text-align: center;">RESULT</h3>
-                        <table class="table table-dark table-striped">
-                            <tr>
-                                <th>sl.no</th>
-                                <th>name</th>
-                                <th>test date</th>
-                            </tr>
-                        </table>
+                <form id="passwordForm" action="{{ url('admin/about/userupdateprofile') }}" method="POST" onsubmit="return validatePasswords()">
+                    @csrf
+            
+                    <div class="mb-12">
+                        <label for="exampleInputPassword1" class="form-label">Name</label>
+                        <input type="name" name="name" class="form-control" id="exampleInputPassword1" value="{{ Auth::user()->name }}" >
+                
+                        <button type="submit" class="btn btn-success btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600 mt-20px">
+                            <span>
+                                <span class="btn-double-text" data-text="Submit">Submit</span>
+                            </span>
+                        </button>
                     </div>
-                @else
-                    <div class="modal-body">
-                        <div class="container upload-container"
-                            style="display: flex; align-items: center; justify-content: center; height: 100%;">
-                            <div class="row w-100">
-                                <div class="col-md-6 welcome-message text-center"
-                                    style="padding: 20px; border-right: 1px solid #ddd;">
-                                    <h4>Welcome to vdc  Agilus</h4>
-                                    <img src="{{ asset('/assets/images/products/package-9.jpg') }}" alt="vdc Logo"
-                                        class="img-fluid my-3" style="max-width: 100%; height: auto;">
-                                </div>
-                                <div class="col-md-6 login-form text-center" style="padding: 20px;">
-                                    <h3>Login</h3>
-                                    <p>Please enter your mobile number to proceed</p>
-
-                                    <a href="#"
-                                        class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600"
-                                        data-bs-toggle="modal" data-bs-target="#loginModal">
-                                        <span>
-                                            <span class="btn-double-text" data-text="Login">Login</span>
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endif
+                </form>
             </div>
         </div>
-    </div> --}}
+    </div>
+</div>
+@endif
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var bookNowModal = document.getElementById('changepassword');
+        bookNowModal.addEventListener('show.bs.modal', function(event) {
+            var button = event.relatedTarget; // Button that triggered the modal
+            var productId = button.getAttribute('data-product-id');
+            var productName = button.getAttribute('data-product-name');
+
+            // Update the modal's content with the product info
+            var modalTitle = bookNowModal.querySelector('.modal-title');
+            var productNameInput = bookNowModal.querySelector('#product_name');
+            var productIdInput = bookNowModal.querySelector('#product_id');
+
+            modalTitle.textContent = 'Book ' + productName;
+            productNameInput.value = productName;
+            productIdInput.value = productId;
+        });
+    });
+</script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

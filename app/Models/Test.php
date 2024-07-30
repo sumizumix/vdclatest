@@ -15,7 +15,12 @@ class Test extends Authenticatable
         'image',
         'price',
         'seotitle',
-        'seodescription'
+        'seodescription',
+        'parameter',
+        'testcode',
+        'Schedule',
+        'prerequisite',
+        'reporttime'
         
     ];
 }

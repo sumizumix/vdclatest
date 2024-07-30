@@ -23,10 +23,7 @@
                                 <label for="loginInput" class="form-label text-dark-gray">Phone Number</label>
                                 <input type="text" class="form-control" id="loginInput" name="phone" required>
                             </div>
-                            {{-- <div class="mb-3">
-                                <label for="loginInput" class="form-label text-dark-gray">Password</label>
-                                <input type="password" class="form-control" id="loginInput" name="password" required>
-                            </div> --}}
+                           
                             <button type="submit"
                                 class="btn btn-small btn-dark-gray btn-round-edge btn-hover-animation w-100 d-block mt-20px lg-mb-15px md-mx-auto">
                                 <span>
@@ -34,6 +31,19 @@
                                     <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
                                 </span>
                             </button>
+                            {{-- <div id="phoneDiv" class="mb-3">
+                                <label for="phoneInput" class="form-label text-dark-gray">Phone Number</label>
+                                <input type="text" class="form-control" id="phoneInput" name="phone" required>
+                            </div>
+                            <div id="otpDiv" class="mb-3" style="display:none;">
+                                <label for="otpInput" class="form-label text-dark-gray">Enter OTP</label>
+                                <input type="text" class="form-control" id="otpInput" name="otp" required>
+                            </div>
+                            <button type="button" id="sendOtpBtn" class="btn btn-primary">Send OTP</button>
+                            <button type="button" id="verifyOtpBtn" class="btn btn-primary" style="display:none;">Verify OTP</button>
+                             --}}
+               
+                            
                         </form>
                         <div class="d-flex mt-20px justify-content-between">
                             <p class="fs-13 mb-0">Don't have an account?
@@ -44,6 +54,7 @@
                             <a href="{{ route('admin.login') }}" class="fs-13 text-yellow">Admin login</a>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -261,3 +272,51 @@
         @endif
     });
 </script>
+
+
+<script>
+    document.getElementById('sendOtpBtn').addEventListener('click', function() {
+        var phone = document.getElementById('phoneInput').value;
+        fetch('/send-otp', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify({ phone: phone })
+        }).then(response => response.json()).then(data => {
+            if (data.success) {
+                document.getElementById('phoneDiv').style.display = 'none';
+                document.getElementById('sendOtpBtn').style.display = 'none';
+                document.getElementById('otpDiv').style.display = 'block';
+                document.getElementById('verifyOtpBtn').style.display = 'block';
+            } else {
+                alert(data.message);
+            }
+        }).catch(error => {
+            console.error('Error:', error);
+        });
+    });
+    
+    document.getElementById('verifyOtpBtn').addEventListener('click', function() {
+        var phone = document.getElementById('phoneInput').value;
+        var otp = document.getElementById('otpInput').value;
+        fetch('/verify-otp', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify({ phone: phone, otp: otp })
+        }).then(response => response.json()).then(data => {
+            if (data.success) {
+                alert('Login successful');
+                window.location.reload();
+            } else {
+                alert(data.message);
+            }
+        }).catch(error => {
+            console.error('Error:', error);
+        });
+    });
+    </script>

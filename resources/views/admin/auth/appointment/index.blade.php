@@ -12,7 +12,7 @@
                             <button type="button" class="btn btn-primary" id="searchBtn">Search</button>
                         </div>
                     </div>
-                    {{-- <div id="noResults" style="display:none; text-align:center;">Data not found</div> --}}
+                 
                 </div>
                 <div class="col-12" style="text-align: right;">
                     <button id="downloadReportBtn" class="btn btn-success">
@@ -42,7 +42,8 @@
                                     <th scope="col">Email</th>
                                     <th scope="col">Package</th>
                                     <th scope="col">Test</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">Report</th>
+                                    <th scope="col">Upload Result </th>
                                 </tr>
                             </thead>
                             <tbody id="tableContent">
@@ -55,23 +56,29 @@
                                         <td>{{ $row->email }}</td>
                                         <td>{{ $row->package }}</td>
                                         <td>{{ $row->test }}</td>
-                                        <td class="text-nowrap">
-                                            @if ($row->status == 'approved')
-                                                <button class="btn btn-success btn-sm" disabled>
-                                                    <i class="fa-solid fa-check-circle"></i> Approved
-                                                </button>
-                                            @elseif($row->status == 'rejected')
-                                                <button class="btn btn-danger btn-sm" disabled>
-                                                    <i class="fa-solid fa-times-circle"></i> Rejected
-                                                </button>
-                                            @else
-                                                <a href="{{ route('sample.approve', $row->id) }}" class="btn btn-success btn-sm">
-                                                    <i class="fa-solid fa-person-circle-check"></i> Approve
-                                                </a>
-                                                <a href="{{ route('sample.reject', $row->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');">
-                                                    <i class="fas fa-trash-alt"></i> Reject
-                                                </a>
-                                            @endif
+                                       
+                                        <td>
+                                            @if($row->image== Null)
+                                       
+                                       <button class="btn btn-warning " disabled>
+                                        
+                                         Pending
+                                      </button>
+                                       @else
+
+                                            <a href="{{ asset('uploads/' . $row->image) }}"
+                                                target="_blank">View
+                                                PDF</a>
+                                         @endif
+                                        </td>
+
+                                        <td>
+                                            <form action="{{ url('admin/updateuploadresult/update/' . $row->id) }}" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <input type="file" name="image">
+                                                <input type="hidden" name="existing" value="{{$row->image}}">
+                                                <button type="submit" class="btn btn-primary btn-sm">Upload</button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

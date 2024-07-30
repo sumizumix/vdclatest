@@ -47,9 +47,7 @@ class CenterController extends Controller
     }
     
     public function destroy($id)
-    {
-    
-        
+    {    
         $location = center::findOrFail($id);
         $location->delete();
         return Redirect()->back()->with('success', 'Center  deleted successfully!');

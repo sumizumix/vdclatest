@@ -140,8 +140,7 @@ Route::post('admin/hospital/store', [LocationController::class,'storehospital'])
 Route::get('admin/hospital/edit/{id}', [LocationController::class,'edithospital'])->name('admin.hospital.edit');
 Route::post('admin/hospital/update/{id}', [LocationController::class,'updatehospital']);
 Route::get('admin/hospital/delete/{id}', [LocationController::class,'destroyhospital']);
-//booksample
-Route::post('user/booksample/create', [HomeSampleCollectionController::class,'store'])->name('user.booksample.store');
+
 //About
 Route::get('about', [ContactController::class,'about'])->name('user.about');
 //view prescription
@@ -150,6 +149,9 @@ Route::post('admin/viewprescription/search', [ViewprescriptionController::class,
 
 //appointent page
 Route::get('admin/appointement/view', [AppointmentController::class,'index'])->name('admin.auth.appointement.index');
+
+
+Route::post('admin/updateuploadresult/update/{id}', [AppointmentController::class,'updateuploadresult']);
 Route::get('admin/sample/approve/{id}',[AppointmentController::class,'approve'] )->name('sample.approve');
 Route::get('admin/sample/reject/{id}', [AppointmentController::class, 'reject'])->name('sample.reject');
 //prescription
@@ -234,8 +236,9 @@ Route::post('cart/orderdelete/{id}', [CartController::class, 'destroyordershow']
 // homesamplecollection
 Route::get('homesamplecollection', [HomeSampleCollectionController::class, 'homesamplecollection'])->name('cart.homesamplecollection');
 Route::get('homesamplecollectionremove/{id}', [HomeSampleCollectionController::class,'destroysample']);
-
-
+Route::post('user/booksample/create', [HomeSampleCollectionController::class,'store'])->name('user.booksample.store');
+Route::get('previoushomesamplecollection', [HomeSampleCollectionController::class, 'previoussample'])->name('cart.previoushomesamplecollection');
+Route::get('location-tracking', [HomeSampleCollectionController::class, 'locationtracking'])->name('cart.locationtracking');
 
 Route::get('download-result', [CartController::class,'downloadpage'])->name('user.downloadpage');
 Route::get('/download-pdf/{id}', [CartController::class, 'generatePdf'])->name('download.pdf');

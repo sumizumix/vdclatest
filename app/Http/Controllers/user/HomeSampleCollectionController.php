@@ -29,6 +29,18 @@ class HomeSampleCollectionController extends Controller
     //     return redirect()->route('dashboard')->with('success', 'Sample Collection details added successfully!');
     // }
 
+    
+    public function  locationtracking()
+    {
+    
+        $booksamplecollection = DB::table('booksamplecollection')
+        ->select('booksamplecollection.*','users.*','booksamplecollection.id as bid')
+        ->join('users', 'users.id', '=', 'booksamplecollection.userid')
+        ->where('users.id', Auth::id())
+        ->get();
+
+        return view('user.auth.patients.locationtracking', compact('booksamplecollection'));
+    }
    
 
     public function homesamplecollection()
@@ -45,6 +57,27 @@ class HomeSampleCollectionController extends Controller
 
         return view('user.auth.patients.homesamplecollection', compact('booksamplecollection','test','pro'));
     }
+   
+
+
+    public function  previoussample()
+    {
+
+
+        $test=DB::table('test')->get();
+        $pro=DB::table('product')->get();     
+        $booksamplecollection = DB::table('booksamplecollection')
+        ->select('booksamplecollection.*','users.*','booksamplecollection.id as bid')
+        ->join('users', 'users.id', '=', 'booksamplecollection.userid')
+        ->where('users.id', Auth::id())
+        ->get();
+
+        return view('user.auth.patients.previoushomecollection', compact('booksamplecollection','test','pro'));
+    }
+
+
+
+
 
 
 

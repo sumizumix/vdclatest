@@ -74,14 +74,16 @@
 @endphp
 
 @foreach ($rows as $row)
-₹
-    {{ $row->testprice ? $row->testprice : $row->productprice }}/-<br>
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='KjOd-Rupee-B' height='10'  viewBox='0 0 170 250'%3E%3Cpath d='M113 24h41l15-23H15L0 24h26c27 0 52 2 62 25H15L0 72h91v1c0 17-14 43-60 43H8v22l90 113h41L45 134c39-2 75-24 80-62h29l15-23h-45c-1-9-5-18-11-25zm0 0' fill='%23000000'/%3E%3C/svg%3E"/>{{ $row->testprice ? $row->testprice : $row->productprice }}/-<br>
     @php
         $totalAmount += $row->testprice ? $row->testprice : $row->productprice;
     @endphp
 @endforeach
 ---------------------
-<p>Total: {{ $totalAmount }}/-</p>
+{{-- <p >TOTAL: {{ $totalAmount }}/-</p> --}}
+
+<p style="font-weight: bold; color: rgb(118, 14, 139);">TOTAL: {{ $totalAmount }}/-</p>
+
                                       
                                     </td>
                                     <td>
@@ -130,6 +132,9 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.24/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.24/jspdf.plugin.addimage.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.24/jspdf.plugin.png_support.js"></script>
+
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -143,7 +148,7 @@
 
             // Add header to PDF
             pdf.setFontSize(22);
-            pdf.setFont("helvetica", "bold");
+            pdf.setFont("times new roman", "bold");
             pdf.setTextColor(118, 14, 139);
             var imgData = '{{ asset('frontend/vdc_images/vdc-logo.png') }}'; // URL to your logo image
             pdf.addImage(imgData, 'PNG', 90, 12, 20, 10,y);
@@ -153,7 +158,7 @@
 
             // Add contact information
             pdf.setFontSize(11);
-            pdf.setFont("helvetica", "normal");
+            pdf.setFont("times new roman", "normal");
             pdf.setTextColor(0, 0, 0);
             pdf.text("Near Vijaya Jubilee Hospital, Pulamon, Kottarakkara", 60, y);
             y += 10;
@@ -186,6 +191,8 @@
             pdf.line(20, y, 190, y);
             y += 10;
             // Prepare table data
+            pdf.setFont("times new roman", "normal");
+
             var tableData = [
                 { "Sl No.": rowArray[0], "Product/ Test name": rowArray[1], "Payment Details": rowArray[2], "Amount": rowArray[3] }
             ];
@@ -196,7 +203,7 @@
                 head: [['Sl No.', 'Product/ Test name', 'Payment Details', 'Amount']],
                 body: tableData.map(row => [row['Sl No.'], row['Product/ Test name'], row['Payment Details'], row['Amount']]),
                 theme: 'grid', // You can change the theme to 'striped' or 'plain'
-                styles: { fontSize: 12 },
+                styles: { fontSize: 12,fontFace:'Times New Roman' },
                 headStyles: { fillColor: [118, 14, 139], textColor: [255, 255, 255] },
                 margin: { top: y }
             });

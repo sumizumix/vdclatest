@@ -18,7 +18,7 @@ class TestController extends Controller
     {
         $test = Test::all();
 
-        return view('admin.auth.test.index',compact('test'));
+        return view('admin.auth.test.index', compact('test'));
     }
 
     public function create()
@@ -28,6 +28,9 @@ class TestController extends Controller
 
     public function store(Request $request)
     {
+
+        $parameter = implode(",", $request->parameter);
+
         // if(env('PROJECT_MODE') == 0) {
         //     return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
         // }
@@ -35,22 +38,25 @@ class TestController extends Controller
 
         $test = new Test();
         $data = $request->only($test->getFillable());
+        $data['parameter'] = $parameter;
+
 
         $request->validate([
             // 'photo' => 'numeric|min:0|max:32767'
-            'name'=>'required'
+            'name' => 'required',
+
         ]);
 
         // $statement = DB::select("SHOW TABLE STATUS LIKE 'product'");
         $count = DB::table('test')->count();
 
-        $ai_id =$count+1;
+        $ai_id = $count + 1;
         // dd($ai_id);
         $ext = $request->file('image')->extension();
-        $final_name = 'test-'.$ai_id.'.'.$ext;
+        $final_name = 'test-' . $ai_id . '.' . $ext;
         $request->file('image')->move(public_path('uploads/'), $final_name);
         $data['image'] = $final_name;
-
+        $data['parameter'] = implode(',', $request->input('parameter'));
         $test->fill($data)->save();
         return redirect()->route('admin.auth.test.index')->with('success', 'Test Details  added successfully!');
     }
@@ -75,13 +81,13 @@ class TestController extends Controller
         $data = $request->only($test->getFillable());
 
         // If a new image file is uploaded, update the image
-          if ($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
             $path = public_path('uploads/' . $test->image);
 
             // Check if the file exists before trying to delete it
             if (file_exists($path)) {
                 unlink($path);
-                }
+            }
 
             // Generate a unique filename
             $ext = $request->file('image')->extension();
@@ -106,7 +112,7 @@ class TestController extends Controller
         // }
 
         $test = Test::findOrFail($id);
-        unlink(public_path('uploads/'.$test->image));
+        unlink(public_path('uploads/' . $test->image));
         $test->delete();
         return Redirect()->back()->with('success', 'Test  deleted successfully!');
     }

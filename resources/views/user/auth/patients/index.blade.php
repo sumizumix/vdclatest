@@ -82,27 +82,7 @@
                                 </span>
                             </button>
                         </div>
-                        {{-- <div class="mt-30px">
-                            <button
-                                class="btn btn-very-small btn-dark-gray btn-hover-animation-switch btn-round-edge btn-box-shadow"
-                                data-bs-toggle="modal" data-bs-target="#productModal" data-name="{{ $product->name }}"
-                                data-description="{{ $product->description }}" data-price="₹{{ $product->price }}">
-                                <span>
-                                    <span class="btn-text">Know More</span>
-                                    <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
-                                    <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
-                                </span>
-                            </button>
-                            <button
-                                class="btn btn-very-small btn-base-color btn-hover-animation-switch btn-round-edge btn-box-shadow ms-5px"
-                                onclick="handleAddToCart({{ $product->id }})">
-                                <span>
-                                    <span class="btn-text">Add to Cart</span>
-                                    <span class="btn-icon"><i class="feather icon-feather-shopping-cart"></i></span>
-                                    <span class="btn-icon"><i class="feather icon-feather-shopping-cart"></i></span>
-                                </span>
-                            </button>
-                        </div> --}}
+                       
                     </div>
                 </div>
             @endforeach

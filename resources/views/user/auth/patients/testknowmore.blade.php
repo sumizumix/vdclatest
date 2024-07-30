@@ -35,7 +35,7 @@
                     <div class="card-body d-flex flex-column">
                         <img src="{{ asset('uploads/' . $packages->image) }}"
                         class="rounded h-240px w-100 object-fit-cover" />
-                        <h2 class="card-title text-dark fw-700">{{ $packages->name }}</h2>
+                        <h5 class="card-title text-dark fw-700 -fs-18">{{ $packages->name }}</h5>
                         <div class="card-text">
                             <p><strong>Description:</strong> <br>
                                 Test code:{{ $packages->testcode }}<br>

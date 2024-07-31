@@ -112,26 +112,31 @@
                     @csrf
                     <div class="col-md-6">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" name="name" id="name" required>
+                        <input type="text" class="form-control" name="name" id="homename" >
+                        <div class="text-danger" id="name-home"></div>
                     </div>
                     <div class="col-md-6">
                         <label for="name" class="form-label">Email</label>
-                        <input type="text" class="form-control" name="email" id="name" required>
+                        <input type="text" class="form-control" name="email" id="homeemail" >
+                        <div class="text-danger" id="email-home"></div>
                     </div>
                     <div class="col-md-6">
                         <label for="address" class="form-label">Address</label>
                         <!-- <textarea name="address" id="" required></textarea> -->
-                        <input type="text" class="form-control" name="address" id="phone" required>
+                        <input type="text" class="form-control" name="address" id="homeaddress" >
+                        <div class="text-danger" id="address-home"></div>
                     </div>
                     <div class="col-md-6">
                         <div class="row align-items-center justify-content-center d-flex">
                             <div class="col-md-6">
                                 <label for="phone" class="form-label">Phone Number</label>
-                                <input type="number" class="form-control" name="phone" id="phone" required>
+                                <input type="number" class="form-control" name="phone" id="homephone">
+                                <div class="text-danger" id="Phone-home"></div>
                             </div>
                             <div class="col-md-6">
                                 <label for="phone" class="form-label">Age</label>
-                                <input type="text" class="form-control" name="age" id="phone" required>
+                                <input type="number" class="form-control" name="age" id="homeage" >
+                                <div class="text-danger" id="age-home"></div>
                             </div>
                         </div>
 
@@ -140,11 +145,12 @@
                     <div class="col-md-6">
                         <label for="prescription" class="form-label">Select Package</label>
                         <select data-placeholder="Select Packages" multiple class="form-control" id="prescription"
-                        name="package[]" required>
+                        name="package[]" >
                         @foreach ($pro as $row)
                             <option value="{{ $row->name }}">{{ $row->name }}</option>
                         @endforeach
                     </select>
+                    <div class="text-danger" id="pack-home"></div>
                     </div>
                     <div class="col-md-6">
                         <label for="test" class="form-label">Select Test</label>
@@ -154,11 +160,12 @@
                             <option value="{{ $row->name }}">{{ $row->name }}</option>
                         @endforeach
                     </select>
+                    <div class="text-danger" id="test-home"></div>
                     </div>
                     <div class="col">
                         <div class="row justify-content-evenly align-items-center pt-2">
                             <div class="col-6">
-                                <button type="submit" class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600 -mt-20px">
+                                <button type="button" onclick="validateformhomesample()" class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600 -mt-20px">
                                     <span>
                                         <span class="btn-double-text" data-text="Submit">Submit</span>
                                     </span>
@@ -177,7 +184,54 @@
     </div>
 </section>
 
+<script>
+    function validateformhomesample() {
+        const phoneInput = document.getElementById('homephone').value;
+        const emailInput = document.getElementById('homeemail').value;
+    
+        var emailPattern = /^(?!\.)[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const nameInput = document.getElementById('homename').value;
+        const addInput = document.getElementById('homeaddress').value;
+        const dateInput = document.getElementById('homeage').value;
+        const preInput = document.getElementById('prescription').value;
+        const testInput = document.getElementById('test').value;
+        // var emailPattern =^[^\.].*;
+        // e.preventDefault();
+        var validation = true;
+        if (phoneInput.length < 10 || phoneInput.length > 15) {
+            document.getElementById('Phone-home').innerHTML = "Please enter a valid number";
+            validation = false;
+        }
+        if (!emailPattern.test(emailInput)) {
+            document.getElementById('email-home').innerHTML = "Please enter a valid email";
+            validation = false;
+        } 
+        if (nameInput.length === 0) {
+            document.getElementById('name-home').innerHTML = "Please enter the name";
+            validation = false;
+        } 
+        if (addInput.length === 0) {
+            document.getElementById('address-home').innerHTML = "Please enter the address";
+            validation = false;
+        } 
+        if (dateInput.length === 0) {
+            document.getElementById('age-home').innerHTML = "Please enter the age";
+            validation = false;
+        }
+        if (preInput.length === 0) {
+            document.getElementById('pack-home').innerHTML = "select the Package";
+            validation = false;
+        }
+        if (testInput.length === 0) {
+            document.getElementById('test-home').innerHTML = "select the test";
+            validation = false;
+        }
+        if (validation) {
+            document.getElementById('bookSampleForm').submit();
 
+        }
+    }
+</script>
 {{-- <div class="modal fade" id="bookSampleModal" tabindex="-1" aria-labelledby="bookSampleModalLabel"
     aria-hidden="true" style="background-color: rgba(0, 0, 0, 0.8)">
     <div class="modal-dialog modal-lg modal-dialog-centered">

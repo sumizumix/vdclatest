@@ -168,26 +168,45 @@
                                     <img src="{{ asset('uploads/' . $row->image) }}" class="img-fluid h-img" alt />
                                 </div>
                                 <div class="bg-white border-bottom border-warning border-4" style="min-height: 150px;">
-                                    <div class="ps-30px min-h-150px pe-30px pt-35px sm-p-35px sm-pb-0">
+                                    <div class="ps-15px min-h-150px pe-10px pt-15px sm-p-35px sm-pb-0">
                                         <a href="{{ route('user.patientspage') }}" class="d-inline-block fs-20 primary-font fw-600 text-dark-gray mb-5px">{{ $row->name }}</a>
-                                        <div class="row">
-                                            <span class="card-text"><strong><i class="fa-solid fa-location-dot -icon-double-large text-base-color fs-14"></i></strong> {{ $row->address }}</span>
-                                            <span class="card-text"><strong><i class="fa-solid fa-phone -icon-double-large text-base-color fs-14"></i></strong> {{ $row->phone }}</span>
-                                            <span class="card-text"><strong><i class="fa-solid fa-earth-americas -icon-double-large text-base-color fs-14"></i></strong> <a href="{{ $row->website }}" target="_blank">{{ $row->website }}www.vdc.com</a></span>
-                                            <a href="{!! $row->maplink !!}" target="_blank">
-                                                <span class="card-text"><strong><i class="fa-solid fa-diamond-turn-right -icon-double-large text-base-color fs-14"></i></strong>{!! $row->mapcode !!}</span>
-                                            </a>
+                                        <div class="row justify-content-between align-items-center d-flex pb-2">
+                                            <div class="col-6">
+                                                <ul class="p-0">
+                                                    <li class="card-text"><strong><i class="fa-solid fa-location-dot -icon-double-large text-base-color fs-14 mb-15px"></i></strong> {{ $row->address }}</li>
+                                                    <li class="card-text"><strong><i class="fa-solid fa-phone -icon-double-large text-base-color fs-14 mb-15px"></i></strong> {{ $row->phone }}</li>
+                                                    <li class="card-text"><strong><i class="fa-solid fa-earth-americas -icon-double-large text-base-color fs-14"></i></strong> <a href="{{ $row->website }}" target="_blank">{{ $row->website }}www.vdc.com</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-6 pt-0">
+                                                <a href="{!! $row->maplink !!}" target="_blank">
+                                                    <span class="card-text"><strong><i class="fa-solid fa-diamond-turn-right -icon-double-large text-base-color fs-14"></i></strong>{!! $row->mapcode !!}</span>
+                                                </a>
+                                            </div>
+                                            
+                                            
                                         </div>
+                                        {{-- <div class="w-100 position-relative">
+                                            <a href="{!! $row->maplink !!}" target="_blank" class="btn btn-very-small btn-base-color btn-hover-animation-switch btn-round-edge btn-box-shadow position-absolute top-100 start-50 translate-middle">
+                                                <span>
+                                                     <span class="btn-text">Navigate to Map</span>
+                                                     <span class="btn-icon"><i class="bi bi-geo-alt-fill"></i></span>
+                                                   <span class="btn-icon"><i class="bi bi-geo-alt-fill"></i></span>
+                                                </span>
+                                          </a>
+                                            {!! $row->mapcode !!}
+                                         </div> --}}
                                     </div>
-                                    <div class="border-top border-color-extra-medium-gray pt-10px pb-20px ps-30px pe-30px mt-30px sm-ps-35px sm-pe-35px position-relative">
+                                    {{-- <div class="border-top border-color-extra-medium-gray pt-10px pb-20px ps-30px pe-30px mt-30px sm-ps-35px sm-pe-35px position-relative">
                                         <a href="#" class="btn btn-small btn-base-color btn-box-shadow btn-rounded btn-switch-text mt-4">
                                             <span>
                                                 <span class="btn-double-text" data-text="Know more">Know more</span>
                                                 <span><i class="feather icon-feather-arrow-right"></i></span>
                                             </span>
                                         </a>
+                                      
 
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>

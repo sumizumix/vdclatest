@@ -819,7 +819,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="phone" class="form-label">Phone Number</label>
-                        <input type="text" class="form-control" id="prephone" name="phone">
+                        <input type="number" class="form-control" id="prephone" name="phone">
                         <div class="text-danger" id="Phone-val"></div>
                     </div>
                     <div class="col-md-12">

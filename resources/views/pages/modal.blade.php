@@ -15,13 +15,15 @@
                             <span class="fw-bold text-orange">Login</span>
                             <button type="button" class="btn-close " data-bs-dismiss="modal"
                                 aria-label="Close"></button>
-                        </div>
+                            </div>
+                         
                         <form class="-p-40px" id="registrationForm" action="{{ route('user.login.check') }}"
                             method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label for="loginInput" class="form-label text-dark-gray">Phone Number</label>
-                                <input type="text" class="form-control" id="loginInput" name="phone" required>
+                                <input type="number" class="form-control" id="loginInput" name="phone">
+                                <div class="error text-danger">{{ $errors->first('phone') }}</div>
                             </div>
                            
                             <button type="submit"
@@ -31,20 +33,83 @@
                                     <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
                                 </span>
                             </button>
-                            {{-- <div id="phoneDiv" class="mb-3">
-                                <label for="phoneInput" class="form-label text-dark-gray">Phone Number</label>
-                                <input type="text" class="form-control" id="phoneInput" name="phone" required>
-                            </div>
-                            <div id="otpDiv" class="mb-3" style="display:none;">
-                                <label for="otpInput" class="form-label text-dark-gray">Enter OTP</label>
-                                <input type="text" class="form-control" id="otpInput" name="otp" required>
-                            </div>
-                            <button type="button" id="sendOtpBtn" class="btn btn-primary">Send OTP</button>
-                            <button type="button" id="verifyOtpBtn" class="btn btn-primary" style="display:none;">Verify OTP</button>
-                             --}}
                
                             
                         </form>
+
+
+
+                        {{-- <form class="-p-40px" id="registrationForm" action="{{ route('user.login.check') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                        
+                            <!-- Phone Number Input -->
+                            <div id="phoneInputDiv">
+                                <div class="mb-3">
+                                    <label for="loginInput" class="form-label text-dark-gray">Phone Number</label>
+                                    <input type="text" class="form-control" id="loginInput" name="phone" required>
+                                </div>
+                        
+                                <button type="button" onclick="generateOTP()" class="btn btn-small btn-dark-gray btn-round-edge btn-hover-animation w-100 d-block mt-20px lg-mb-15px md-mx-auto">
+                                    <span>
+                                        <span class="btn-text">Generate OTP</span>
+                                        <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                                    </span>
+                                </button>
+                            </div>
+                        
+                            <!-- OTP Input (Initially Hidden) -->
+                            <div id="otpInputDiv" style="display: none;">
+                                <div class="mb-3">
+                                    <label for="otpInput" class="form-label text-dark-gray">Enter OTP</label>
+                                    <div class="otp-input-container">
+                                        <input type="text" class="form-control otp-input" id="otpInput" name="otp" pattern="\d{6}" maxlength="6" required>
+                                        <div class="otp-placeholder"></div>
+                                    </div>
+                                </div>
+                        
+                                <button type="submit" class="btn btn-small btn-dark-gray btn-round-edge btn-hover-animation w-100 d-block mt-20px lg-mb-15px md-mx-auto">
+                                    <span>
+                                        <span class="btn-text">Login</span>
+                                        <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <script>
+                            function generateOTP() {
+                                var phone = document.getElementById('loginInput').value;
+                                fetch('/send-otp', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                    },
+                                    body: JSON.stringify({ phone: phone })
+                                }).then(response => response.json()).then(data => {
+                                    if (data.success) {
+                                        document.getElementById('phoneInputDiv').style.display = 'none';
+                                        document.getElementById('otpInputDiv').style.display = 'block';
+                                    } else {
+                                        alert(data.message);
+                                    }
+                                }).catch(error => {
+                                    console.error('Error:', error);
+                                });
+                            }
+                        </script>
+                        
+ --}}
+
+
+
+
+
+
+
+
+
+
                         <div class="d-flex mt-20px justify-content-between">
                             <p class="fs-13 mb-0">Don't have an account?
                                 <button type="button" class="btn p-0 fs-13 text-base-color" id="showSignUp">
@@ -274,7 +339,7 @@
 </script>
 
 
-<script>
+{{-- <script>
     document.getElementById('sendOtpBtn').addEventListener('click', function() {
         var phone = document.getElementById('phoneInput').value;
         fetch('/send-otp', {
@@ -319,4 +384,4 @@
             console.error('Error:', error);
         });
     });
-    </script>
+    </script> --}}

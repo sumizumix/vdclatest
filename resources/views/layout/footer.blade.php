@@ -133,7 +133,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+<link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
 
+<script>
+    $("#prescription").chosen({
+        no_results_text: "Oops, nothing found!"
+    })
+    $("#test").chosen({
+        no_results_text: "Oops, nothing found!"
+    })
+</script> 
 
 {{-- dropdown --}}
 <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>

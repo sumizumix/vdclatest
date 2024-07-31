@@ -80,7 +80,8 @@ Route::post('admin/report/search', [ReportController::class, 'search'])->name('a
 //about
 Route::get('admin/about/view', [PageAboutController::class,'index'])->name('admin.auth.about.index');
 Route::post('admin/about/update', [PageAboutController::class,'update']);
-
+Route::post('admin/about/updateprofile', [PageAboutController::class,'updateprofile']);
+Route::post('   ', [PageAboutController::class,'userupdateprofile']);
 //Location
 
 Route::get('admin/location/view', [LocationController::class,'index'])->name('admin.auth.location.index');
@@ -121,8 +122,8 @@ Route::post('admin/awards/update/{id}', [AwardController::class,'update']);
 Route::get('admin/awards/delete/{id}', [AwardController::class,'destroy']);
 
 //know more
-Route::get('packages-knowmore/{id}', [PackagesController::class,'knowmore'])->name('user.knowmore');
-Route::get('test-knowmore/{id}', [PackagesController::class,'testknowmore'])->name('user.testknowmore');
+Route::get('packages-knowmore/{slug}', [PackagesController::class,'knowmore'])->name('user.knowmore');
+Route::get('test-knowmore/{slug}', [PackagesController::class,'testknowmore'])->name('user.testknowmore');
 //service
 Route::get('admin/service/view', [ServiceController::class,'index'])->name('admin.auth.service.index');
 Route::get('admin/service/create', [ServiceController::class,'create'])->name('admin.auth.service.create');
@@ -186,6 +187,7 @@ Route::post('admin/test/store', [TestController::class,'store'])->name('admin.te
 Route::get('admin/test/edit/{id}', [TestController::class,'edit'])->name('admin.test.edit');
 Route::post('admin/test/update/{id}', [TestController::class,'update']);
 Route::get('admin/test/delete/{id}', [TestController::class,'destroy']);
+
 
 //testbooking
 Route::post('admin/testbooking/store', [TestBookingController::class,'store'])->name('admin.testbooking.store');

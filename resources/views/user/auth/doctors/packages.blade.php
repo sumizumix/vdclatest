@@ -71,10 +71,9 @@
                             <p class="mb-10px lh-sm fs-18">₹ {{ $row->price }}</p>
                         </div>
                         <div class="w-100 d-flex justify-content-between">
-                            <a href="#"
+                          <a href="{{ URL::to('packages-knowmore/' . $row->slug) }}"
                                 class="btn btn-link-gradient expand btn-large text-orange d-table d-lg-inline-block xl-mb-15px md-mb-10px"
-                                data-bs-toggle="modal" data-bs-target="#productModal" data-name="{{ $row->name }}"
-                                data-description="{{ $row->description }}" data-price="₹ {{ $row->price }}">
+                              >
                                 Know more
                                 <span class="bg-orange"></span>
                             </a>

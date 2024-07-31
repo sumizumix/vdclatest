@@ -27,8 +27,9 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="description">Phone</label>
-                                    <input type="text" class="form-control" id="name"
-                                        value="{{ $prescription->phone }}" name="phone" required>
+                                    <input type="number" class="form-control" id="name"
+                                        value="{{ $prescription->phone }}" name="phone" >
+                                        
                                 </div>
                                 <div class="mb-3">
                                     <a href="{{ asset('uploads/' . $prescription->report) }}" target="_blank">View Existing

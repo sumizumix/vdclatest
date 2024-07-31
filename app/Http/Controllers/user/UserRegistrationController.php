@@ -29,7 +29,7 @@ class UserRegistrationController extends Controller
    public function loginCheck(Request $request)
     {
         $request->validate([
-            'phone' => 'required',
+            'phone' => 'required|digits_between:10,15',
           
         ]);
 
@@ -49,9 +49,7 @@ class UserRegistrationController extends Controller
                 $test = DB::table('test')->get();
                 $testimonial = DB::table('testimonial')->get();
                 $authUser = $user;
-                // Return the view with required data
-                // return view('welcome', compact('pageaboutitem', 'product', 'test', 'testimonial', 'pro', 'authUser'));
-                return redirect()->back();
+                  return redirect()->back();
             } else {
                 // Failed login attempt
                 $authUser = null;

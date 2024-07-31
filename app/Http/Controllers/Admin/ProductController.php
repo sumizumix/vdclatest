@@ -9,6 +9,7 @@ use App\Models\Test;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+
 use DB;
 
 class ProductController extends Controller
@@ -59,6 +60,7 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required',
             'parameter' => 'required|array',
+            'image' => 'nullable|image|required|mimes:jpeg,png,jpg,gif|max:2048',
 
         ]);
         $test = implode(",", $request->parameter);
@@ -116,16 +118,16 @@ class ProductController extends Controller
     }
 
     //     public function testsearch(Request $request)
-// {
-//     $query= $request->input('s');
+    // {
+    //     $query= $request->input('s');
 
     //     // Search for products by name
-//     $test = Test::where('name', 'LIKE', "%{$query}%")->paginate()->withQueryString();;
+    //     $test = Test::where('name', 'LIKE', "%{$query}%")->paginate()->withQueryString();;
 
     //     // Pass the search results to the view
 
     //     return view('user.auth.patients.testpage', compact('test', 'query'));
-// }
+    // }
     public function testsearch(Request $request)
     {
         $query = $request->input('s');
@@ -169,7 +171,6 @@ class ProductController extends Controller
             // Check if the file exists before trying to delete it
             if (file_exists($path)) {
                 unlink($path);
-
             }
             // Upload the new image file
             $ext = $request->file('image')->extension();
@@ -201,4 +202,9 @@ class ProductController extends Controller
         $feedback = Feedback::orderBy('created_at', 'desc')->get();
         return view('admin.auth.feedback.index', compact('feedback'));
     }
+
+
+    
+
+    
 }

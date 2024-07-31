@@ -51,7 +51,7 @@
                             <th scope="col">Name</th>
                            
                             <th scope="col">Address</th>
-                            {{-- <th scope="col">Email</th> --}}
+                            <th scope="col">Age</th>
                             <th scope="col">Package</th>
                             <th scope="col">Test</th>
                             <th scope="col">Download Result</th>
@@ -62,10 +62,10 @@
                         @foreach ($booksamplecollection as $row)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $row->name }}</td>
+                                <td>{{ $row->usname }}</td>
                               
                                 <td>{{ $row->address }}</td>
-                                {{-- <td>{{ $row->email }}</td> --}}
+                                <td>{{ $row->age }}</td>
                                 <td>{{ $row->package }}</td>
                                 <td>{{ $row->test }}</td>
                                <td>

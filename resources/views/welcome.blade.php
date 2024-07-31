@@ -231,7 +231,7 @@
                             
 
 
-                            <a href="{{ URL::to('packages-knowmore/' . $rows->id) }}"
+                            <a href="{{ URL::to('packages-knowmore/' . $rows->slug) }}"
                                 class="btn btn-small btn-vdc-gray  btn-rounded btn-hover-animation-switch btn-round btn-box-shadow">
                                 Know More</a>
 
@@ -416,7 +416,7 @@
                                             <div class="d-flex justify-content-between w-100">
                                         
 
-                                                <a href="{{ URL::to('test-knowmore/' . $row->id) }}"
+                                                <a href="{{ URL::to('test-knowmore/' . $row->slug) }}"
                                                     class="btn btn-very-small btn-vdc-gray btn-hover-animation-switch btn-rounded btn-box-shadow">
                                                 Know More</a>
  
@@ -819,7 +819,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="phone" class="form-label">Phone Number</label>
-                        <input type="text" class="form-control" id="phone" name="phone" required>
+                        <input type="text" class="form-control" id="phone" name="phone" >
                     </div>
                     <div class="col-md-12">
                         <label for="prescription" class="form-label">Prescription</label>
@@ -917,11 +917,12 @@
                     @csrf
                     <div class="col-md-6">
                         <label for="patientName" class="form-label">Patient Name</label>
-                        <input type="text" class="form-control" id="patientName" name="patient_name" required>
+                        <input type="text" class="form-control" id="patientName" name="patient_name">
                     </div>
                     <div class="col-md-6">
                         <label for="patientPhone" class="form-label">Phone Number</label>
-                        <input type="text" class="form-control" id="patientPhone" name="phone" required>
+                        <input type="number" class="form-control" id="patientPhone" name="phone">
+                        <div class="error text-danger">{{ $errors->first('phone') }}</div>
                     </div>
                     <div class="col-md-6">
                         <label for="patientEmail" class="form-label">Email</label>

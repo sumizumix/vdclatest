@@ -28,6 +28,10 @@ class LocationController extends Controller
     public function store(Request $request)
     {
 
+        
+        $request->validate([
+            'phone' => ['required', 'numeric', 'regex:/^\d{10,}$/'],
+        ]);
 
         $location = new Locationitem();
         $data = $request->only($location->getFillable());
@@ -85,7 +89,8 @@ class LocationController extends Controller
         // Validate the incoming request data
         $request->validate([
             'name' => 'required',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'phone' => 'required|digits_between:10,15',
+            'image' => 'nullable|image|required|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         // Create a new instance of the Hospital model
@@ -131,7 +136,8 @@ class LocationController extends Controller
         // Validate the incoming request data
         $request->validate([
             'name' => 'required',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'phone' => 'required|digits_between:10,15',
+            'image' => 'nullable|image|required|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         // Find the hospital record by ID

@@ -36,7 +36,9 @@ class ReportController extends Controller
 
         $request->validate([
             // 'photo' => 'numeric|min:0|max:32767'
-            'name'=>'required'
+            'name'=>'required',
+            'phone' => 'required|digits_between:10,15',
+            'report' => 'nullable|image|required|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         // $statement = DB::select("SHOW TABLE STATUS LIKE 'product'");
@@ -67,6 +69,7 @@ class ReportController extends Controller
         // Validate the incoming request data
         $request->validate([
             'name' => 'required',
+      
         ]);
     
         // Update the product data

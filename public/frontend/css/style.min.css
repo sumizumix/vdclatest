@@ -133,7 +133,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#8f7bb9",endCo
 }
 .btn.btn-vdc-orange{
     background-color: var(--orange);
-    color: var(--white);
+    color: white;
 }
 
 .btn.btn-vdc-medium-light-purple:hover{

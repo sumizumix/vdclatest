@@ -809,23 +809,26 @@
                     <span class="fw-bold text-orange">Upload Prescription</span>
                     <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('user.prescription.store') }}" class="row g-3" method="POST"
-                    enctype="multipart/form-data">
+                <form id="uploadprescription" action="{{ route('user.prescription.store') }}" class="row g-3" method="POST"
+                    enctype="multipart/form-data" >
                     @csrf
                     <div class="col-md-6">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
+                        <input type="text" class="form-control" id="prename" name="name" >
+                        <div class="text-danger" id="name-val"></div>
                     </div>
                     <div class="col-md-6">
                         <label for="phone" class="form-label">Phone Number</label>
-                        <input type="text" class="form-control" id="phone" name="phone">
+                        <input type="text" class="form-control" id="prephone" name="phone">
+                        <div class="text-danger" id="Phone-val"></div>
                     </div>
                     <div class="col-md-12">
                         <label for="prescription" class="form-label">Prescription</label>
-                        <input type="file" class="form-control" id="prescription" name="prescription" required>
+                        <input type="file" class="form-control" id="prepre" name="prescription" >
+                        <div class="text-danger" id="pre-val"></div>
                     </div>
                     <div class="col">
-                        <button type="submit"
+                       <button type="button" onclick="validateFormprescription()"
                             class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600 mt-20px">
                             <span>
                                 <span class="btn-double-text" data-text="Upload">Upload</span>
@@ -1114,7 +1117,8 @@
     function validateFormctscan() {
         const phoneInput = document.getElementById('patientPhone').value;
         const emailInput = document.getElementById('patientEmail').value;
-        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        // var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var emailPattern = /^(?!\.)[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const nameInput = document.getElementById('patientName').value;
         const addInput = document.getElementById('additionalInfo').value;
         const dateInput = document.getElementById('appointmentDate').value;
@@ -1143,6 +1147,37 @@
         }
         if (validation) {
             document.getElementById('ctScanBookingForm').submit();
+
+        }
+    }
+</script>
+
+
+
+
+<script>
+    function validateFormprescription() {
+        const phoneInput = document.getElementById('prephone').value;   
+        const nameInput = document.getElementById('prename').value;
+        const preInput = document.getElementById('prepre').value;
+     
+        var validation = true;
+        if (phoneInput.length < 10 || phoneInput.length > 15) {
+            document.getElementById('Phone-val').innerHTML = "Please enter a valid number";
+            validation = false;
+        }
+    
+        if (nameInput.length === 0) {
+            document.getElementById('name-val').innerHTML = "Please enter the name";
+            validation = false;
+        } 
+        if (preInput.length === 0) {
+            document.getElementById('pre-val').innerHTML = "Upload the prescription";
+            validation = false;
+        } 
+       
+        if (validation) {
+            document.getElementById('uploadprescription').submit();
 
         }
     }

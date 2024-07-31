@@ -79,8 +79,8 @@
                     <div class="col-md-6">
                         <label for="prescription" class="form-label">Select Package</label>
                         {{-- <select class="form-control" id="prescription" name=""> --}}
-                        <select data-placeholder="Select Tests" multiple class="form-control" id="test"
-                            name="test[]" required>
+                        <select data-placeholder="Select Tests" multiple class="chosen-select form-control"
+                            id="test" name="test[]" required>
                             @foreach ($test as $row)
                                 <option value="{{ $row->name }}">{{ $row->name }}</option>
                             @endforeach
@@ -176,6 +176,5 @@
         </div>
     </div>
 </div> --}}
-
 
 @include('layout.footer')

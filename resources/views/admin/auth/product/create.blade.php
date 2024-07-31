@@ -14,11 +14,17 @@
                                 <input type="text" class="form-control" id="name" name="name" required>
                             </div>
 
-                            <label class="form-label" for="name">Test Name</label>
                             <div class="mb-3" id="test-div">
-                                <input type="text" class="form-control mb-3 col-12" name="parameter[]"
-                                    style="width: 300px;" required>
-                                <button type="button" class="btn btn-danger mb-3 remove-div">Delete</button>
+                                <div class="row justify-content-evenly align-items-center d-flex">
+                                    <label class="form-label" for="name">Test Name</label>
+                                    <div class="col-6">
+                                        <input type="text" class="form-control mb-3 col-12" name="parameter[]"
+                                            style="width: 500px;" required>
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="button" class="btn btn-danger mb-3 remove-div">Delete</button>
+                                    </div>
+                                </div>
                             </div>
                             <button type="button" class="btn btn-primary" id="add-field">Add Tests</button>
                             <!-- <div class="mb-12">
@@ -79,10 +85,18 @@
             // Event listener for adding new fields
             $('#add-field').click(function () {
                 let div = `
-                <div class="mb-3">
-                    <input type="text" class="form-control mb-3" name="parameter[]" style="width: 300px;" required>
-                    <button type="button" class="btn btn-danger mb-3 remove-div">Delete</button>
-                </div>`;
+                <div class="mb-3" id="test-div">
+                                <div class="row justify-content-evenly align-items-center d-flex">
+                                    <label class="form-label" for="name">Test Name</label>
+                                    <div class="col-6">
+                                        <input type="text" class="form-control mb-3 col-12" name="parameter[]"
+                                            style="width: 500px;" required>
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="button" class="btn btn-danger mb-3 remove-div">Delete</button>
+                                    </div>
+                                </div>
+                            </div>`;
                 $('#test-div').append(div);
             });
 

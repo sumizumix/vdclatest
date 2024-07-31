@@ -25,7 +25,7 @@ class CenterController extends Controller
         $request->validate([
             'name' => 'required',
             'phone' => 'required|digits_between:10,15',
-            'email' =>'required '
+            'email' =>'required'
        
         ]);
         $location = new center();
@@ -45,6 +45,7 @@ class CenterController extends Controller
         $request->validate([
             'name' => 'required',
             'phone' => 'required|digits_between:10,15',
+              'email' =>'required'
        
         ]);
         $location = center::findOrFail($id);

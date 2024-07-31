@@ -28,6 +28,10 @@ class LocationController extends Controller
     public function store(Request $request)
     {
 
+        
+        $request->validate([
+            'phone' => ['required', 'numeric', 'regex:/^\d{10,}$/'],
+        ]);
 
         $location = new Locationitem();
         $data = $request->only($location->getFillable());

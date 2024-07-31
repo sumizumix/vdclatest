@@ -133,7 +133,7 @@
                                             <div class="col">
                                                 <a href="{{ route('user.feedback') }}"
                                                     class="d-flex gap-2 align-items-center opacity-10">
-                                                    {{-- <i class="fa fa-heartbeat fa-2x me-3" aria-hidden="true"></i> --}}
+                                                    
                                                     <img src="{{ asset('frontend/vdc_images/feedback.svg') }}" />
                                                     <span class="alt-font fw-500 "> Feedback</span>
                                                 </a>
@@ -187,8 +187,11 @@
                             </li>
                             <li class="nav-item"><a href="{{ route('user.contact') }}" class="nav-link">Nearest
                                     Lab</a></li>
-                            <li class="nav-item"> <a href="#" class="nav-link" data-bs-toggle="modal"
-                                    data-bs-target="#callbackModal">Request Call Back</a></li>
+                            <li class="nav-item">  <a href="{{ route('user.feedback') }}" class="nav-link" 
+                                    >Request Call Back</a>
+                                    {{-- <a href="{{ route('user.feedback') }}" class="nav-link" data-bs-toggle="modal"
+                                    data-bs-target="#callbackModal">Request Call Back</a> --}}
+                                </li>
                             <li class="nav-item"><a href="{{ route('covdi19') }}" class="nav-link">Covid-19 Test</a>
                             </li>
                         </ul>

@@ -25,6 +25,7 @@
                                     <label class="form-label" for="name">Email</label>
                                    
                                     <input type="email" class="form-control" id="name" name="email"  pattern="^[^\.].*" required>
+                                    <div class="error text-danger">{{ $errors->first('email') }}</div>
                                     {{-- <input
                                     class="fs-15 ps-0 border-radius-0px border-color-dark-gray bg-transparent form-control required"
                                     id="exampleInputEmail2" type="email" name="email"

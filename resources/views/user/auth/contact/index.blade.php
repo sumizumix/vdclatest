@@ -55,42 +55,41 @@
 
 
 <section class="pt-40px">
-
-<!--<div class="container">-->
-<!--    <div id="location-cards" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-4 justify-content-center" data-anime='{ "el": "childs", "translateY": [30, 0], "scale":[0.8,1], "opacity": [0,1], "duration": 500, "delay": 0, "staggervalue": 200, "easing": "easeOutQuad" }'>-->
-<!--        @foreach($center as $row)-->
-<!--        <div class="col icon-with-text-style-07 transition-inner-all location-card" data-place="{{ $row->address }}">-->
-<!--            <div class="feature-box justify-content-between border border-color-base-color text-start p-0 border-radius-6px box-shadow-quadruple-large box-shadow-quadruple-large-hover">-->
-<!--                <div class="feature-box-content min-h-200px p-20px">-->
-<!--                    <h4 class="fw-600 lh-sm mb-10px text-dark-gray fs-20 line-2">{{ $row->name }}</h4>-->
-<!--                    <p class="mb-10px lh-sm fs-14 fw-500 text-base-color">-->
-<!--                        <i class="bi bi-clock-history me-10px"></i>{{ $row->time }}-->
-<!--                    </p>-->
-<!--                    <p class="mb-10px lh-sm fs-14 fw-500 text-base-color">-->
-<!--                        <i class="bi bi-geo-alt me-10px"></i>{{ $row->location }}-->
-<!--                    </p>-->
-<!--                    <p class="mb-10px lh-sm fs-14 fw-500 text-base-color">-->
-<!--                        <i class="bi bi-building-add me-10px"></i>{{ $row->address }}-->
-<!--                    </p>-->
-<!--                </div>-->
-             
-<!--                <div class="w-100 position-relative">-->
-<!--                    <a href="{!! $row->maplink !!}" target="_blank" class="btn btn-very-small btn-base-color btn-hover-animation-switch btn-round-edge btn-box-shadow position-absolute top-100 start-50 translate-middle">-->
-<!--                        <span>-->
-<!--                            <span class="btn-text">Navigate to Map</span>-->
-<!--                            <span class="btn-icon"><i class="bi bi-geo-alt-fill"></i></span>-->
-<!--                            <span class="btn-icon"><i class="bi bi-geo-alt-fill"></i></span>-->
-<!--                        </span>-->
-<!--                    </a>-->
-<!--                    {!! $row->mapcode !!}-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        @endforeach-->
-<!--    </div>-->
-<!--</div>-->
-
 <div class="container">
+    <div id="location-cards" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-4 justify-content-center" data-anime='{ "el": "childs", "translateY": [30, 0], "scale":[0.8,1], "opacity": [0,1], "duration": 500, "delay": 0, "staggervalue": 200, "easing": "easeOutQuad" }'>
+       @foreach($center as $row)
+      <div class="col icon-with-text-style-07 transition-inner-all location-card" data-place="{{ $row->address }}">
+            <div class="feature-box justify-content-between border border-color-base-color text-start p-0 border-radius-6px box-shadow-quadruple-large box-shadow-quadruple-large-hover">
+                <div class="feature-box-content min-h-200px p-20px">
+                   <h4 class="fw-600 lh-sm mb-10px text-dark-gray fs-20 line-2">{{ $row->name }}</h4>
+                  <p class="mb-10px lh-sm fs-14 fw-500 text-base-color">
+                       <i class="bi bi-clock-history me-10px"></i>{{ $row->time }}
+                   </p>
+                   <p class="mb-10px lh-sm fs-14 fw-500 text-base-color">
+                       <i class="bi bi-geo-alt me-10px"></i>{{ $row->location }}
+                   </p>
+                   <p class="mb-10px lh-sm fs-14 fw-500 text-base-color">
+                       <i class="bi bi-building-add me-10px"></i>{{ $row->address }}
+                   </p>
+               </div>
+             
+              <div class="w-100 position-relative">
+                   <a href="{!! $row->maplink !!}" target="_blank" class="btn btn-very-small btn-base-color btn-hover-animation-switch btn-round-edge btn-box-shadow position-absolute top-100 start-50 translate-middle">
+                       <span>
+                            <span class="btn-text">Navigate to Map</span>
+                            <span class="btn-icon"><i class="bi bi-geo-alt-fill"></i></span>
+                          <span class="btn-icon"><i class="bi bi-geo-alt-fill"></i></span>
+                       </span>
+                 </a>
+                   {!! $row->mapcode !!}
+                </div>
+           </div>
+       </div>
+       @endforeach
+   </div>
+</div>
+
+{{-- <div class="container">
     <div id="location-cards" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-4 justify-content-center" data-anime='{ "el": "childs", "translateY": [30, 0], "scale":[0.8,1], "opacity": [0,1], "duration": 500, "delay": 0, "staggervalue": 200, "easing": "easeOutQuad" }'>
         @foreach($contact as $row)
         <div class="col icon-with-text-style-07 transition-inner-all location-card" data-place="{{ $row->place }}">
@@ -122,7 +121,7 @@
         </div>
         @endforeach
     </div>
-</div>
+</div> --}}
 
 </section>
 

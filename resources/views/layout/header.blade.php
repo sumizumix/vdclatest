@@ -258,7 +258,7 @@
                                 </div>
                             </div>
                         @else
-                            <div class="header-button ms-30px xxl-ms-10px xs-ms-0">
+                            <div class="header-button ms-25px me-10px xxl-ms-10px xs-ms-0">
                                 @if (Auth::check())
                                     <a href="{{ route('logout') }}"
                                         class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600"
@@ -292,7 +292,7 @@
                     @if (Auth::check() && Auth::user()->role_id != 0)
                         <a href="#" class="process-step-item d-flex align-items-center" data-bs-toggle="modal"
                             data-bs-target="#changepassword">
-                            <i class="ti ti-user fs-6"></i>
+                            <i class="fa-solid fa-circle-user text-base-color fs-28"></i>
 
                         </a>
                     @endif

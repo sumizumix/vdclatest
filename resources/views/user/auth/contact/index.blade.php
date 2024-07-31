@@ -54,7 +54,7 @@
                             Vijaya Diagnostic Centers in
                         </h5>
                     </div>
-                    <div class="col-lg-4 col-xl-4 col-sm-12 text">
+                    <div class="col-lg-4 col-xl-4 col-sm-12 text-center">
                         <span class="bg-base-color rounded-pill text-white pt-15px pb-15px pe-30px ps-30px">
                             <i class="bi bi-geo-alt-fill fs-22"></i>
                             <span id="location-display">Kerala</span>
@@ -64,7 +64,7 @@
 
 
             </div>
-            <div class="col-12 d-flex justify-content-center align-items-center d-flex --justify-content-lg-end">
+            <div class="col-12 d-flex justify-content-center align-items-center d-flex --justify-content-lg-end pt-4">
                 <div class="slider-one-slide-prev-1 icon-extra-medium text-base-color swiper-button-prev slider-navigation-style-04 border border-1 border-color-transparent-dark-light">
                     <i class="feather icon-feather-chevron-left"></i>
                 </div>

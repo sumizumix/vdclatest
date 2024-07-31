@@ -26,20 +26,20 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 
 <body data-mobile-nav-style="full-screen-menu" data-mobile-nav-bg-color class="bg-very-light-gray">
     @php
-            use Illuminate\Support\Facades\Auth;
-            use Illuminate\Support\Facades\DB;
+        use Illuminate\Support\Facades\Auth;
+        use Illuminate\Support\Facades\DB;
 
-            if (Auth::check()) {
-                $cartCount = DB::table('cart')->where('user_id', Auth::id())->where('paystatus', 0)->count();
-            } else {
-                $cartCount = 0;
-            }
-            @endphp
+        if (Auth::check()) {
+            $cartCount = DB::table('cart')->where('user_id', Auth::id())->where('paystatus', 0)->count();
+        } else {
+            $cartCount = 0;
+        }
+    @endphp
     <header class="header-with-topbar">
         <div class="header-top-bar bg-white top-bar-dark cover-background -border-bottom -border-color-extra-medium-gray"
             style="-background-image: url('images/demo-hosting-header-bg.jpg')">
@@ -48,17 +48,17 @@
                     <div class="col-6 col-md-4 text-center text-md-start">
                         <div class="d-flex flex-wrap fs-13">
                             <span class="opacity-6 me-5px text-black lh-sm">For Home Collection</span>
-                            <a href="" class="fw-bold text-black lh-sm">+917034031188</a>
+                            <a href="tel:7034031188" class="fw-bold text-black lh-sm">+917034031188</a>
 
                         </div>
                     </div>
                     <div class="col-6 col-md-8 text-end">
-                        <a href="#" class="widget fs-13 me-20px">
+                        <a href="tel:7034031188" class="widget fs-13 me-20px">
                             <i class="feather icon-feather-phone"></i>
                             <span class="text-black opacity-8">Customer care</span>
                             <span class="text-black fw-bold">+917034031188</span>
                         </a>
-                        <a href="#" class="widget fs-13 -me-20px">
+                        <a href="tel:7034031199" class="widget fs-13 -me-20px">
                             <i class="feather icon-feather-mail"></i>
                             <span class="text-black opacity-8">Customer care</span>
                             <span class="text-black fw-bold">+917034031199</span>
@@ -133,7 +133,7 @@
                                             <div class="col">
                                                 <a href="{{ route('user.feedback') }}"
                                                     class="d-flex gap-2 align-items-center opacity-10">
-                                                    
+
                                                     <img src="{{ asset('frontend/vdc_images/feedback.svg') }}" />
                                                     <span class="alt-font fw-500 "> Feedback</span>
                                                 </a>
@@ -187,11 +187,11 @@
                             </li>
                             <li class="nav-item"><a href="{{ route('user.contact') }}" class="nav-link">Nearest
                                     Lab</a></li>
-                            <li class="nav-item">  <a href="{{ route('user.feedback') }}" class="nav-link" 
-                                    >Request Call Back</a>
-                                    {{-- <a href="{{ route('user.feedback') }}" class="nav-link" data-bs-toggle="modal"
+                            <li class="nav-item"> <a href="{{ route('user.feedback') }}" class="nav-link">Request
+                                    Call Back</a>
+                                {{-- <a href="{{ route('user.feedback') }}" class="nav-link" data-bs-toggle="modal"
                                     data-bs-target="#callbackModal">Request Call Back</a> --}}
-                                </li>
+                            </li>
                             <li class="nav-item"><a href="{{ route('covdi19') }}" class="nav-link">Covid-19 Test</a>
                             </li>
                         </ul>
@@ -218,7 +218,7 @@
                                 </form>
                             </div>
                         </div> --}}
-                       
+
 
                         <div>
                             <a href="{{ route('cart.view') }}" class="position-relative p-10px me-15px">
@@ -229,29 +229,35 @@
                                 </span>
                             </a>
                         </div>
-                        
-                       @if (Auth::check() && Auth::user()->role_id == 0)
-                        <div class="nav-item dropdown">
-                            <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="{{ asset('assets/images/profile/user-1.jpg') }}" alt=""
-                                    width="35" height="35" class="rounded-circle">
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
-                                aria-labelledby="drop2">
-                                <div class="message-body">
-                                    <a href="{{ route('admin.dashboard') }}" class="d-flex align-items-center gap-2 dropdown-item">
-                                        <h4 style="font-size: 18px; margin-bottom: 0;">Dashboard</h4>
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                        @csrf
-                                        <button class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</button>
-                                    </form>
+
+                        @if (Auth::check() && Auth::user()->role_id == 0)
+                            <div class="nav-item dropdown">
+                                <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="{{ asset('assets/images/profile/user-1.jpg') }}" alt=""
+                                        width="35" height="35" class="rounded-circle">
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
+                                    aria-labelledby="drop2">
+                                    <div class="message-body">
+                                        <a href="{{ route('admin.dashboard') }}"
+                                            class="d-flex align-items-center gap-2 dropdown-item">
+                                            Dashboard
+                                        </a>
+                                        <a href="#" class="d-flex align-items-center gap-2 dropdown-item"
+                                            data-bs-toggle="modal" data-bs-target="#changepassword">
+                                            My profile
+
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                            @csrf
+                                            <button class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</button>
+                                        </form>
+                                    </div>
+
                                 </div>
-                                
                             </div>
-                         </div>
-                         @else
+                        @else
                             <div class="header-button ms-30px xxl-ms-10px xs-ms-0">
                                 @if (Auth::check())
                                     <a href="{{ route('logout') }}"
@@ -269,11 +275,6 @@
                                         class="d-none">
                                         @csrf
                                     </form>
-
-                        
-
-                        
-
                                 @else
                                     <a href="#"
                                         class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600"
@@ -284,18 +285,19 @@
                                     </a>
                                 @endif
                             </div>
-                    @endif
-                </div>
 
-                @if(auth::check())
-                <a href="#" class="process-step-item d-flex align-items-center" data-bs-toggle="modal"
-                data-bs-target="#changepassword">
-                            <i class="ti ti-user fs-6"></i>
-                         
-                        </a>
                         @endif
+                    </div>
 
-            </div>
+                    @if (Auth::check() && Auth::user()->role_id != 0)
+                        <a href="#" class="process-step-item d-flex align-items-center" data-bs-toggle="modal"
+                            data-bs-target="#changepassword">
+                            <i class="ti ti-user fs-6"></i>
+
+                        </a>
+                    @endif
+
+                </div>
         </nav>
     </header>
 
@@ -304,7 +306,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
 
-        
+
                 <div class="modal-body">
                     <div class="modal-header p-0 border-0 pb-20px">
                         <img src="{{ asset('frontend/vdc_images/vdc-logo.png') }}" class="h-20px" />
@@ -341,58 +343,61 @@
             </div>
         </div>
     </div>
-    @if(auth::check())
-   
-    <div class="modal fade" id="changepassword" tabindex="-1" aria-labelledby="changepassword"
-    aria-hidden="true" style="background-color: rgba(0, 0, 0, 0.8)">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-body p-40px">
-                <div class="modal-header p-0 border-0 pb-15px">
-                    <img src="{{ asset('frontend/vdc_images/vdc-logo.png') }}" class="h-20px" />
-              
-                    <span class="px-2 opacity-5">|</span>
-                    <span class="fw-bold text-orange">Edit Profile</span>
-                    <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form id="passwordForm" action="{{ url('admin/about/userupdateprofile') }}" method="POST" onsubmit="return validatePasswords()">
-                    @csrf
-            
-                    <div class="mb-12">
-                        <label for="exampleInputPassword1" class="form-label">Name</label>
-                        <input type="name" name="name" class="form-control" id="exampleInputPassword1" value="{{ Auth::user()->name }}" >
-                
-                        <button type="submit" class="btn btn-success btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600 mt-20px">
-                            <span>
-                                <span class="btn-double-text" data-text="Submit">Submit</span>
-                            </span>
-                        </button>
+    @if (auth::check())
+        <div class="modal fade" id="changepassword" tabindex="-1" aria-labelledby="changepassword"
+            aria-hidden="true" style="background-color: rgba(0, 0, 0, 0.8)">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body p-40px">
+                        <div class="modal-header p-0 border-0 pb-15px">
+                            <img src="{{ asset('frontend/vdc_images/vdc-logo.png') }}" class="h-20px" />
+
+                            <span class="px-2 opacity-5">|</span>
+                            <span class="fw-bold text-orange">Edit Profile</span>
+                            <button type="button" class="btn-close " data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <form id="passwordForm" action="{{ url('admin/about/userupdateprofile') }}" method="POST"
+                            onsubmit="return validatePasswords()">
+                            @csrf
+
+                            <div class="mb-12">
+                                <label for="exampleInputPassword1" class="form-label">Name</label>
+                                <input type="name" name="name" class="form-control" id="exampleInputPassword1"
+                                    value="{{ Auth::user()->name }}">
+
+                                <button type="submit"
+                                    class="btn btn-success btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600 mt-20px">
+                                    <span>
+                                        <span class="btn-double-text" data-text="Submit">Submit</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-@endif
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var bookNowModal = document.getElementById('changepassword');
-        bookNowModal.addEventListener('show.bs.modal', function(event) {
-            var button = event.relatedTarget; // Button that triggered the modal
-            var productId = button.getAttribute('data-product-id');
-            var productName = button.getAttribute('data-product-name');
+    @endif
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var bookNowModal = document.getElementById('changepassword');
+            bookNowModal.addEventListener('show.bs.modal', function(event) {
+                var button = event.relatedTarget; // Button that triggered the modal
+                var productId = button.getAttribute('data-product-id');
+                var productName = button.getAttribute('data-product-name');
 
-            // Update the modal's content with the product info
-            var modalTitle = bookNowModal.querySelector('.modal-title');
-            var productNameInput = bookNowModal.querySelector('#product_name');
-            var productIdInput = bookNowModal.querySelector('#product_id');
+                // Update the modal's content with the product info
+                var modalTitle = bookNowModal.querySelector('.modal-title');
+                var productNameInput = bookNowModal.querySelector('#product_name');
+                var productIdInput = bookNowModal.querySelector('#product_id');
 
-            modalTitle.textContent = 'Book ' + productName;
-            productNameInput.value = productName;
-            productIdInput.value = productId;
+                modalTitle.textContent = 'Book ' + productName;
+                productNameInput.value = productName;
+                productIdInput.value = productId;
+            });
         });
-    });
-</script>
+    </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -409,4 +414,19 @@
                 loginModal.show();
             });
         });
+
+
+        function validateForm() {
+            const phoneInput = document.getElementById('loginInput').value;
+            // e.preventDefault();
+            var validation = true;
+            if (phoneInput.length < 10 || phoneInput.length > 15) {
+                document.getElementById('phone-validation').innerHTML = "Please enter a valid number";
+                validation = false;
+            }
+            if (validation) {
+                document.getElementById('registrationForm').submit();
+
+            }
+        }
     </script>

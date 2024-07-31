@@ -17,7 +17,8 @@ class Samplecollection extends Authenticatable
         'package',
         'test',
         'userid',
-        'image'
+        'image',
+        'age'
         
     ];
 }

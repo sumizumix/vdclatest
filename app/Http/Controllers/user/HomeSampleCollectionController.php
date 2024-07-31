@@ -50,7 +50,7 @@ class HomeSampleCollectionController extends Controller
         $test = DB::table('test')->get();
         $pro = DB::table('product')->get();
         $booksamplecollection = DB::table('booksamplecollection')
-            ->select('booksamplecollection.*', 'users.*', 'booksamplecollection.id as bid')
+            ->select('booksamplecollection.*', 'users.*', 'booksamplecollection.id as bid','users.name as usname')
             ->join('users', 'users.id', '=', 'booksamplecollection.userid')
             ->where('users.id', Auth::id())
             ->get();
@@ -67,9 +67,10 @@ class HomeSampleCollectionController extends Controller
         $test = DB::table('test')->get();
         $pro = DB::table('product')->get();
         $booksamplecollection = DB::table('booksamplecollection')
-            ->select('booksamplecollection.*', 'users.*', 'booksamplecollection.id as bid')
+            ->select('booksamplecollection.*', 'users.*', 'booksamplecollection.id as bid','booksamplecollection.name as usname')
             ->join('users', 'users.id', '=', 'booksamplecollection.userid')
             ->where('users.id', Auth::id())
+            ->orderBy('booksamplecollection.updated_at', 'desc') 
             ->get();
 
         return view('user.auth.patients.previoushomecollection', compact('booksamplecollection', 'test', 'pro'));
@@ -88,14 +89,15 @@ class HomeSampleCollectionController extends Controller
 
         $request->validate([
             'name' => 'required',
-            'address' => 'required'
+            'address' => 'required',
+            'age'=>'required'
         ]);
         $userId = Auth::id();
         $data = $request->only($samplecollection->getFillable());
         $data['package'] = implode(',', $request->package);
         $data['test'] = implode(',', $request->test);
         $data['userid'] =  $userId;  // Add the logged-in user's ID to the data array
-
+        // $data['age'] =  $request->age; 
         $samplecollection->fill($data)->save();
         return redirect()->route('dashboard')->with('success', 'Sample Collection details added successfully!');
     }

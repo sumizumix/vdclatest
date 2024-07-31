@@ -34,22 +34,36 @@
                 {{-- <div class="right-fixed-end ">
 
                     <a href="{{ route('cart.previoushomesamplecollection') }}"
-                        class="btn btn-success btn-rounded  float-end me-3 mt-3">
-                        Previous Booking
-                    </a>
+                class="btn btn-success btn-rounded float-end me-3 mt-3">
+                Previous Booking
+                </a>
 
-                </div> --}}
+            </div> --}}
 
 
 
                 {{-- <form id="bookSampleForm" class="row g-3" action="{{ route('user.booksample.store') }}" method="POST"
                     enctype="multipart/form-data">
+=========
+                <!-- <div class="right-fixed-end ">
+
+                    <a href="{{ route('cart.previoushomesamplecollection') }}" class="btn btn-success btn-rounded  float-end me-3 mt-3">
+                        Previous Booking
+                    </a>
+
+                </div> -->
+
+
+
+                <form id="bookSampleForm" class="row g-3" action="{{ route('user.booksample.store') }}" method="POST" enctype="multipart/form-data">
+>>>>>>>>> Temporary merge branch 2
                     @csrf
                     <div class="col-md-6">
                         <label for="name" class="form-label">Name</label>
                         <input type="text" class="form-control" name="name" id="name" required>
                     </div>
                     <div class="col-md-6">
+<<<<<<<<< Temporary merge branch 1
                         <label for="name" class="form-label">Age</label>
                         <input type="text" class="form-control" name="age" id="age" required>
                     </div>
@@ -58,26 +72,57 @@
                         <input type="tel" class="form-control" name="address" id="phone" required>
                     </div>
                     <div class="col-md-6">
+=========
+>>>>>>>>> Temporary merge branch 2
                         <label for="name" class="form-label">Email</label>
                         <input type="text" class="form-control" name="email" id="name" required>
                     </div>
                     <div class="col-md-6">
+<<<<<<<<< Temporary merge branch 1
                         <label for="phone" class="form-label">Phone Number</label>
                         <input type="tel" class="form-control" name="phone" id="phone" required>
+=========
+                        <label for="address" class="form-label">Address</label>
+                        <!-- <textarea name="address" id="" required></textarea> -->
+                        <input type="text" class="form-control" name="address" id="phone" required>
+>>>>>>>>> Temporary merge branch 2
                     </div>
                     <div class="col-md-6">
+                        <div class="row align-items-center justify-content-center d-flex">
+                            <div class="col-md-6">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" name="phone" id="phone" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="phone" class="form-label">Age</label>
+                                <input type="tel" class="form-control" name="phone" id="phone" required>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-- <div class="col-md-6">
                         <label for="prescription" class="form-label">Select Package</label>
+<<<<<<<<< Temporary merge branch 1
                      
                         <select data-placeholder="Select Packages" multiple class="form-control" id="prescription"
                             name="package[]" required>
+=========
+                        <select class="form-control" id="prescription" name="package" required>
+
+
+                            <option value="null" selected>Select</option>
+>>>>>>>>> Temporary merge branch 2
                             @foreach ($pro as $row)
-                                <option value="{{ $row->name }}">{{ $row->name }}</option>
+                            <option value="{{ $row->name }}">{{ $row->name }}</option>
                             @endforeach
                         </select>
 
 
 
 
+=========
+>>>>>>>>> Temporary merge branch 2
                     </div>
 
                     <div class="col-md-6">
@@ -86,24 +131,57 @@
                         <select data-placeholder="Select Tests" multiple class="chosen-select form-control"
                             id="test" name="test[]" required>
                             @foreach ($test as $row)
-                                <option value="{{ $row->name }}">{{ $row->name }}</option>
+                            <option value="{{ $row->name }}">{{ $row->name }}</option>
+                            @endforeach
+                        </select>
+                    </div> -->
+                    <div class="col-md-6">
+                        <label for="prescription" class="form-label">Select Package</label>
+                        <select data-placeholder="Select Packages" multiple class="form-control" id="prescription" name="package[]" required>
+                            @foreach ($pro as $row)
+                            <option value="{{ $row->name }}">{{ $row->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="test" class="form-label">Select Test</label>
+                        <select data-placeholder="Select Tests" multiple class="chosen-select form-control" id="test" name="test[]" required>
+                            @foreach ($test as $row)
+                            <option value="{{ $row->name }}">{{ $row->name }}</option>
                             @endforeach
                         </select>
 
 
 
 
-                    </div>
+            </div>
 
 
                   
                     <div class="col">
-                        <button type="submit"
-                            class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600 mt-20px">
-                            <span>
-                                <span class="btn-double-text" data-text="Submit">Submit</span>
-                            </span>
-                        </button>
+                        <div class="row justify-content-end align-items-center pt-2">
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600 -mt-20px">
+                                    <span>
+                                        <span class="btn-double-text" data-text="Submit">Submit</span>
+                                    </span>
+                                </button>
+                                <!-- <a href="{{ route('cart.previoushomesamplecollection') }}" class="btn btn-small -btn-warning btn-vdc-orange btn-rounded btn-switch-text -float-end -me-3 -mt-3">
+                                    <span>
+                                        <span class="btn-double-text" data-text="Click Here">Previous Booking</span>
+                                    </span>
+                                    
+                                </a> -->
+                            </div>
+                            <div class="col-6">
+                                <a href="{{ route('cart.previoushomesamplecollection') }}" class="btn btn-small -btn-warning btn-vdc-orange btn-rounded btn-switch-text float-end -me-3 -mt-3">
+                                    <span>
+                                        <span class="btn-double-text" data-text="Click Here">Previous Booking</span>
+                                    </span>
+
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </form> --}}
 
@@ -112,31 +190,26 @@
                     @csrf
                     <div class="col-md-6">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" name="name" id="homename" >
-                        <div class="text-danger" id="name-home"></div>
+                        <input type="text" class="form-control" name="name" id="name" required>
                     </div>
                     <div class="col-md-6">
                         <label for="name" class="form-label">Email</label>
-                        <input type="text" class="form-control" name="email" id="homeemail" >
-                        <div class="text-danger" id="email-home"></div>
+                        <input type="text" class="form-control" name="email" id="name" required>
                     </div>
                     <div class="col-md-6">
                         <label for="address" class="form-label">Address</label>
                         <!-- <textarea name="address" id="" required></textarea> -->
-                        <input type="text" class="form-control" name="address" id="homeaddress" >
-                        <div class="text-danger" id="address-home"></div>
+                        <input type="text" class="form-control" name="address" id="phone" required>
                     </div>
                     <div class="col-md-6">
                         <div class="row align-items-center justify-content-center d-flex">
                             <div class="col-md-6">
                                 <label for="phone" class="form-label">Phone Number</label>
-                                <input type="number" class="form-control" name="phone" id="homephone">
-                                <div class="text-danger" id="Phone-home"></div>
+                                <input type="number" class="form-control" name="phone" id="phone" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="phone" class="form-label">Age</label>
-                                <input type="number" class="form-control" name="age" id="homeage" >
-                                <div class="text-danger" id="age-home"></div>
+                                <input type="text" class="form-control" name="age" id="phone" required>
                             </div>
                         </div>
 
@@ -145,27 +218,25 @@
                     <div class="col-md-6">
                         <label for="prescription" class="form-label">Select Package</label>
                         <select data-placeholder="Select Packages" multiple class="form-control" id="prescription"
-                        name="package[]" >
+                        name="package[]" required>
                         @foreach ($pro as $row)
-                            <option value="{{ $row->name }}">{{ $row->name }}</option>
+                        <option value="{{ $row->name }}">{{ $row->name }}</option>
                         @endforeach
                     </select>
-                    <div class="text-danger" id="pack-home"></div>
                     </div>
                     <div class="col-md-6">
                         <label for="test" class="form-label">Select Test</label>
                         <select data-placeholder="Select Tests" multiple class="chosen-select form-control"
                         id="test" name="test[]" required>
                         @foreach ($test as $row)
-                            <option value="{{ $row->name }}">{{ $row->name }}</option>
+                        <option value="{{ $row->name }}">{{ $row->name }}</option>
                         @endforeach
                     </select>
-                    <div class="text-danger" id="test-home"></div>
                     </div>
                     <div class="col">
                         <div class="row justify-content-evenly align-items-center pt-2">
                             <div class="col-6">
-                                <button type="button" onclick="validateformhomesample()" class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600 -mt-20px">
+                                <button type="submit" class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600 -mt-20px">
                                     <span>
                                         <span class="btn-double-text" data-text="Submit">Submit</span>
                                     </span>
@@ -178,9 +249,11 @@
                             </div>
                         </div>
                     </div>
-                </form>
-            </div>
+                </div>
+                         
+            </form>
         </div>
+    </div>
     </div>
 </section>
 
@@ -294,3 +367,6 @@
 </div> --}}
 
 @include('layout.footer')
+=========
+@include('layout.footer')
+>>>>>>>>> Temporary merge branch 2

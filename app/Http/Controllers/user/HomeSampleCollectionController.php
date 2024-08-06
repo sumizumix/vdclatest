@@ -94,8 +94,13 @@ class HomeSampleCollectionController extends Controller
         ]);
         $userId = Auth::id();
         $data = $request->only($samplecollection->getFillable());
-        $data['package'] = implode(',', $request->package);
+        if($request->package){
+            $data['package'] = implode(',', $request->package);
+        }
+       if($request->test){
         $data['test'] = implode(',', $request->test);
+       }
+      
         $data['userid'] =  $userId;  // Add the logged-in user's ID to the data array
         // $data['age'] =  $request->age; 
         $samplecollection->fill($data)->save();

@@ -24,15 +24,17 @@ class PackagesController extends Controller
 
     public function knowmore($slug)
     {
-        
+        $test =Product::all();   
         $packages = Product::where('slug', $slug)->firstOrFail();
-        return view('user.auth.patients.packageknowmore', compact('packages'));
+        return view('user.auth.patients.packageknowmore', compact('packages','test'));
     }
 
     public function testknowmore($slug)
 {
+    // $test = Test::orderBY('id', 'desc')->paginate()->withQueryString();
+    $test =Test::all();   
     $packages = Test::where('slug', $slug)->firstOrFail();
-    return view('user.auth.patients.testknowmore', compact('packages'));
+    return view('user.auth.patients.testknowmore', compact('packages','test'));
 }
 
 //     public function testknowmore($slug)

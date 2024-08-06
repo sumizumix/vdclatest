@@ -86,6 +86,8 @@
                                     <span class="btn-icon"><i class="feather icon-feather-shopping-cart"></i></span>
                                 </span>
                             </a>
+
+
                         </div>
                     </div>
                 </div>
@@ -131,7 +133,7 @@
     });
 </script>
 
-<script>
+{{-- <script>
     function handleAddToCart(productId) {
         var isAuthenticated = {{ Auth::check() ? 'true' : 'false' }};
         if (isAuthenticated) {
@@ -195,46 +197,104 @@
     });
  
   
-//   var availableTags = [];
-//   $.ajax({
-//       method : 'GET',
-//       url : '/product-list',
-     
-    
-//        success : function(response) {  
-//         console.log('success', response);
-//     };
-//         });
 
 
-
-//   $( "#search_product" ).autocomplete({
-//     source: availableTags
-//   });
-
-// var availableTags = [];
-//     $.ajax({
-//         method: 'GET',
-//         url: '/product-list',
-//         success: function(response) {
-//             console.log('success', response);
-//             availableTags = response; // Assign the response to availableTags
-//         },
-//         error: function(xhr, status, error) {
-//             console.error('Error:', status, error);
-//         }
-//     });
-
-//     $(document).ready(function() {
-//         $("#search_product").autocomplete({
-//             source: availableTags
-//         });
-//     });
+</script> --}}
 
 
+<script>
+    function handleAddToCart(productId) {
+        var isAuthenticated = {{ Auth::check() ? 'true' : 'false' }};
+        if (isAuthenticated) {
+            addToCart(productId);
+         
+        } else {
+            // Show login modal
+            $('#loginModal').modal('show');
+        }
+    }
 
+    function addToCart(productId) {
+        $.ajax({
+            url: '{{ route('cart.add') }}',
+            method: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}',
+                product_id: productId,
+                type:"package"
+            },
+            success: function(response) {
+                if (response.success) {
+                    toastr.success('Product added to cart successfully!');
+                    setTimeout(() => {
+    window.location.reload();
+}, 1000); 
 
+                } else {
+                    toastr.error('Failed to add product to cart. Please try again.');
+                }
+            },
+            error: function() {
+                toastr.error('An error occurred. Please try again.');
+            }
+        });
+    }
 
+    // Handle login form submission
+    $('#loginForm').submit(function(e) {
+        e.preventDefault();
+
+        var phone = $('#phone').val();
+
+        // Make AJAX request to login endpoint
+        $.ajax({
+            url: '/login', // Update with your login route
+            method: 'POST',
+            data: {
+                _token: $('input[name="_token"]').val(),
+                phone: phone
+            },
+            success: function(response) {
+                if (response.success) {
+                    // Hide the login modal
+                    $('#loginModal').modal('hide');
+
+                    // Set isAuthenticated to true
+                    isAuthenticated = true;
+
+                    // Optionally, call addToCart if it was interrupted
+                    // addToCart(productId); // Uncomment if you want to add to cart automatically after login
+                } else {
+                    alert('Login failed. Please check your credentials and try again.');
+                }
+            },
+            error: function() {
+                alert('An error occurred. Please try again.');
+            }
+        });
+    });
+    //dropdwon ->id search-input->controller search->web->header link
+    $(function() {
+        $("#search-input").autocomplete({
+            source: function(request, response) {
+                $.ajax({
+                    url: "{{ route('search') }}",
+                    data: {
+                        s: request.term
+                    },
+                    success: function(data) {
+                        response($.map(data, function(item) {
+                            return {
+                                label: item.name,
+                                value: item.name
+                            };
+                        }));
+                    }
+                });
+            },
+            minLength: 1
+        });
+    });
 </script>
 {{-- <script type="text/javascript">
     $(document).ready(function() {

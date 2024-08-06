@@ -681,7 +681,7 @@
         <div class="row align-items-center justify-content-center">
             <div class="col-xl-5 col-lg-7 col-md-8 position-relative text-center text-xl-start lg-mb-15px"
                 data-anime='{ "translateY": [0, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                <span class="text-base-color fw-600 mb-15px text-uppercase d-block">Client feedback</span>
+                <span class="text-base-color fw-600 mb-15px text-uppercase d-block">Patients feedback</span>
                 <h3 class="alt-font fw-700 ls-minus-1px text-dark-gray mb-20px mx-auto">What do people say about our
                     services?</h3>
 

@@ -66,8 +66,26 @@
                               
                                 <td>{{ $row->address }}</td>
                                 <td>{{ $row->age }}</td>
-                                <td>{{ $row->package }}</td>
-                                <td>{{ $row->test }}</td>
+
+                                <td>
+
+                                    @if ($row->package == NULL)
+                                                    No package
+                                                    @else
+                                                    {{ $row->package }}
+                                                    @endif
+                                   
+                                </td>
+                                <td>
+
+                                    @if ($row->test == NULL)
+                                                    No test
+                                                    @else
+                                                    {{ $row->test }}
+                                                    @endif
+                                   
+                                </td>
+                              
                                <td>
                                 @if($row->image== Null)
 

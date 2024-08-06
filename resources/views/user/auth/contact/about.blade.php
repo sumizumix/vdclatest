@@ -64,10 +64,10 @@
                         </span>
                         <p class="text-light-opacity lh-base pt-2">
                             {!! strip_tags($page_about->vision) !!}
-                            To prevent spread of infection, we all should take everyday actions that are proven to prevent the
+                            {{-- To prevent spread of infection, we all should take everyday actions that are proven to prevent the
                             spread of COVID-19. These include: avoiding close contact with people who are sick; avoiding
                             touching your eyes, nose and mouth with unwashed hands; washing your hands often with soap and water
-                            for at least 20 seconds or using an alcohol-based hand sanitizer and staying at home.
+                            for at least 20 seconds or using an alcohol-based hand sanitizer and staying at home. --}}
                         </p>
                     </div>
                     <div class="feature-box-overlay bg-base-color"></div>
@@ -85,10 +85,10 @@
                         </span>
                         <p class="text-light-opacity lh-base pt-2 text-start">
                             {!! strip_tags($page_about->mission) !!}
-                            To prevent spread of infection, we all should take everyday actions that are proven to prevent the
+                            {{-- To prevent spread of infection, we all should take everyday actions that are proven to prevent the
                             spread of COVID-19. These include: avoiding close contact with people who are sick; avoiding
                             touching your eyes, nose and mouth with unwashed hands; washing your hands often with soap and water
-                            for at least 20 seconds or using an alcohol-based hand sanitizer and staying at home.
+                            for at least 20 seconds or using an alcohol-based hand sanitizer and staying at home. --}}
 
                         </p>
                     </div>

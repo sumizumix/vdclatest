@@ -138,12 +138,17 @@
 <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
 
 <script>
-    $("#prescription").chosen({
-        no_results_text: "Oops, nothing found!"
+    // console.log($('.chosencontainer'))
+    $(document).on('ready',function(){
+
+        $("#prescription").chosen({
+            no_results_text: "Oops, nothing found!"
+        })
+        $("#test").chosen({
+            no_results_text: "Oops, nothing found!"
+        })
     })
-    $("#test").chosen({
-        no_results_text: "Oops, nothing found!"
-    })
+
 </script> 
 
 {{-- dropdown --}}

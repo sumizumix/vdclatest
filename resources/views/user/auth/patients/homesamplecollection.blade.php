@@ -31,185 +31,37 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-12">
-                {{-- <div class="right-fixed-end ">
-
-                    <a href="{{ route('cart.previoushomesamplecollection') }}"
-                class="btn btn-success btn-rounded float-end me-3 mt-3">
-                Previous Booking
-                </a>
-
-            </div> --}}
-
-
-
-                {{-- <form id="bookSampleForm" class="row g-3" action="{{ route('user.booksample.store') }}" method="POST"
-                    enctype="multipart/form-data">
-=========
-                <!-- <div class="right-fixed-end ">
-
-                    <a href="{{ route('cart.previoushomesamplecollection') }}" class="btn btn-success btn-rounded  float-end me-3 mt-3">
-                        Previous Booking
-                    </a>
-
-                </div> -->
-
-
-
-                <form id="bookSampleForm" class="row g-3" action="{{ route('user.booksample.store') }}" method="POST" enctype="multipart/form-data">
->>>>>>>>> Temporary merge branch 2
-                    @csrf
-                    <div class="col-md-6">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" name="name" id="name" required>
-                    </div>
-                    <div class="col-md-6">
-<<<<<<<<< Temporary merge branch 1
-                        <label for="name" class="form-label">Age</label>
-                        <input type="text" class="form-control" name="age" id="age" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="phone" class="form-label">Address</label>
-                        <input type="tel" class="form-control" name="address" id="phone" required>
-                    </div>
-                    <div class="col-md-6">
-=========
->>>>>>>>> Temporary merge branch 2
-                        <label for="name" class="form-label">Email</label>
-                        <input type="text" class="form-control" name="email" id="name" required>
-                    </div>
-                    <div class="col-md-6">
-<<<<<<<<< Temporary merge branch 1
-                        <label for="phone" class="form-label">Phone Number</label>
-                        <input type="tel" class="form-control" name="phone" id="phone" required>
-=========
-                        <label for="address" class="form-label">Address</label>
-                        <!-- <textarea name="address" id="" required></textarea> -->
-                        <input type="text" class="form-control" name="address" id="phone" required>
->>>>>>>>> Temporary merge branch 2
-                    </div>
-                    <div class="col-md-6">
-                        <div class="row align-items-center justify-content-center d-flex">
-                            <div class="col-md-6">
-                                <label for="phone" class="form-label">Phone Number</label>
-                                <input type="tel" class="form-control" name="phone" id="phone" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="phone" class="form-label">Age</label>
-                                <input type="tel" class="form-control" name="phone" id="phone" required>
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <!-- <div class="col-md-6">
-                        <label for="prescription" class="form-label">Select Package</label>
-<<<<<<<<< Temporary merge branch 1
-                     
-                        <select data-placeholder="Select Packages" multiple class="form-control" id="prescription"
-                            name="package[]" required>
-=========
-                        <select class="form-control" id="prescription" name="package" required>
-
-
-                            <option value="null" selected>Select</option>
->>>>>>>>> Temporary merge branch 2
-                            @foreach ($pro as $row)
-                            <option value="{{ $row->name }}">{{ $row->name }}</option>
-                            @endforeach
-                        </select>
-
-
-
-
-=========
->>>>>>>>> Temporary merge branch 2
-                    </div>
-
-                    <div class="col-md-6">
-                        <label for="prescription" class="form-label">Select Test</label>
-                     
-                        <select data-placeholder="Select Tests" multiple class="chosen-select form-control"
-                            id="test" name="test[]" required>
-                            @foreach ($test as $row)
-                            <option value="{{ $row->name }}">{{ $row->name }}</option>
-                            @endforeach
-                        </select>
-                    </div> -->
-                    <div class="col-md-6">
-                        <label for="prescription" class="form-label">Select Package</label>
-                        <select data-placeholder="Select Packages" multiple class="form-control" id="prescription" name="package[]" required>
-                            @foreach ($pro as $row)
-                            <option value="{{ $row->name }}">{{ $row->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="test" class="form-label">Select Test</label>
-                        <select data-placeholder="Select Tests" multiple class="chosen-select form-control" id="test" name="test[]" required>
-                            @foreach ($test as $row)
-                            <option value="{{ $row->name }}">{{ $row->name }}</option>
-                            @endforeach
-                        </select>
-
-
-
-
-            </div>
-
-
-                  
-                    <div class="col">
-                        <div class="row justify-content-end align-items-center pt-2">
-                            <div class="col-6">
-                                <button type="submit" class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600 -mt-20px">
-                                    <span>
-                                        <span class="btn-double-text" data-text="Submit">Submit</span>
-                                    </span>
-                                </button>
-                                <!-- <a href="{{ route('cart.previoushomesamplecollection') }}" class="btn btn-small -btn-warning btn-vdc-orange btn-rounded btn-switch-text -float-end -me-3 -mt-3">
-                                    <span>
-                                        <span class="btn-double-text" data-text="Click Here">Previous Booking</span>
-                                    </span>
-                                    
-                                </a> -->
-                            </div>
-                            <div class="col-6">
-                                <a href="{{ route('cart.previoushomesamplecollection') }}" class="btn btn-small -btn-warning btn-vdc-orange btn-rounded btn-switch-text float-end -me-3 -mt-3">
-                                    <span>
-                                        <span class="btn-double-text" data-text="Click Here">Previous Booking</span>
-                                    </span>
-
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </form> --}}
-
+       
 
                 <form id="bookSampleForm" class="row g-3" action="{{ route('user.booksample.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="col-md-6">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" name="name" id="name" required>
+                        <input type="text" class="form-control" name="name" id="homename" >
+                        <div class="text-danger" id="name-home"></div>
                     </div>
                     <div class="col-md-6">
                         <label for="name" class="form-label">Email</label>
-                        <input type="text" class="form-control" name="email" id="name" required>
+                        <input type="text" class="form-control" name="email" id="homeemail" >
+                        <div class="text-danger" id="email-home"></div>
                     </div>
                     <div class="col-md-6">
                         <label for="address" class="form-label">Address</label>
                         <!-- <textarea name="address" id="" required></textarea> -->
-                        <input type="text" class="form-control" name="address" id="phone" required>
+                        <input type="text" class="form-control" name="address" id="homeaddress" >
+                        <div class="text-danger" id="address-home"></div>
                     </div>
                     <div class="col-md-6">
                         <div class="row align-items-center justify-content-center d-flex">
                             <div class="col-md-6">
                                 <label for="phone" class="form-label">Phone Number</label>
-                                <input type="number" class="form-control" name="phone" id="phone" required>
+                                <input type="number" class="form-control" name="phone" id="homephone" >
+                                <div class="text-danger" id="Phone-home"></div>
                             </div>
                             <div class="col-md-6">
                                 <label for="phone" class="form-label">Age</label>
-                                <input type="text" class="form-control" name="age" id="phone" required>
+                                <input type="text" class="form-control" name="age" id="homeage" >
+                                <div class="text-danger" id="age-home"></div>
                             </div>
                         </div>
 
@@ -218,25 +70,28 @@
                     <div class="col-md-6">
                         <label for="prescription" class="form-label">Select Package</label>
                         <select data-placeholder="Select Packages" multiple class="form-control" id="prescription"
-                        name="package[]" required>
+                        name="package[]" >
                         @foreach ($pro as $row)
                         <option value="{{ $row->name }}">{{ $row->name }}</option>
                         @endforeach
                     </select>
+                   
                     </div>
                     <div class="col-md-6">
                         <label for="test" class="form-label">Select Test</label>
                         <select data-placeholder="Select Tests" multiple class="chosen-select form-control"
-                        id="test" name="test[]" required>
+                        id="test" name="test[]">
                         @foreach ($test as $row)
                         <option value="{{ $row->name }}">{{ $row->name }}</option>
                         @endforeach
                     </select>
+                    {{-- <div class="text-danger" id="test-home"></div> --}}
                     </div>
+                    <div class="text-danger" id="pack-home"></div>
                     <div class="col">
                         <div class="row justify-content-evenly align-items-center pt-2">
                             <div class="col-6">
-                                <button type="submit" class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600 -mt-20px">
+                                <button type="button" onclick="validateformhomesample()" class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600 -mt-20px">
                                     <span>
                                         <span class="btn-double-text" data-text="Submit">Submit</span>
                                     </span>
@@ -250,7 +105,7 @@
                         </div>
                     </div>
                 </div>
-                         
+            
             </form>
         </div>
     </div>
@@ -268,8 +123,7 @@
         const dateInput = document.getElementById('homeage').value;
         const preInput = document.getElementById('prescription').value;
         const testInput = document.getElementById('test').value;
-        // var emailPattern =^[^\.].*;
-        // e.preventDefault();
+
         var validation = true;
         if (phoneInput.length < 10 || phoneInput.length > 15) {
             document.getElementById('Phone-home').innerHTML = "Please enter a valid number";
@@ -291,82 +145,21 @@
             document.getElementById('age-home').innerHTML = "Please enter the age";
             validation = false;
         }
-        if (preInput.length === 0) {
-            document.getElementById('pack-home').innerHTML = "select the Package";
+        if (preInput.length === 0 && testInput.length === 0) {
+            document.getElementById('pack-home').innerHTML = "select the Package or test";
+            // document.getElementById('test-home').innerHTML = "select the test";
             validation = false;
         }
-        if (testInput.length === 0) {
-            document.getElementById('test-home').innerHTML = "select the test";
-            validation = false;
-        }
+        // if (testInput.length === 0) {
+        //     document.getElementById('test-home').innerHTML = "select the test";
+        //     validation = false;
+        // }
         if (validation) {
             document.getElementById('bookSampleForm').submit();
 
         }
     }
 </script>
-{{-- <div class="modal fade" id="bookSampleModal" tabindex="-1" aria-labelledby="bookSampleModalLabel"
-    aria-hidden="true" style="background-color: rgba(0, 0, 0, 0.8)">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-body p-40px">
-                <div class="modal-header p-0 border-0 pb-20px">
-                    <img src="{{ asset('frontend/vdc_images/vdc-logo.png') }}" class="h-20px" />
-                    <span class="px-2 opacity-5">|</span>
-                    <span class="fw-bold text-orange">Book Home Sample Collection</span>
-                    <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <table class="table mb-0 align-middle" id="dataTable">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                           
-                            <th scope="col">Address</th>
-                         
-                            <th scope="col">Package</th>
-                            <th scope="col">Test</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableContent">
-                        @foreach ($booksamplecollection as $row)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $row->name }}</td>
-                              
-                                <td>{{ $row->address }}</td>
-                               
-                                <td>{{ $row->package }}</td>
-                                <td>{{ $row->test }}</td>
-                                <td class="text-nowrap">
-                                    @if ($row->status == 'approved')
-                                        <button class="btn btn-success btn-sm" disabled>
-                                            <i class="fa-solid fa-check-circle"></i> Approved
-                                        </button>
-                                    @elseif($row->status == 'rejected')
-                                        <button class="btn btn-danger btn-sm" disabled>
-                                            <i class="fa-solid fa-times-circle"></i> Rejected
-                                        </button>
-                                    @else
-
-                                    
-                                    <a href="{{ URL::to('homesamplecollectionremove/' . $row->bid) }}"
-                                        class="btn btn-danger btn-sm"
-                                        onClick="return confirm('Are you sure?');"><i
-                                            class="ti ti-trash"></i></a>
-                                    @endif
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div> --}}
 
 @include('layout.footer')
-=========
-@include('layout.footer')
->>>>>>>>> Temporary merge branch 2
+

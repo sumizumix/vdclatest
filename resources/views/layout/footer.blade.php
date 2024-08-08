@@ -31,8 +31,8 @@
             <div class="col-6 col-lg-2 col-sm-4 xs-mb-30px order-sm-3 order-lg-2">
                 <span class="fs-17 fw-500 d-block text-white mb-5px">Quick Links</span>
                 <ul>
-                <!--<li><a href="{{ route('user.about') }}">About</a></li>-->
-                  <li><a href="{{ route('user.about') }}">About</a></li>
+                    <!--<li><a href="{{ route('user.about') }}">About</a></li>-->
+                    <li><a href="{{ route('user.about') }}">About</a></li>
                     <li><a href="{{ route('user.contactss') }}">Contact Us</a></li>
 
 
@@ -61,7 +61,8 @@
             </div>
         </div>
         <div class="border-top border-color-transparent-white-light pt-35px pb-35px text-center">
-            {{-- <span class="fs-13 w-60 lg-w-70 md-w-100 d-block mx-auto lh-22">This site is protected by reCAPTCHA and the
+            {{-- <span class="fs-13 w-60 lg-w-70 md-w-100 d-block mx-auto lh-22">This site is protected by reCAPTCHA and
+                the
                 Google <a href="#" class="text-white text-decoration-line-bottom">privacy policy</a> and
                 <a href="#" class="text-white text-decoration-line-bottom">terms of service</a> apply. You must
                 not use
@@ -123,7 +124,8 @@
 
 @include('pages.modal')
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
-{{-- <script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script> --}}
+{{--
+<script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script> --}}
 <script type="text/javascript" src="{{ asset('frontend/js/jquery.js') }}"></script>
 <script type="text/javascript" src="{{ asset('frontend/js/vendors.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('frontend/js/main.js') }}"></script>
@@ -135,11 +137,11 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
-<link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
+<link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet" />
 
 <script>
     // console.log($('.chosencontainer'))
-    $(document).on('ready',function(){
+    $(document).on('ready', function () {
 
         $("#prescription").chosen({
             no_results_text: "Oops, nothing found!"
@@ -149,11 +151,43 @@
         })
     })
 
-</script> 
+</script>
 
 {{-- dropdown --}}
 <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+<script>
+
+    function payment(amount, user_id) {
+
+        $("#buy-now-button").prop("disabled", true);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", 'public/payment/initiateJuspayPayment.php', true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                var response = JSON.parse(xhr.responseText);
+                if (xhr.status == 200) {
+                    if (response.status === 'NEW') {
+                        var url = response.paymentLinks.web;
+                        return window.location.href = url;
+                    }
+                }
+                alert(`http status code: ${xhr.status} message: ${response.message}`);
+            }
+        };
+        // const body = JSON.stringify({
+        //     amount: amount
+        // });
+
+        xhr.send('amount=' + amount+'&user_id=' + user_id);
+    }
+
+</script>
+
+
 {{-- dropdown --}}
 
 </body>
+
 </html>

@@ -13,6 +13,7 @@ use App\Mail\PackageApproved;
 use App\Mail\PackageRejected;
 use Illuminate\Support\Facades\Auth;
 use App\Models\PaymentModel;
+use App\Models\User;
 use Razorpay\Api\Api;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Illuminate\Support\Facades\Mail;
@@ -21,59 +22,71 @@ use Exception;
 
 class RazorpayController extends Controller
 {
-    
-    public function store(Request $request) {
-        
-        $input = $request->all();   
-        
-        $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
-        $payment = $api->payment->fetch($input['razorpay_payment_id']);
-        if(count($input) && !empty($input['razorpay_payment_id'])) {
-            try {
-                $response = $api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount' => $payment['amount']));
-                $payment = PaymentModel::create([
-                    'r_payment_id' => $response['id'],
-                    'method' => $response['method'],
-                    'currency' => $response['currency'],
-                    'user_email' => $response['email'],
-                    'amount' => $response['amount']/100,
-                    'json_response' => json_encode((array)$response),
-                    'userid' =>Auth::id() ,
 
+    public function store(Request $request)
+    {
+
+        $input = $request->all();
+        if ($input['status'] == "CHARGED") {
+            $user_id = DB::table('cart')
+                ->select("user_id")
+                ->where('razorid', $input['order_id'])
+                ->where('paystatus', '0')
+                ->first()->user_id;
+            $payment = PaymentModel::create([
+                'r_payment_id' => $input['order_id'],
+                'signature' => $input['order_id'],
+                'userid' => $user_id,
+
+            ]);
+
+            //         $razorid = $response['id'];
+            //         $method = $response['method'];
+            //         $amount = $response['amount'];
+
+            DB::table('cart')
+                ->where('user_id', $user_id)
+                ->where('razorid', $input['order_id'])
+                ->update([
+                    'paystatus' => 1,
                 ]);
-                
-                $userId = Auth::id();
-                $razorid = $response['id'];
-                $method = $response['method'];
-                $amount = $response['amount'];
-                
-                $cartStatus = DB::table('cart')
-                                ->where('user_id', $userId)
-                                ->where('status', 'approved')
-                                ->where('razorid', null)
-                                ->update([
-                                    'paystatus' => 1,
-                                    'razorid' => $razorid,
-                                    'method' =>$method,
-                                    'amount'=>$amount
-                                ]);
-                
-               
-                
-            } 
-            catch(Exception $e) {
-                return $e->getMessage();
-                Session::put('error',$e->getMessage());
-                return back()->with('success', 'Payment Successful!');            }
+
+
+
+            //     } catch (Exception $e) {
+            //         return $e->getMessage();
+            //         Session::put('error', $e->getMessage());
+            //         return back()->with('success', 'Payment Successful!');
+            //     }
+            // }
+
+            $user = User::find($user_id);
+            Auth::login($user);
+
+
+
+            // return view('user.auth.patients.orderstatus', compact('cart', 'groupedCart'))->with('success', 'Payment Successful!');
+            return redirect('cart-status')->with('success', 'Payment Successful!');
+        } else {
+            $user_id = DB::table('cart')
+                ->select("user_id")
+                ->where('razorid', $input['order_id'])
+                ->where('paystatus', '0')
+                ->first()->user_id;
+
+            $user = User::find($user_id);
+            Auth::login($user);
+            return redirect('cart')->with('error', 'Payment Unsuccessfull!');
+
         }
-        return back()->with('success', 'Payment Successful!');   
-     }
 
-  
+    }
 
-//orginal
+
+
+    //orginal
     // public function store(Request $request) {
-        
+
     //     $input = $request->all(); 
     //     $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
     //     $payment = $api->payment->fetch($input['razorpay_payment_id']);

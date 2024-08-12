@@ -14,23 +14,47 @@
                                 <input type="text" class="form-control" id="name" value="{{ $test->name }}" a name="name" required>
                             </div>
 
-
-                            <div class="mb-3" id="test-div">
+                              
+                            {{-- <div class="mb-3" id="test-div">
                                 <div class="row justify-content-evenly align-items-center d-flex">
-                                    @foreach(explode(",", $test->parameter) as $param)
-                                    <label class="form-label" for="name">Parameter</label>
-                                    <div class="col-6">
-                                        <input type="text" class="form-control mb-3 col-12" name="parameter[]" style="width: 500px;" required value="<?php echo $param ?>">
-                                    </div>
-                                    <div class="col-6">
-                                        <button type="button" class="btn btn-danger mb-3 remove-div">Delete</button>
-                                    </div>
-                                    @endforeach
+                              
 
+                                    @foreach( explode(",", trim($test->parameter, "[]")) as $param)
+                                        <label class="form-label" for="name">Parameter</label>
+                                        <div class="col-6">
+                                            <input type="text" class="form-control mb-3 col-12" name="parameter[]" style="width: 500px;" required value="{{ $param }}">
+                                        </div>
+                                        <div class="col-6">
+                                            <button type="button" class="btn btn-danger mb-3 remove-div">Delete</button>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
+                             --}}
+                             @php
+                          
+                             $cleaned_parameter = str_replace(['\"', '\\\"', '"'], '', $test->parameter); // Removes \" and \"
+                             $parameters = explode(",", trim($cleaned_parameter, "[]")); // Explode and trim square brackets
+                         @endphp
+                         
+                         <div class="mb-3" id="test-div">
+                             <div class="row justify-content-evenly align-items-center d-flex">
+                                 @foreach($parameters as $param)
+                                     <label class="form-label" for="name">Parameter</label>
+                                     <div class="col-6">
+                                         <input type="text" class="form-control mb-3 col-12" name="parameter[]" style="width: 500px;" required value="{{ $param }}">
+                                     </div>
+                                     <div class="col-6">
+                                         <button type="button" class="btn btn-danger mb-3 remove-div">Delete</button>
+                                     </div>
+                                 @endforeach
+                             </div>
+                         </div>
+                         
+                            <button type="button" class="btn btn-primary" id="add-field">Add More</button>
 
-                            <button type="button" class="btn btn-primary" id="add-field">Add Tests</button>
+
+                            
                             <div class="mb-3">
                                 <label class="form-label" for="price">Price</label>
                                 <input type="number" class="form-control" id="price" value="{{ $test->price }}" name="price" required>
@@ -92,7 +116,7 @@
             let div = `
                 <div class="mb-3" id="test-div">
                                 <div class="row justify-content-evenly align-items-center d-flex">
-                                    <label class="form-label" for="name">Test Name</label>
+                                    <label class="form-label" for="name">Parameter</label>
                                     <div class="col-6">
                                         <input type="text" class="form-control mb-3 col-12" name="parameter[]"
                                             style="width: 500px;" required>

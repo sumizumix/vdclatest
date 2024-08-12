@@ -38,7 +38,7 @@
                 <div class="mt-auto justify-content-end breadcrumb breadcrumb-style-01 fs-14 text-white"
                     data-anime='{ "translateY": [30, 0], "opacity": [0, 1], "easing": "easeOutCubic", "duration": 500, "staggervalue": 300, "delay": 300 }'>
                     <ul>
-                        <li>Home</li>
+                        <li><a href="{{ url('/') }}" class="text-white">Home</a></li>
                         <li>Cart</li>
                     </ul>
                 </div>

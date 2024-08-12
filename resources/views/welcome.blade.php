@@ -298,7 +298,7 @@
                 </div>
                 <div class="feature-box-content">
                     <span class="alt-font text-black fs-18">
-                        <a href="{{ route('user.packages') }}"
+                        <a href="{{ route('user.patientspage') }}"
                             class="text-decoration-line-bottom text-black fw-500">View All Health
                             Packages</a></span>
                 </div>
@@ -450,6 +450,26 @@
                         </div>
                     </div>
                 </div>
+
+
+                
+            </div>
+       
+        </div>
+        <div class="row justify-content-center mt-2">
+            <div class="col-auto icon-with-text-style-08 sm-mb-10px"
+                data-anime='{ "translateX": [-50, 0], "opacity": [0,1], "duration": 900, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                <div class="feature-box feature-box-left-icon-middle">
+                    <div class="feature-box-icon me-10px">
+                        <i class="bi bi-eye icon-small text-black"></i>
+                    </div>
+                    <div class="feature-box-content">
+                        <span class="alt-font text-black fs-18">
+                            <a href="{{ route('user.testpage') }}"
+                                class="text-decoration-line-bottom text-black fw-500">View All Individual Tests
+                               </a></span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -487,7 +507,8 @@
                                 <div
                                     class="box-shadow-extra-large services-box-style-01 hover-box last-paragraph-no-margin border-radius-4px overflow-hidden">
                                     <div class="position-relative box-image">
-                                        <img src="{{ asset('frontend/vdc_images/pack-04.webp') }}" alt />
+                                        <img src="{{ asset('uploads/' . $row->image) }}"
+                                        class="rounded h-240px w-100 object-fit-cover" />
                                     </div>
                                     <div class="bg-white" style="min-height: 150px;">
                                         <div class="ps-50px min-h-150px pe-50px pt-35px sm-p-35px sm-pb-0">

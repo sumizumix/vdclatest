@@ -10,7 +10,7 @@
                 </h3>
                 <div class="mt-auto justify-content-center breadcrumb breadcrumb-style-01 fs-14 text-white" data-anime='{ "translateY": [30, 0], "opacity": [0, 1], "easing": "easeOutCubic", "duration": 500, "staggervalue": 300, "delay": 300 }'>
                     <ul>
-                        <li>Patients</li>
+                        <li><a href="{{ url('/') }}" class="text-white">Home</a></li>
                         <li>Nearest lab</li>
                     </ul>
                 </div>

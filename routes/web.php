@@ -65,6 +65,9 @@ Route::get('admin/product/delete/{id}', [ProductController::class,'destroy']);
 Route::get('admin/product/edit/{id}', [ProductController::class,'edit'])->name('admin.product.edit');
 Route::post('admin/product/update/{id}', [ProductController::class,'update']);
 
+Route::post('admin/product/search', [ReportController::class, 'searchproduct'])->name('admin.auth.product.search');
+Route::post('admin/test/search', [ReportController::class, 'searchtest'])->name('admin.auth.test.search');
+
 //prescription
 
 Route::get('admin/report/view', [ReportController::class,'index'])->name('admin.auth.report.index');

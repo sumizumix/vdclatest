@@ -26,7 +26,7 @@
                                 <div class="text-danger" id="phone-validation"></div>
                             </div>
 
-                            <button type="button" onclick="validateForm()"
+                            <button type="submit" onclick="validateForm()"
                                 class="btn btn-small btn-dark-gray btn-round-edge btn-hover-animation w-100 d-block mt-20px lg-mb-15px md-mx-auto">
                                 <span>
                                     <span class="btn-text">Login</span>
@@ -338,8 +338,22 @@
         @endif
     });
 </script>
+<script>
+function validateForm() {
+    const phoneInput = document.getElementById('loginInput').value;
 
+    var validation = true;
+    if (phoneInput.length <script 10 || phoneInput.length > 15) {
+        document.getElementById('phone-validation').innerHTML = "Please enter a valid number";
+        validation = false;
+    }
+    if (validation) {
+        document.getElementById('registrationForm').submit();
 
+    }
+}
+
+</script>
 {{-- <script>
     document.getElementById('sendOtpBtn').addEventListener('click', function() {
         var phone = document.getElementById('phoneInput').value;

@@ -26,7 +26,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-primary" id="add-field">Add Tests</button>
+                            <button type="button" class="btn btn-primary" id="add-field">Add More</button>
                             <!-- <div class="mb-12">
                                 <label class="form-label" for="parameter-1">Tests</label>
                                 <div id="parameters-container">

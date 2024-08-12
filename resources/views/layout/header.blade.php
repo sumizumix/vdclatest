@@ -418,17 +418,5 @@
         });
 
 
-        function validateForm() {
-            const phoneInput = document.getElementById('loginInput').value;
-            // e.preventDefault();
-            var validation = true;
-            if (phoneInput.length < 10 || phoneInput.length > 15) {
-                document.getElementById('phone-validation').innerHTML = "Please enter a valid number";
-                validation = false;
-            }
-            if (validation) {
-                document.getElementById('registrationForm').submit();
 
-            }
-        }
     </script>

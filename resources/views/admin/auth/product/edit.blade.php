@@ -35,7 +35,7 @@
 
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary" id="add-field">Add Tests</button>
+                    <button type="button" class="btn btn-primary" id="add-field">Add More</button>
 
                     <div class="mb-3">
                         <label class="form-label" for="price">Price</label>

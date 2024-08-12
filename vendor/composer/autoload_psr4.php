@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'voku\\' => array($vendorDir . '/voku/portable-ascii/src/voku'),
+    'phpseclib3\\' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
     'Yoeunes\\Toastr\\' => array($vendorDir . '/yoeunes/toastr/src'),
     'WpOrg\\Requests\\' => array($vendorDir . '/rmccue/requests/src'),
     'Whoops\\' => array($vendorDir . '/filp/whoops/src/Whoops'),
@@ -54,6 +55,7 @@ return array(
     'Psr\\Clock\\' => array($vendorDir . '/psr/clock/src'),
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
     'PhpOption\\' => array($vendorDir . '/phpoption/phpoption/src/PhpOption'),
+    'ParagonIE\\ConstantTime\\' => array($vendorDir . '/paragonie/constant_time_encoding/src'),
     'Opis\\Closure\\' => array($vendorDir . '/opis/closure/src'),
     'NunoMaduro\\Collision\\' => array($vendorDir . '/nunomaduro/collision/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
@@ -66,6 +68,10 @@ return array(
     'Laravel\\SerializableClosure\\' => array($vendorDir . '/laravel/serializable-closure/src'),
     'Laravel\\Sanctum\\' => array($vendorDir . '/laravel/sanctum/src'),
     'Laravel\\Sail\\' => array($vendorDir . '/laravel/sail/src'),
+    'Juspay\\Model\\' => array($vendorDir . '/juspay/expresscheckout-php-sdk/lib/Model'),
+    'Juspay\\JWT\\' => array($vendorDir . '/juspay/expresscheckout-php-sdk/lib/JWT'),
+    'Juspay\\Exception\\' => array($vendorDir . '/juspay/expresscheckout-php-sdk/lib/Exception'),
+    'Juspay\\' => array($vendorDir . '/juspay/expresscheckout-php-sdk/lib'),
     'Illuminate\\Support\\' => array($vendorDir . '/laravel/framework/src/Illuminate/Macroable', $vendorDir . '/laravel/framework/src/Illuminate/Collections'),
     'Illuminate\\' => array($vendorDir . '/laravel/framework/src/Illuminate'),
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),

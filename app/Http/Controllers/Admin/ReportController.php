@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Report;
+use App\Models\Test;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
@@ -36,7 +37,9 @@ class ReportController extends Controller
 
         $request->validate([
             // 'photo' => 'numeric|min:0|max:32767'
-            'name'=>'required'
+            'name'=>'required',
+            'phone' => 'required|digits_between:10,15',
+            'report' => 'nullable|image|required|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         // $statement = DB::select("SHOW TABLE STATUS LIKE 'product'");
@@ -67,6 +70,7 @@ class ReportController extends Controller
         // Validate the incoming request data
         $request->validate([
             'name' => 'required',
+      
         ]);
     
         // Update the product data
@@ -116,5 +120,26 @@ class ReportController extends Controller
         // dd($noResults);
         // Pass the search results to the view
         return view('admin.auth.report.index', compact('prescription'));
+    }
+
+    public function searchproduct(Request $request)
+    {
+    
+        $query = $request->input('query');
+        $product = Product::where('name', 'like', '%' . $query . '%')
+        ->orWhere('price', 'like', '%' . $query . '%')->get();
+    
+        return view('admin.auth.product.index', compact('product'));
+    }
+
+
+    public function searchtest(Request $request)
+    {
+    
+        $query = $request->input('query');
+        $test = Test::where('name', 'like', '%' . $query . '%')
+        ->orWhere('price', 'like', '%' . $query . '%')->get();
+    
+        return view('admin.auth.test.index', compact('test'));
     }
 }

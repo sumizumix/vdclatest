@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="description">Phone</label>
-                                    <input type="text" class="form-control" id="name" value="{{ $location->phone }}"
+                                    <input type="number" class="form-control" id="name" value="{{ $location->phone }}"
                                         name="phone" required>
                                 </div>
 

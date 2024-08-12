@@ -4,6 +4,7 @@ namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Hospital;
+use App\Models\Contact;
 use App\Models\Team;
 use App\Models\PageAboutItem;
 use App\Models\Locationitem;
@@ -31,10 +32,27 @@ class ContactController extends Controller
     }
     public function contact()
     {
-        $contact =Locationitem::all();
-      
+        $contact =Locationitem::all();    
         return view('user.auth.doctors.contact', compact('contact'));
     }
+
+    public function storecontact(Request $request)
+    {
+        $feedback = new Contact();
+        $data = $request->only($feedback->getFillable());
+        $feedback->fill($data)->save();
+        return redirect()->route('user.contactss')->with('success', 'contact Successfully Submitted!');
+    }
+
+
+
+
+
+
+
+
+
+
 //     public function contact(Request $request)
 // {
 //     $query = $request->input('query');

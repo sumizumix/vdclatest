@@ -65,6 +65,9 @@ Route::get('admin/product/delete/{id}', [ProductController::class,'destroy']);
 Route::get('admin/product/edit/{id}', [ProductController::class,'edit'])->name('admin.product.edit');
 Route::post('admin/product/update/{id}', [ProductController::class,'update']);
 
+Route::post('admin/product/search', [ReportController::class, 'searchproduct'])->name('admin.auth.product.search');
+Route::post('admin/test/search', [ReportController::class, 'searchtest'])->name('admin.auth.test.search');
+
 //prescription
 
 Route::get('admin/report/view', [ReportController::class,'index'])->name('admin.auth.report.index');
@@ -80,7 +83,8 @@ Route::post('admin/report/search', [ReportController::class, 'search'])->name('a
 //about
 Route::get('admin/about/view', [PageAboutController::class,'index'])->name('admin.auth.about.index');
 Route::post('admin/about/update', [PageAboutController::class,'update']);
-
+Route::post('admin/about/updateprofile', [PageAboutController::class,'updateprofile']);
+Route::post('admin/about/userupdateprofile', [PageAboutController::class,'userupdateprofile']);
 //Location
 
 Route::get('admin/location/view', [LocationController::class,'index'])->name('admin.auth.location.index');
@@ -101,6 +105,8 @@ Route::get('admin/testimonial/delete/{id}', [TestimonialController::class,'destr
 
 //feedback
 Route::get('admin/feedback/view', [ProductController::class,'feedbackindex'])->name('admin.feedback.index');
+//contact
+Route::get('admin/contact/view', [ProductController::class,'contactindex'])->name('admin.contact.index');
 
 
 //team members
@@ -121,8 +127,8 @@ Route::post('admin/awards/update/{id}', [AwardController::class,'update']);
 Route::get('admin/awards/delete/{id}', [AwardController::class,'destroy']);
 
 //know more
-Route::get('packages-knowmore/{id}', [PackagesController::class,'knowmore'])->name('user.knowmore');
-Route::get('test-knowmore/{id}', [PackagesController::class,'testknowmore'])->name('user.testknowmore');
+Route::get('packages-knowmore/{slug}', [PackagesController::class,'knowmore'])->name('user.knowmore');
+Route::get('test-knowmore/{slug}', [PackagesController::class,'testknowmore'])->name('user.testknowmore');
 //service
 Route::get('admin/service/view', [ServiceController::class,'index'])->name('admin.auth.service.index');
 Route::get('admin/service/create', [ServiceController::class,'create'])->name('admin.auth.service.create');
@@ -186,6 +192,7 @@ Route::post('admin/test/store', [TestController::class,'store'])->name('admin.te
 Route::get('admin/test/edit/{id}', [TestController::class,'edit'])->name('admin.test.edit');
 Route::post('admin/test/update/{id}', [TestController::class,'update']);
 Route::get('admin/test/delete/{id}', [TestController::class,'destroy']);
+
 
 //testbooking
 Route::post('admin/testbooking/store', [TestBookingController::class,'store'])->name('admin.testbooking.store');
@@ -261,6 +268,8 @@ Route::get('doctor-department', [DepartmentsController::class,'index'])->name('u
 Route::get('doctors-test', [TestControllers::class,'index'])->name('user.test');
 Route::get('doctors-packages', [PackagesController::class,'index'])->name('user.packages');
 Route::get('doctors-contact', [ContactController::class,'contact'])->name('user.contactss');
+Route::post('patients-contact-store', [ContactController::class,'storecontact'])->name('contact.store');
+
 Route::post('contact-search', [ContactController::class, 'search'])->name('user.contactsearch');
 Route::get('covid-test', [PopularController::class, 'covid'])->name('covdi19');
 

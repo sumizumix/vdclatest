@@ -19,9 +19,9 @@
                 </div>
                 <div class="fs-18 fw-300 mb-30px w-80 sm-w-100 opacity-6 d-block mx-auto mx-lg-0 overflow-hidden">
                     <span class="d-inline-block lh-32"
-                        data-anime='{ "translateY": [100, 0], "easing": "easeOutCubic", "duration": 900, "delay": 300 }'>Lorem
-                        ipsum dolor sit amet consectetur adipisicing elit. Quis a cumque omnis esse cum, facilis porro
-                        inventore.</span>
+                        data-anime='{ "translateY": [100, 0], "easing": "easeOutCubic", "duration": 900, "delay": 300 }'>Discover
+                        the most trusted and advanced diagnostic laboratories dedicated to providing accurate and
+                        reliable testing services.</span>
                 </div>
                 <div class="overflow-hidden pt-5px">
                     <a href="{{ route('user.patientspage') }}"
@@ -41,16 +41,16 @@
                         </div>
                     </div>
                     {{-- whatsapp --}}
-            <!--        <div class="container">-->
-                    
-            <!--            <p>Contact Us on WhatsApp</p>-->
-                    
-        {{-- <a id="whatsapp-link"
+                    <!--        <div class="container">-->
+
+                    <!--            <p>Contact Us on WhatsApp</p>-->
+
+                    {{-- <a id="whatsapp-link"
                target="_blank"
             class="btn btn-success">
           <i class="bi bi-whatsapp"></i> Chat on WhatsApp
             </a> --}}
-            <!--        </div>-->
+                    <!--        </div>-->
                     {{-- whatsapp --}}
                 </div>
             </div>
@@ -67,49 +67,45 @@
             class="row justify-content-between overlap-section border-radius-6px overflow-hidden row-gap-3 lg-p-20px p-30px bg-white g-0 box-shadow-extra-large">
             <div class="col-6 col-lg-2 process-step-style-07 position-relative p-0 float-left">
 
-          
 
 
 
 
 
-            @if (Auth::check())
-            <a href="{{ route('cart.homesamplecollection') }}" class="process-step-item d-flex align-items-center"    >
-                <div class="process-step-icon-wrap position-relative">
-                    <div
-                        class="process-step-icon d-flex justify-content-center align-items-center mx-auto rounded-circle -bg-black h-40px w-40px bg-base-color fs-17 fw-500">
-                        
-                        <img class="-bg-vdc-orange rounded p-10px"
-                            src="{{ asset('frontend/vdc_images/blood-tube.png') }}" style="filter: invert(1);">
-                    </div>
-                </div>
-                <div class="process-content ps-10px last-paragraph-no-margin">
-                    <span class="d-block fw-600 text-dark-gray fs-14 ls-minus-05px lh-sm alt-font">Book Home
-                        Collection</span>
-                </div>
-            </a>
-        @else
-          
-               
 
+                @if (Auth::check())
+                    <a href="{{ route('cart.homesamplecollection') }}"
+                        class="process-step-item d-flex align-items-center">
+                        <div class="process-step-icon-wrap position-relative">
+                            <div
+                                class="process-step-icon d-flex justify-content-center align-items-center mx-auto rounded-circle -bg-black h-40px w-40px bg-base-color fs-17 fw-500">
 
-
-            <a href="#" class="process-step-item d-flex align-items-center" 
-            data-bs-toggle="modal" data-bs-target="#loginModal">
-                    <div class="process-step-icon-wrap position-relative">
-                        <div
-                            class="process-step-icon d-flex justify-content-center align-items-center mx-auto rounded-circle -bg-black h-40px w-40px bg-base-color fs-17 fw-500">
-                            
-                            <img class="-bg-vdc-orange rounded p-10px"
-                                src="{{ asset('frontend/vdc_images/blood-tube.png') }}" style="filter: invert(1);">
+                                <img class="-bg-vdc-orange rounded p-10px"
+                                    src="{{ asset('frontend/vdc_images/blood-tube.png') }}" style="filter: invert(1);">
+                            </div>
                         </div>
-                    </div>
-                    <div class="process-content ps-10px last-paragraph-no-margin">
-                        <span class="d-block fw-600 text-dark-gray fs-14 ls-minus-05px lh-sm alt-font">Book Home
-                            Collection</span>
-                    </div>
-                </a>
-        @endif
+                        <div class="process-content ps-10px last-paragraph-no-margin">
+                            <span class="d-block fw-600 text-dark-gray fs-14 ls-minus-05px lh-sm alt-font">Book Home
+                                Collection</span>
+                        </div>
+                    </a>
+                @else
+                    <a href="#" class="process-step-item d-flex align-items-center" data-bs-toggle="modal"
+                        data-bs-target="#loginModal">
+                        <div class="process-step-icon-wrap position-relative">
+                            <div
+                                class="process-step-icon d-flex justify-content-center align-items-center mx-auto rounded-circle -bg-black h-40px w-40px bg-base-color fs-17 fw-500">
+
+                                <img class="-bg-vdc-orange rounded p-10px"
+                                    src="{{ asset('frontend/vdc_images/blood-tube.png') }}" style="filter: invert(1);">
+                            </div>
+                        </div>
+                        <div class="process-content ps-10px last-paragraph-no-margin">
+                            <span class="d-block fw-600 text-dark-gray fs-14 ls-minus-05px lh-sm alt-font">Book Home
+                                Collection</span>
+                        </div>
+                    </a>
+                @endif
 
 
 
@@ -230,18 +226,18 @@
                             <p class="mb-10px fs-20">Rs {{ $rows->price }}/-</p>
                         </div>
                         <div class="d-flex justify-content-between w-100">
-                            
 
 
-                            <a href="{{ URL::to('packages-knowmore/' . $rows->id) }}"
+
+                            <a href="{{ URL::to('packages-knowmore/' . $rows->slug) }}"
                                 class="btn btn-small btn-vdc-gray  btn-rounded btn-hover-animation-switch btn-round btn-box-shadow">
                                 Know More</a>
 
 
                             </button>
                             @if (Auth::check())
-                            <button
-                                class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600"
+                                <button
+                                    class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600"
                                     onclick="handleAddToCart({{ $rows->id }},'package')">
                                     <span>
                                         <span class="btn-text">Book Now</span>
@@ -249,15 +245,15 @@
                                     </span>
                                 @else
                                     <button
-                                    class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600"
-                                    data-bs-toggle="modal" data-bs-target="#loginModal">
+                                        class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600"
+                                        data-bs-toggle="modal" data-bs-target="#loginModal">
                                         <span>
                                             <span class="btn-double-text" data-text="Login">Book Now</span>
                                         </span>
-                                   </button>
+                                    </button>
                             @endif
                         </div>
-{{-- <div class="d-flex justify-content-between w-100">
+                        {{-- <div class="d-flex justify-content-between w-100">
                             <button
                                 class="btn btn-vdc-gray btn-small btn-rounded btn-box-shadow btn-switch-text fw-600"
                                 data-bs-toggle="modal" data-bs-target="#knowMoreModal"
@@ -302,7 +298,7 @@
                 </div>
                 <div class="feature-box-content">
                     <span class="alt-font text-black fs-18">
-                        <a href="{{ route('user.packages') }}"
+                        <a href="{{ route('user.patientspage') }}"
                             class="text-decoration-line-bottom text-black fw-500">View All Health
                             Packages</a></span>
                 </div>
@@ -329,7 +325,7 @@
                         Diagnostic
                         Center</h2>
                     <p class="w-90 sm-w-100">{{ $row->description }}</p>
-                    <a href="#"
+                    <a href="{{ route('user.about') }}"
                         class="btn btn-large btn-dark-gray btn-box-shadow btn-rounded btn-switch-text mt-4">
                         <span>
                             <span class="btn-double-text" data-text="Know more">Know more</span>
@@ -350,8 +346,8 @@
         <div class="row align-items-center mb-3 sm-mb-9 text-start -text-lg-start">
             <div class="col-lg-5 md-mb-20px">
                 <h3 class="text-black fw-700 mb-0 +ls-minus-1px mb-20px">Individual Tests</h3>
-                <p class="fs-16 lh-base text-black">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis,
-                    veniam commodi? Facilis, ratione minus! Vero.</p>
+                <p class="fs-16 lh-base text-black">Experience cutting-edge diagnostics at laboratories that set the
+                    standard for excellence</p>
             </div>
             <div class="col-lg-7 d-flex justify-content-start justify-content-lg-end">
                 <div
@@ -415,43 +411,63 @@
                                                     {{ $row->name }}</h4>
                                                 <p class="mb-10px lh-sm fs-15">{{ $row->description }}</p>
                                             </div>
-                                           
-                                            <div class="d-flex justify-content-between w-100">
-                                        
 
-                                                <a href="{{ URL::to('test-knowmore/' . $row->id) }}"
+                                            <div class="d-flex justify-content-between w-100">
+
+
+                                                <a href="{{ URL::to('test-knowmore/' . $row->slug) }}"
                                                     class="btn btn-very-small btn-vdc-gray btn-hover-animation-switch btn-rounded btn-box-shadow">
-                                                Know More</a>
- 
- 
+                                                    Know More</a>
+
+
                                                 @if (Auth::check())
-                                                  <button
-                                                    class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600"
-                                                       onclick="handleAddToCart({{ $row->id }},'test')">
-                                                         <span>
-                                                         <span class="btn-double-text"
-                                                              data-text="Book
+                                                    <button
+                                                        class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600"
+                                                        onclick="handleAddToCart({{ $row->id }},'test')">
+                                                        <span>
+                                                            <span class="btn-double-text"
+                                                                data-text="Book
                                                Now">Book
-                                                               Now</span>
- 
+                                                                Now</span>
+
                                                         </span>
-                                                     </button>
-                                                 @else
-                                                     <button
-                                                     class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600"
-                                                         data-bs-toggle="modal" data-bs-target="#loginModal">
-                                                         <span>
-                                                             <span class="btn-double-text" data-text="Login">Book
-                                                                 Now</span>
-                                                         </span>
-                                                     </button>
+                                                    </button>
+                                                @else
+                                                    <button
+                                                        class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600"
+                                                        data-bs-toggle="modal" data-bs-target="#loginModal">
+                                                        <span>
+                                                            <span class="btn-double-text" data-text="Login">Book
+                                                                Now</span>
+                                                        </span>
+                                                    </button>
                                                 @endif
-</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
+                    </div>
+                </div>
+
+
+                
+            </div>
+       
+        </div>
+        <div class="row justify-content-center mt-2">
+            <div class="col-auto icon-with-text-style-08 sm-mb-10px"
+                data-anime='{ "translateX": [-50, 0], "opacity": [0,1], "duration": 900, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                <div class="feature-box feature-box-left-icon-middle">
+                    <div class="feature-box-icon me-10px">
+                        <i class="bi bi-eye icon-small text-black"></i>
+                    </div>
+                    <div class="feature-box-content">
+                        <span class="alt-font text-black fs-18">
+                            <a href="{{ route('user.testpage') }}"
+                                class="text-decoration-line-bottom text-black fw-500">View All Individual Tests
+                               </a></span>
                     </div>
                 </div>
             </div>
@@ -491,7 +507,8 @@
                                 <div
                                     class="box-shadow-extra-large services-box-style-01 hover-box last-paragraph-no-margin border-radius-4px overflow-hidden">
                                     <div class="position-relative box-image">
-                                        <img src="{{ asset('frontend/vdc_images/pack-04.webp') }}" alt />
+                                        <img src="{{ asset('uploads/' . $row->image) }}"
+                                        class="rounded h-240px w-100 object-fit-cover" />
                                     </div>
                                     <div class="bg-white" style="min-height: 150px;">
                                         <div class="ps-50px min-h-150px pe-50px pt-35px sm-p-35px sm-pb-0">
@@ -512,10 +529,6 @@
                                 </div>
                             </div>
                         @endforeach
-
-
-
-
 
 
                     </div>
@@ -689,7 +702,7 @@
         <div class="row align-items-center justify-content-center">
             <div class="col-xl-5 col-lg-7 col-md-8 position-relative text-center text-xl-start lg-mb-15px"
                 data-anime='{ "translateY": [0, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                <span class="text-base-color fw-600 mb-15px text-uppercase d-block">Client feedback</span>
+                <span class="text-base-color fw-600 mb-15px text-uppercase d-block">Patients feedback</span>
                 <h3 class="alt-font fw-700 ls-minus-1px text-dark-gray mb-20px mx-auto">What do people say about our
                     services?</h3>
 
@@ -817,23 +830,26 @@
                     <span class="fw-bold text-orange">Upload Prescription</span>
                     <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('user.prescription.store') }}" class="row g-3" method="POST"
-                    enctype="multipart/form-data">
+                <form id="uploadprescription" action="{{ route('user.prescription.store') }}" class="row g-3" method="POST"
+                    enctype="multipart/form-data" >
                     @csrf
                     <div class="col-md-6">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
+                        <input type="text" class="form-control" id="prename" name="name" >
+                        <div class="text-danger" id="name-val"></div>
                     </div>
                     <div class="col-md-6">
                         <label for="phone" class="form-label">Phone Number</label>
-                        <input type="text" class="form-control" id="phone" name="phone" required>
+                        <input type="number" class="form-control" id="prephone" name="phone">
+                        <div class="text-danger" id="Phone-val"></div>
                     </div>
                     <div class="col-md-12">
                         <label for="prescription" class="form-label">Prescription</label>
-                        <input type="file" class="form-control" id="prescription" name="prescription" required>
+                        <input type="file" class="form-control" id="prepre" name="prescription" >
+                        <div class="text-danger" id="pre-val"></div>
                     </div>
                     <div class="col">
-                        <button type="submit"
+                       <button type="button" onclick="validateFormprescription()"
                             class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600 mt-20px">
                             <span>
                                 <span class="btn-double-text" data-text="Upload">Upload</span>
@@ -924,26 +940,31 @@
                     @csrf
                     <div class="col-md-6">
                         <label for="patientName" class="form-label">Patient Name</label>
-                        <input type="text" class="form-control" id="patientName" name="patient_name" required>
+                        <input type="text" class="form-control" id="patientName" name="patient_name">
+                        <div class="text-danger" id="name-validation"></div>
                     </div>
                     <div class="col-md-6">
                         <label for="patientPhone" class="form-label">Phone Number</label>
-                        <input type="text" class="form-control" id="patientPhone" name="phone" required>
+                        <input type="number" class="form-control" id="patientPhone" name="phone">
+                        <div class="text-danger" id="Phone-validation"></div>
                     </div>
                     <div class="col-md-6">
                         <label for="patientEmail" class="form-label">Email</label>
                         <input type="email" class="form-control" id="patientEmail" name="email" required>
+                        <div class="text-danger" id="email-validation"></div>
                     </div>
                     <div class="col-md-6">
                         <label for="appointmentDate" class="form-label">Preferred Appointment Date</label>
-                        <input type="date" class="form-control" id="appointmentDate" name="date" required>
+                        <input type="date" class="form-control" id="appointmentDate" name="date">
+                        <div class="text-danger" id="date-validation"></div>
                     </div>
                     <div class="col-md-12">
                         <label for="additionalInfo" class="form-label">Additional Information</label>
                         <textarea class="form-control" id="additionalInfo" name="additional" rows="3"></textarea>
+                        <div class="text-danger" id="add-validation"></div>
                     </div>
                     <div class="col">
-                        <button type="submit"
+                        <button type="button" onclick="validateFormctscan()"
                             class="btn btn-base-color btn-small btn-rounded btn-box-shadow btn-switch-text fw-600 mt-20px">
                             <span>
                                 <span class="btn-double-text" data-text="Book now">Book Appointment</span>
@@ -1098,8 +1119,6 @@
 
 
 <script>
-   
-
     document.addEventListener('DOMContentLoaded', function() {
         var whatsappLink = document.getElementById('whatsapp-link');
         var phone = '00000000';
@@ -1115,55 +1134,72 @@
         }
     });
 </script>
+<script>
+    function validateFormctscan() {
+        const phoneInput = document.getElementById('patientPhone').value;
+        const emailInput = document.getElementById('patientEmail').value;
+        // var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var emailPattern = /^(?!\.)[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const nameInput = document.getElementById('patientName').value;
+        const addInput = document.getElementById('additionalInfo').value;
+        const dateInput = document.getElementById('appointmentDate').value;
+        // var emailPattern =^[^\.].*;
+        // e.preventDefault();
+        var validation = true;
+        if (phoneInput.length < 10 || phoneInput.length > 15) {
+            document.getElementById('Phone-validation').innerHTML = "Please enter a valid number";
+            validation = false;
+        }
+        if (!emailPattern.test(emailInput)) {
+            document.getElementById('email-validation').innerHTML = "Please enter a valid email";
+            validation = false;
+        } 
+        if (nameInput.length === 0) {
+            document.getElementById('name-validation').innerHTML = "Please enter the name";
+            validation = false;
+        } 
+        if (addInput.length === 0) {
+            document.getElementById('add-validation').innerHTML = "Please enter the additional information";
+            validation = false;
+        } 
+        if (dateInput.length === 0) {
+            document.getElementById('date-validation').innerHTML = "select the date";
+            validation = false;
+        }
+        if (validation) {
+            document.getElementById('ctScanBookingForm').submit();
 
-{{-- <script>
-    const express = require('express');
-const bodyParser = require('body-parser');
-const request = require('request');
-
-const app = express();
-app.use(bodyParser.json());
-
-const token = 'YOUR_WHATSAPP_API_TOKEN';
-const phoneNumberId = 'YOUR_PHONE_NUMBER_ID';
-
-app.post('/webhook', (req, res) => {
-    const message = req.body.entry[0].changes[0].value.messages[0];
-    const from = message.from; // extract the phone number of the sender
-    const text = message.text.body; // extract the message text
-
-    if (text) {
-        sendReply(from, 'Welcome to VDC');
+        }
     }
+</script>
 
-    res.sendStatus(200);
-});
 
-function sendReply(to, message) {
-    request({
-        url: `https://graph.facebook.com/v13.0/${phoneNumberId}/messages`,
-        method: 'POST',
-        json: {
-            messaging_product: 'whatsapp',
-            to: to,
-            text: { body: message }
-        },
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+
+
+<script>
+    function validateFormprescription() {
+        const phoneInput = document.getElementById('prephone').value;   
+        const nameInput = document.getElementById('prename').value;
+        const preInput = document.getElementById('prepre').value;
+     
+        var validation = true;
+        if (phoneInput.length < 10 || phoneInput.length > 15) {
+            document.getElementById('Phone-val').innerHTML = "Please enter a valid number";
+            validation = false;
         }
-    }, (error, response, body) => {
-        if (error) {
-            console.error('Error sending message:', error);
-        } else {
-            console.log('Message sent:', body);
+    
+        if (nameInput.length === 0) {
+            document.getElementById('name-val').innerHTML = "Please enter the name";
+            validation = false;
+        } 
+        if (preInput.length === 0) {
+            document.getElementById('pre-val').innerHTML = "Upload the prescription";
+            validation = false;
+        } 
+       
+        if (validation) {
+            document.getElementById('uploadprescription').submit();
+
         }
-    });
-}
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
-
-    </script> --}}
+    }
+</script>

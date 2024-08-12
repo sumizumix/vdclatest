@@ -142,6 +142,7 @@ class CartController extends Controller
             ->select('users.*', 'report.name as rname', 'report.*')
             ->join('users', 'users.phone', '=', 'report.phone')
             ->where('users.id', Auth::id())
+            ->orderBy('report.updated_at', 'desc') 
             ->get();
 
         return view('user.auth.patients.download', compact('report'));
@@ -235,8 +236,8 @@ class CartController extends Controller
             ->leftJoin('product', 'product.id', '=', 'cart.product_id')
             ->leftJoin('test', 'test.id', '=', 'cart.product_id')
             ->join('users', 'users.id', '=', 'cart.user_id')
-
             ->where('users.id', Auth::id())
+            ->orderBy('cart.updated_at', 'desc') 
             ->get();
 
 

@@ -17,7 +17,7 @@
                 <div class="mt-auto justify-content-end breadcrumb breadcrumb-style-01 fs-14 text-white"
                     data-anime='{ "translateY": [30, 0], "opacity": [0, 1], "easing": "easeOutCubic", "duration": 500, "staggervalue": 300, "delay": 300 }'>
                     <ul>
-                        <li>Home</li>
+                        <li><a href="{{ url('/') }}" class="text-white">Home</a></li>
                         <li>Home Sample Collection</li>
                     </ul>
                 </div>
@@ -51,7 +51,7 @@
                             <th scope="col">Name</th>
                            
                             <th scope="col">Address</th>
-                            {{-- <th scope="col">Email</th> --}}
+                            <th scope="col">Age</th>
                             <th scope="col">Package</th>
                             <th scope="col">Test</th>
                             <th scope="col">Download Result</th>
@@ -62,12 +62,30 @@
                         @foreach ($booksamplecollection as $row)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $row->name }}</td>
+                                <td>{{ $row->usname }}</td>
                               
                                 <td>{{ $row->address }}</td>
-                                {{-- <td>{{ $row->email }}</td> --}}
-                                <td>{{ $row->package }}</td>
-                                <td>{{ $row->test }}</td>
+                                <td>{{ $row->age }}</td>
+
+                                <td>
+
+                                    @if ($row->package == NULL)
+                                                    No package
+                                                    @else
+                                                    {{ $row->package }}
+                                                    @endif
+                                   
+                                </td>
+                                <td>
+
+                                    @if ($row->test == NULL)
+                                                    No test
+                                                    @else
+                                                    {{ $row->test }}
+                                                    @endif
+                                   
+                                </td>
+                              
                                <td>
                                 @if($row->image== Null)
 

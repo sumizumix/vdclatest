@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Feedback;
 use App\Models\Test;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+
 use DB;
 
 class ProductController extends Controller
@@ -17,7 +19,7 @@ class ProductController extends Controller
     {
         $product = Product::all();
 
-        return view('admin.auth.product.index',compact('product'));
+        return view('admin.auth.product.index', compact('product'));
     }
 
     public function create()
@@ -27,8 +29,8 @@ class ProductController extends Controller
 
     // public function store(Request $request)
     // {
-       
-        
+
+
     //     $photo = new Product();
     //     $data = $request->only($photo->getFillable());
 
@@ -55,30 +57,32 @@ class ProductController extends Controller
     {
         $photo = new Product();
         $data = $request->only($photo->getFillable());
-    
+
         $request->validate([
             'name' => 'required',
             'parameter' => 'required|array',
-            
+            'image' => 'nullable|image|required|mimes:jpeg,png,jpg,gif|max:2048',
+
         ]);
-    
+        $test = implode(",", $request->parameter);
+        $data['parameter'] = $test;
+
         // Count the number of records in the 'product' table to generate a new id
         $count = DB::table('product')->count();
         $ai_id = $count + 1;
-    
+
         // Handle image upload
         $ext = $request->file('image')->extension();
         $final_name = 'package-' . $ai_id . '.' . $ext;
         $request->file('image')->move(public_path('uploads/'), $final_name);
         $data['image'] = $final_name;
-    
-        // Convert the array of parameters into a comma-separated string
-        $data['parameter'] = implode(',', $request->input('parameter'));
-    
+
+
+
         $photo->fill($data)->save();
         return redirect()->route('admin.product.index')->with('success', 'Package is added successfully!');
     }
-    
+
 
 
 
@@ -101,45 +105,45 @@ class ProductController extends Controller
     public function search(Request $request)
     {
         $query = $request->input('s');
-    
+
         // Search for products by name
         $product = Product::where('name', 'LIKE', "%{$query}%")->get();
-    
+
         // If the request expects JSON (autocomplete), return JSON
         if ($request->expectsJson()) {
             return response()->json($product);
         }
-    
+
         // Pass the search results to the view
         return view('user.auth.patients.index', compact('product', 'query'));
     }
-    
-//     public function testsearch(Request $request)
-// {
-//     $query= $request->input('s');
 
-//     // Search for products by name
-//     $test = Test::where('name', 'LIKE', "%{$query}%")->paginate()->withQueryString();;
+    //     public function testsearch(Request $request)
+    // {
+    //     $query= $request->input('s');
 
-//     // Pass the search results to the view
-     
-//     return view('user.auth.patients.testpage', compact('test', 'query'));
-// }
-public function testsearch(Request $request)
-{
-    $query = $request->input('s');
+    //     // Search for products by name
+    //     $test = Test::where('name', 'LIKE', "%{$query}%")->paginate()->withQueryString();;
 
-    // Search for tests by name with pagination
-    $test = Test::where('name', 'LIKE', "%{$query}%")->paginate()->withQueryString();
+    //     // Pass the search results to the view
 
-    // If the request expects JSON (autocomplete), return JSON
-    if ($request->expectsJson()) {
-        return response()->json($test->items());
+    //     return view('user.auth.patients.testpage', compact('test', 'query'));
+    // }
+    public function testsearch(Request $request)
+    {
+        $query = $request->input('s');
+
+        // Search for tests by name with pagination
+        $test = Test::where('name', 'LIKE', "%{$query}%")->paginate()->withQueryString();
+
+        // If the request expects JSON (autocomplete), return JSON
+        if ($request->expectsJson()) {
+            return response()->json($test->items());
+        }
+
+        // Pass the search results to the view
+        return view('user.auth.patients.testpage', compact('test', 'query'));
     }
-
-    // Pass the search results to the view
-    return view('user.auth.patients.testpage', compact('test', 'query'));
-}
 
 
     public function edit($id)
@@ -152,23 +156,22 @@ public function testsearch(Request $request)
     {
         // Find the product by its ID
         $product = Product::findOrFail($id);
-    
+
         // Validate the incoming request data
         $request->validate([
             'name' => 'required',
         ]);
-    
+
         // Update the product data
         $data = $request->only($product->getFillable());
-        
+
         // If a new image file is uploaded, update the image
-         if ($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
             $path = public_path('uploads/' . $product->image);
 
             // Check if the file exists before trying to delete it
             if (file_exists($path)) {
                 unlink($path);
-                
             }
             // Upload the new image file
             $ext = $request->file('image')->extension();
@@ -179,19 +182,19 @@ public function testsearch(Request $request)
         $data['parameter'] = implode(',', $request->input('parameter'));
         // Save the updated product data
         $product->update($data);
-    
+
         // Redirect back with success message
         return redirect()->route('admin.product.index')->with('success', 'package is updated successfully!');
     }
-    
+
     public function destroy($id)
     {
         // if(env('PROJECT_MODE') == 0) {
         //     return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
         // }
-        
+
         $product = Product::findOrFail($id);
-        unlink(public_path('uploads/'.$product->image));
+        unlink(public_path('uploads/' . $product->image));
         $product->delete();
         return Redirect()->back()->with('success', 'Package  deleted successfully!');
     }
@@ -199,5 +202,16 @@ public function testsearch(Request $request)
     {
         $feedback = Feedback::orderBy('created_at', 'desc')->get();
         return view('admin.auth.feedback.index', compact('feedback'));
-}
+    }
+    public function contactindex()
+    {
+        $feedback = Contact::orderBy('created_at', 'desc')->get();
+        return view('admin.auth.feedback.contactindex', compact('feedback'));
+    }
+
+
+
+    
+
+    
 }

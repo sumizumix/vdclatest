@@ -62,15 +62,18 @@
                             class="fs-15 ps-0 border-radius-0px border-color-dark-gray bg-transparent form-control required"
                             id="exampleInputEmail1" type="text" name="name" placeholder="What's your good name" />
                     </div>
-                    <label for="exampleInputEmail1"
-                        class="form-label fs-13 text-uppercase text-dark-gray fw-700 mb-0">Email address*</label>
-                    <div class="position-relative form-group mb-20px">
-                        <span class="form-icon"><i class="bi bi-envelope text-dark-gray"></i></span>
-                        <input
-                            class="fs-15 ps-0 border-radius-0px border-color-dark-gray bg-transparent form-control required"
-                            id="exampleInputEmail2" type="email" name="email"
-                            placeholder="Enter your email address" />
-                    </div>
+                    <label for="exampleInputEmail2" class="form-label fs-13 text-uppercase text-dark-gray fw-700 mb-0">Email address*</label>
+<div class="position-relative form-group mb-20px">
+    <span class="form-icon"><i class="bi bi-envelope text-dark-gray"></i></span>
+    <input
+        class="fs-15 ps-0 border-radius-0px border-color-dark-gray bg-transparent form-control required"
+        id="exampleInputEmail2" type="email" name="email"
+        placeholder="Enter your email address"
+        pattern="^[^\.].*"
+        title="Email address should not start with a dot."
+        required />
+</div>
+
                     <label for="exampleInputEmail1"
                         class="form-label fs-13 text-uppercase text-dark-gray fw-700 mb-0">Your feedback</label>
                     <div class="position-relative form-group form-textarea mb-0">

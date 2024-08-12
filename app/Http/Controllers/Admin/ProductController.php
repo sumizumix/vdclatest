@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Feedback;
 use App\Models\Test;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
@@ -202,6 +203,12 @@ class ProductController extends Controller
         $feedback = Feedback::orderBy('created_at', 'desc')->get();
         return view('admin.auth.feedback.index', compact('feedback'));
     }
+    public function contactindex()
+    {
+        $feedback = Contact::orderBy('created_at', 'desc')->get();
+        return view('admin.auth.feedback.contactindex', compact('feedback'));
+    }
+
 
 
     

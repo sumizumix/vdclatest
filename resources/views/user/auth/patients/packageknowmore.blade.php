@@ -73,6 +73,10 @@
                                         </div>
                                     </div>
                                 </div>
+                                @if($packages->parameter==NULL)
+
+                                
+                                @else
                                 <div class="row pt-4">
                                     <div class="col-12">
                                         <h6 class="text-dark fw-600 fs-18">Parameter:</h6>
@@ -88,10 +92,10 @@
                                             @endforeach
 
                                         </p>
-                                        <!-- <p><strong> parameter:</strong> {{ $packages->parameter }}</p> -->
+                                    
                                     </div>
                                 </div>
-
+@endif
 
                                 <!-- <p><strong>Price:</strong> ${{ $packages->price }}</p> -->
                             </div>
@@ -100,7 +104,7 @@
                 </div>
 
                 <div class="col-lg-4 wow fadeInUp mt-0 sm-mt-4">
-                    <div class="card shadow-sm h-100">
+                    <div class="card shadow-sm ">
                         <div class="card-body d-flex flex-column -ps-4">
                             <h6 class="text-base-color fw-700 fs-28 text-center text-uppercase">Patients Packages</h6>
                             <div
@@ -111,7 +115,7 @@
                                         @foreach ($test as $product)
                                             <div class="swiper-slide">
                                                 <div
-                                                    class="box-shadow-extra-large services-box-style-01 hover-box last-paragraph-no-margin border-radius-6px overflow-hidden border-bottom border-4 border-base-color">
+                                                    class="box-shadow-extra-large services-box-style-01 hover-box last-paragraph-no-margin border-radius-6px overflow-hidden border-bottom border-4 border-base-color pb-3">
                                                     <div class="position-relative box-image">
                                                         <img src="{{ asset('uploads/' . $product->image) }}"
                                                             class="rounded h-240px w-100 object-fit-cover" />
@@ -128,9 +132,32 @@
                                                                 ₹ {{ $product->price }}</p>
 
                                                             <a href="{{ URL::to('packages-knowmore/' . $product->slug) }}"
-                                                                class="btn btn-very-small btn-vdc-orange btn-hover-animation-switch btn-round-edge btn-box-shadow"><i
+                                                                class="btn btn-very-small btn-vdc-orange btn-hover-animation-switch btn-round-edge btn-box-shadow">
+                                                                {{-- <i
                                                                     class="ti ti-pencil"></i>
-                                                                Know More</a>
+                                                                Know More --}}
+                                                                <span>
+                                                                    <span class="btn-text">Know More</span>
+                                                                    <span class="btn-icon"><i class="bi bi-arrow-up-right-square"></i></span>
+                                                                    <span class="btn-icon"><i class="bi bi-arrow-up-right-square"></i></span>
+                                                                </span>
+                                                            
+                                                            
+                                                            </a>
+
+                                                                <button
+                                                                class="btn btn-very-small btn-base-color btn-hover-animation-switch btn-round-edge btn-box-shadow ms-5px"
+                                                                onclick="handleAddToCart({{ $product->id }})">
+                                                                <span>
+                                                                    <span class="btn-text">Add to Cart</span>
+                                                                    <span class="btn-icon"><i
+                                                                            class="feather icon-feather-shopping-cart"></i></span>
+                                                                    <span class="btn-icon"><i
+                                                                            class="feather icon-feather-shopping-cart"></i></span>
+                                                                </span>
+                                                            </button>
+
+
                                                         </div>
                                                     </div>
                                                 </div>

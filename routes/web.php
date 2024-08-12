@@ -81,7 +81,7 @@ Route::post('admin/report/search', [ReportController::class, 'search'])->name('a
 Route::get('admin/about/view', [PageAboutController::class,'index'])->name('admin.auth.about.index');
 Route::post('admin/about/update', [PageAboutController::class,'update']);
 Route::post('admin/about/updateprofile', [PageAboutController::class,'updateprofile']);
-Route::post('   ', [PageAboutController::class,'userupdateprofile']);
+Route::post('admin/about/userupdateprofile', [PageAboutController::class,'userupdateprofile']);
 //Location
 
 Route::get('admin/location/view', [LocationController::class,'index'])->name('admin.auth.location.index');
@@ -102,6 +102,8 @@ Route::get('admin/testimonial/delete/{id}', [TestimonialController::class,'destr
 
 //feedback
 Route::get('admin/feedback/view', [ProductController::class,'feedbackindex'])->name('admin.feedback.index');
+//contact
+Route::get('admin/contact/view', [ProductController::class,'contactindex'])->name('admin.contact.index');
 
 
 //team members
@@ -263,6 +265,8 @@ Route::get('doctor-department', [DepartmentsController::class,'index'])->name('u
 Route::get('doctors-test', [TestControllers::class,'index'])->name('user.test');
 Route::get('doctors-packages', [PackagesController::class,'index'])->name('user.packages');
 Route::get('doctors-contact', [ContactController::class,'contact'])->name('user.contactss');
+Route::post('patients-contact-store', [ContactController::class,'storecontact'])->name('contact.store');
+
 Route::post('contact-search', [ContactController::class, 'search'])->name('user.contactsearch');
 Route::get('covid-test', [PopularController::class, 'covid'])->name('covdi19');
 

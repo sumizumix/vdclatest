@@ -228,8 +228,16 @@
                                     {{ $cartCount }}
                                 </span>
                             </a>
+                            
                         </div>
 
+                        @if (Auth::check() && Auth::user()->role_id != 0)
+                        <a href="#" class="process-step-item d-flex align-items-center" data-bs-toggle="modal"
+                            data-bs-target="#changepassword">
+                            <i class="ti ti-user fs-6" style="margin-left: 10px"></i>
+
+                        </a>
+                    @endif
                         @if (Auth::check() && Auth::user()->role_id == 0)
                             <div class="nav-item dropdown">
                                 <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2"
@@ -289,13 +297,7 @@
                         @endif
                     </div>
 
-                    @if (Auth::check() && Auth::user()->role_id != 0)
-                        <a href="#" class="process-step-item d-flex align-items-center" data-bs-toggle="modal"
-                            data-bs-target="#changepassword">
-                            <i class="ti ti-user fs-6"></i>
-
-                        </a>
-                    @endif
+                  
 
                 </div>
         </nav>
@@ -401,7 +403,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+            const   = new bootstrap.Modal(document.getElementById('loginModal'));
             const registrationModal = new bootstrap.Modal(document.getElementById('registrationModal'));
 
             document.getElementById('showSignUp').addEventListener('click', function() {

@@ -69,8 +69,16 @@
 
 
                         <a href="{{ URL::to('packages-knowmore/' . $product->slug) }}"
-                           class="btn btn-very-small btn-dark-gray btn-hover-animation-switch btn-round-edge btn-box-shadow"><i class="ti ti-pencil"></i>
-                         Know More</a>
+                           class="btn btn-very-small btn-dark-gray btn-hover-animation-switch btn-round-edge btn-box-shadow">
+                           {{-- <i class="ti ti-pencil"></i>
+                         Know More --}}
+                         <span>
+                            <span class="btn-text">Know More</span>
+                            <span class="btn-icon"><i class="bi bi-arrow-up-right-square"></i></span>
+                            <span class="btn-icon"><i class="bi bi-arrow-up-right-square"></i></span>
+                        </span>
+                        
+                        </a>
 
                             <button
                                 class="btn btn-very-small btn-base-color btn-hover-animation-switch btn-round-edge btn-box-shadow ms-5px"

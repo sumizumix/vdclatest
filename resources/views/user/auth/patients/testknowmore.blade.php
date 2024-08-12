@@ -77,6 +77,10 @@
                                         
                                     </div>
                                 </div>
+                                @if($packages->parameter==NULL)
+
+                                
+                                @else
                                 <div class="row pt-4">
                                     <div class="col-12">
                                         <h6 class="text-dark fw-600 fs-18">Parameter:</h6>
@@ -93,15 +97,16 @@
                                     </div>
                                 </div>
 
-
+                            
+                            @endif
                                 <!-- <p><strong>Price:</strong> ${{ $packages->price }}</p> -->
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="col-lg-4 wow fadeInUp mt-0 sm-mt-4">
-                    <div class="card shadow-sm h-100">
+                <div class="col-lg-4 wow fadeInUp mt-0 sm-mt-4" >
+                    <div class="card shadow-sm">
                         <div class="card-body d-flex flex-column -ps-4">
                              <h6 class="text-base-color fw-700 fs-28 text-center text-uppercase">Patients Tests</h6>
                              <div class="-outside-box-right-15 -xl-outside-box-right-20 -sm-outside-box-right-0 overflow-hidden">
@@ -109,7 +114,7 @@
                         <div class="swiper-wrapper pt-30px pb-30px">
                             @foreach ($test as $product)
                             <div class="swiper-slide">
-                                <div class="box-shadow-extra-large services-box-style-01 hover-box last-paragraph-no-margin border-radius-6px overflow-hidden border-bottom border-4 border-base-color">
+                                <div class="box-shadow-extra-large services-box-style-01 hover-box last-paragraph-no-margin border-radius-6px overflow-hidden border-bottom border-4 border-base-color pb-3">
                                   
                                     <div class="position-relative box-image">
                                         <img src="{{ asset('uploads/' . $product->image) }}"
@@ -123,8 +128,23 @@
                                             <a href="#"
                                                 class="d-inline-block fs-20 primary-font fw-600 text-dark-gray mb-5px"></a>
                                                 <a href="{{ URL::to('test-knowmore/' . $product->slug) }}"
-                                                    class="btn btn-very-small btn-vdc-orange btn-hover-animation-switch btn-round-edge btn-box-shadow"><i class="ti ti-pencil"></i>
-                                               Know More</a>
+                                                    class="btn btn-very-small btn-vdc-orange btn-hover-animation-switch btn-round-edge btn-box-shadow">
+                                                    {{-- <i class="ti ti-pencil"></i>
+                                               Know More --}}
+                                               <span>
+                                                <span class="btn-text">Know More</span>
+                                                <span class="btn-icon"><i class="bi bi-arrow-up-right-square"></i></span>
+                                                <span class="btn-icon"><i class="bi bi-arrow-up-right-square"></i></span>
+                                            </span>
+                                            
+                                            </a>
+                                               <button class="btn btn-very-small btn-base-color btn-hover-animation-switch btn-round-edge btn-box-shadow" onclick="handleAddToCart({{ $product->id }})">
+                                                <span>
+                                                    <span class="btn-text">Add to Cart</span>
+                                                    <span class="btn-icon"><i class="feather icon-feather-shopping-cart"></i></span>
+                                                    <span class="btn-icon"><i class="feather icon-feather-shopping-cart"></i></span>
+                                                </span>
+                                            </button>
                                         </div>
                                     </div>
                                     

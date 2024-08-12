@@ -74,15 +74,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-7 ps-50px lg-ps-15px">
+            {{-- <div class="col-lg-7 ps-50px lg-ps-15px">
                 <div class="row row-cols-1 row-cols-sm-2 justify-content-center">
                     @foreach ($contact as $location)
-                        {{-- @dump($location) --}}
+                
                         <div class="col xs-mb-30px"
                             data-anime='{ "translateY": [50, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
                             <div class="bg-very-light-gray h-100 fs-17 lh-30 p-20px lg-p-20px border-radius-5px">
-                                {{-- <img src="images/demo-accounting-contact-office.jpg" class="border-radius-4px mb-30px lg-mb-20px" /> --}}
-                                {!! $location->mapcode !!}
+                                   {!! $location->mapcode !!}
                                 <h5 class="text-dark-gray fs-18 fw-600 d-inline-block">{{ $location->labname }}</h5>
                                 <p class="mb-15px fs-14 lh-sm">
                                     <span class="text-dark-gray fw-600">
@@ -109,9 +108,36 @@
                         </div>
                     @endforeach
                 </div>
+            </div> --}}
+
+            <div class="col-lg-7 ps-50px lg-ps-15px">
+                <div class="row row-cols-1 row-cols-sm-2 justify-content-center">
+            <div class="contact-form">
+                <h3 class="text-dark-gray fw-700 ls-minus-2px w-90 md-w-100">Contact Us</h3>
+                <form action="{{ route('contact.store') }}" method="post" class="contact-form-style-03">
+                    @csrf
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <input type="text" id="name" name="name" placeholder="Name" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <input type="email" id="email" name="email" placeholder="Email" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <input type="text" id="phone" name="phone" placeholder="Phone Number" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <textarea id="message" name="message" rows="3" placeholder="Message" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;"></textarea>
+                    </div>
+                    
+                    <button type="submit" style="background-color: black; color: white; border-radius: 7px; padding: 10px 20px; border: none;">Send Message</button>
+
+                </form>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+    
 </section>
 
 @include('layout.footer')

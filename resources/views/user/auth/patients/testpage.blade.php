@@ -31,14 +31,15 @@
 
                         <form action="{{ route('testsearch') }}" method="get" class="-search-form -d-flex">
                             <div class="input-group">
-                                <input type="search" class="form-control" id="search-input" placeholder="Search for a test"
-                                    aria-label="Search for a test" aria-describedby="button-addon2" name="s">
+                                <input type="search" class="form-control" id="search-input"
+                                    placeholder="Search for a test" aria-label="Search for a test"
+                                    aria-describedby="button-addon2" name="s">
                                 <button class="btn btn-base-color btn-round-edge -btn-box-shadow" type="submit"
                                     id="button-addon2">
                                     <i class="feather icon-feather-search m-0 me-5px" aria-hidden="true"></i>Search
                                 </button>
                             </div>
-                        </form> 
+                        </form>
 
                     </div>
                 </div>
@@ -64,11 +65,18 @@
                             <p class="mb-10px lh-sm fs-18 fw-bold text-base-color">₹ {{ $product->price }}</p>
                         </div>
                         <div class="mt-30px">
-                           
-                           <a href="{{ URL::to('test-knowmore/' . $product->slug) }}"
-                                class="btn btn-very-small btn-dark-gray btn-hover-animation-switch btn-round-edge btn-box-shadow"><i class="ti ti-pencil"></i>
-                           Know More</a>
-                           <button
+
+                            <a href="{{ URL::to('test-knowmore/' . $product->slug) }}"
+                                class="btn btn-very-small btn-dark-gray btn-hover-animation-switch btn-round-edge btn-box-shadow">
+                                {{-- <i class="ti ti-pencil"></i> --}}
+                              
+                                <span>
+                                    <span class="btn-text">Know More</span>
+                                    <span class="btn-icon"><i class="bi bi-arrow-up-right-square"></i></span>
+                                    <span class="btn-icon"><i class="bi bi-arrow-up-right-square"></i></span>
+                                </span>
+                            </a>
+                            <button
                                 class="btn btn-very-small btn-base-color btn-hover-animation-switch btn-round-edge btn-box-shadow ms-5px"
                                 onclick="handleAddToCart({{ $product->id }})">
                                 <span>
@@ -156,7 +164,7 @@
         var isAuthenticated = {{ Auth::check() ? 'true' : 'false' }};
         if (isAuthenticated) {
             addToCart(productId);
-         
+
         } else {
             // Show login modal
             $('#loginModal').modal('show');
@@ -170,15 +178,15 @@
             data: {
                 _token: '{{ csrf_token() }}',
                 product_id: productId,
-                 type: "test"
+                type: "test"
             },
             success: function(response) {
                 if (response.success) {
                     toastr.success('test added to cart successfully!');
-                    
+
                     setTimeout(() => {
-    window.location.reload();
-}, 1000);
+                        window.location.reload();
+                    }, 1000);
                 } else {
                     toastr.error('Failed to add test to cart. Please try again.');
                 }
@@ -225,7 +233,7 @@
 
 
 
-//dropdown
+    //dropdown
     $(function() {
         $("#search-input").autocomplete({
             source: function(request, response) {
@@ -247,11 +255,6 @@
             minLength: 1
         });
     });
-
-
-
-
-
 </script>
 
 

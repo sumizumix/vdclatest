@@ -467,10 +467,7 @@
                 loginModal.show();
             });
         });
-<<<<<<< Updated upstream
 
 
 
-=======
->>>>>>> Stashed changes
     </script>

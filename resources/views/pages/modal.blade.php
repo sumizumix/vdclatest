@@ -26,7 +26,11 @@
                                 <div class="text-danger" id="phone-validation"></div>
                             </div>
 
+<<<<<<< Updated upstream
                             <button type="submit" onclick="validateForm()"
+=======
+                            <button type="submit"
+>>>>>>> Stashed changes
                                 class="btn btn-small btn-dark-gray btn-round-edge btn-hover-animation w-100 d-block mt-20px lg-mb-15px md-mx-auto">
                                 <span>
                                     <span class="btn-text">Login</span>
@@ -41,14 +45,14 @@
 
                         {{-- <form class="-p-40px" id="registrationForm" action="{{ route('user.login.check') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                        
+
                             <!-- Phone Number Input -->
                             <div id="phoneInputDiv">
                                 <div class="mb-3">
                                     <label for="loginInput" class="form-label text-dark-gray">Phone Number</label>
                                     <input type="text" class="form-control" id="loginInput" name="phone" required>
                                 </div>
-                        
+
                                 <button type="button" onclick="generateOTP()" class="btn btn-small btn-dark-gray btn-round-edge btn-hover-animation w-100 d-block mt-20px lg-mb-15px md-mx-auto">
                                     <span>
                                         <span class="btn-text">Generate OTP</span>
@@ -56,7 +60,7 @@
                                     </span>
                                 </button>
                             </div>
-                        
+
                             <!-- OTP Input (Initially Hidden) -->
                             <div id="otpInputDiv" style="display: none;">
                                 <div class="mb-3">
@@ -66,7 +70,7 @@
                                         <div class="otp-placeholder"></div>
                                     </div>
                                 </div>
-                        
+
                                 <button type="submit" class="btn btn-small btn-dark-gray btn-round-edge btn-hover-animation w-100 d-block mt-20px lg-mb-15px md-mx-auto">
                                     <span>
                                         <span class="btn-text">Login</span>
@@ -75,7 +79,7 @@
                                 </button>
                             </div>
                         </form>
-                        
+
                         <script>
                             function generateOTP() {
                                 var phone = document.getElementById('loginInput').value;
@@ -98,7 +102,7 @@
                                 });
                             }
                         </script>
-                        
+
  --}}
 
 
@@ -377,7 +381,7 @@ function validateForm() {
             console.error('Error:', error);
         });
     });
-    
+
     document.getElementById('verifyOtpBtn').addEventListener('click', function() {
         var phone = document.getElementById('phoneInput').value;
         var otp = document.getElementById('otpInput').value;

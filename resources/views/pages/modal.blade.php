@@ -338,22 +338,7 @@
         @endif
     });
 </script>
-<script>
-function validateForm() {
-    const phoneInput = document.getElementById('loginInput').value;
 
-    var validation = true;
-    if (phoneInput.length <script 10 || phoneInput.length > 15) {
-        document.getElementById('phone-validation').innerHTML = "Please enter a valid number";
-        validation = false;
-    }
-    if (validation) {
-        document.getElementById('registrationForm').submit();
-
-    }
-}
-
-</script>
 {{-- <script>
     document.getElementById('sendOtpBtn').addEventListener('click', function() {
         var phone = document.getElementById('phoneInput').value;

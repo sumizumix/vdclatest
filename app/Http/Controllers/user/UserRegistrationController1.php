@@ -62,21 +62,76 @@ class UserRegistrationController extends Controller
         }
     }
 
-    // UserController.php
+  
     // public function loginCheck(Request $request)
     // {
-    //     $phoneNumber = $request->input('loginInput');
-    //     $pass = $request->input('loginPass');
+    //     $request->validate([
+    //         'phone' => 'required',
+    //     ]);
+    
 
-    //     // Query the user based on phone number and password
-    //     $user = Register::where('phone', $phoneNumber)
-    //                     ->where('password', $pass)
-    //                     ->first();
+    //     $fullApi='http://prioritysms.a4add.com/api/sendhttp.php?authkey=341137A6fjmQ8YSgq95f588459P1&mobiles={num}&message={msg}&sender=AMCSFN&route=4&country=91&unicode=1&DLT_TE_ID={tid}';
+    //     $tid='1207162731815046564';
+    //     $msg="AMCSFNCK B.Sc Nursing Application 2024-25. Your Applicant ID: ".$applicantid." and Password: ".$password .".\n For more details www.amcsfnck.com or https://bit.ly/3AR0uPs";;
+    //     $msg = urlencode($msg);
+    //                  $num =$mob;
+    //     $api     = str_replace(['{msg}','{num}','{tid}'],[$msg,$num,$tid],$fullApi);  
+    //     $url = $api;
+    //     $ch = curl_init($url);
+    //     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+    //     curl_setopt($ch, CURLOPT_URL,$url);
+    //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    //     $output = curl_exec ($ch);
+    //     $info = curl_getinfo($ch);
+    //     $http_result = $info ['http_code'];
+    //     curl_close ($ch);
 
+
+
+    //     $otp = random_int(100000, 999999);
+    //     $fullApi='http://prioritysms.a4add.com/api/sendhttp.php?authkey=341137A6fjmQ8YSgq95f588459P1&mobiles={num}&message={msg}&sender=AMCSFN&route=4&country=91&unicode=1&DLT_TE_ID={tid}';
+    //     $tid='1207162731815046564';
+    //     $num = $request->phone;
+    
+    //     // Check if the user already exists
+    //     $user = User::where('phone', $num)->first();
+    
     //     if ($user) {
-    //         // Attempt to log in the user
-    //         if (Auth::attempt(['phone' => $phoneNumber, 'password' => $pass])) {
-    //             // Authentication successful
+    //         // User exists, send OTP
+    //         $msg="AMCSFNCK B.Sc Nursing Application 2024-25. Your Applicant ID: ".$applicantid." and Password: ".$password .".\n For more details www.amcsfnck.com or https://bit.ly/3AR0uPs";;
+    //  } else {
+    //         // User does not exist, create new user and send OTP
+    //         $user = User::create([
+    //             'phone' => $num,
+    //             'password' => bcrypt($otp), // Save OTP as password
+    //             // You can add additional default values here if required
+    //         ]);
+    //         $msg="AMCSFNCK B.Sc Nursing Application 2024-25. Your Applicant ID: ".$applicantid." and Password: ".$password .".\n For more details www.amcsfnck.com or https://bit.ly/3AR0uPs";;
+    //     }
+    
+    //     // $msg = urlencode($msg);
+    //     $msg = urlencode($msg);
+    //     $num =$mob;
+    //     $api     = str_replace(['{msg}','{num}','{tid}'],[$msg,$num,$tid],$fullApi);
+      
+    //     $url = $api;
+    //   ;
+
+    //     $ch = curl_init($url);
+    //     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+    //     curl_setopt($ch, CURLOPT_URL,$url);
+    //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    //     $output = curl_exec ($ch);
+    //     $info = curl_getinfo($ch);
+    //     $http_result = $info ['http_code'];
+    //     curl_close ($ch);
+
+
+    //     if ($http_result == 200) {
+    //         // OTP sent successfully
+    //         auth()->login($user);
+    //         $user = Auth::user();
+    //         if ($user->role_id == 2) {
     //             Toastr::success('Successfully logged in', 'Welcome!');
     //             // Fetch required data after login
     //             $pageaboutitem = DB::table('pageaboutitem')->get();
@@ -84,24 +139,21 @@ class UserRegistrationController extends Controller
     //             $pro = DB::table('product')->get();
     //             $test = DB::table('test')->get();
     //             $testimonial = DB::table('testimonial')->get();
-    //             $authUser = Auth::user();
-    //             // Return the view with required data
-    //             return view('welcome', compact('pageaboutitem', 'product', 'test', 'testimonial', 'pro', 'authUser'));
+    //             $authUser = $user;
+    //                   return redirect()->back();
     //         } else {
     //             // Failed login attempt
-    //             Toastr::error('Login Unsuccessful', 'Invalid phone number or password!');
-    //             return redirect()->route('dashboard');
+    //             $authUser = null;
+    //             Toastr::error('Login Unsuccessful', 'Invalid!');
+    //             return redirect()->back();
     //         }
     //     } else {
-    //         // User not found
-    //         Toastr::error('Login Unsuccessful', 'Invalid phone number or password!');
-    //         return redirect()->route('dashboard');
+    //         // OTP sending failed
+    //         Toastr::error('OTP sending failed', 'Error!');
+    //         return redirect()->back();
     //     }
     // }
-
-
-
-
+    
 
 
     public function store(Request $request)

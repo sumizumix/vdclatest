@@ -52,57 +52,49 @@
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-4"
             data-anime='{ "el": "childs", "translateY": [30, 0], "scale":[0.8,1], "opacity": [0,1], "duration": 500, "delay": 0, "staggervalue": 200, "easing": "easeOutQuad" }'>
             @foreach ($product as $product)
+            
+           
                 <div class="col icon-with-text-style-07 transition-inner-all md-mb-30px">
                     <div
                         class="patient_packages_card feature-box justify-content-start -border text-start p-20px sm-p-20px border-radius-6px box-shadow-quadruple-large box-shadow-quadruple-large-hover">
                         <div class="-feature-box-icon mb-20px w-100">
-                            <img src="{{ asset('uploads/' . $product->image) }}"
+                            <a href="{{ URL::to('packages-knowmore/' . $product->slug) }}"
+                                >  
+                                <img src="{{ asset('uploads/' . $product->image) }}"
                                 class="rounded h-240px w-100 object-fit-cover" />
                         </div>
                         <div class="feature-box-content min-h-100px">
                             <h4 class="fw-600 lh-sm mb-10px text-dark-gray fs-18 line-2">{{ $product->name }}</h4>
-                            <p class="mb-10px lh-sm fs-18 fw-bold text-base-color">₹ {{ $product->price }}</p>
+                            <p class="mb-10px lh-sm fs-18 fw-bold text-base-color">₹ {{ $product->price }}</p></a>
                         </div>
-                        <!--<div class="mt-30px">-->
+                        <div class="mt-30px">
                             
                        
 
 
-                        <!--<a href="{{ URL::to('packages-knowmore/' . $product->id) }}"-->
-                        <!--    class="btn btn-very-small btn-dark-gray btn-hover-animation-switch btn-round-edge btn-box-shadow"><i class="ti ti-pencil"></i>-->
-                        <!--    Know More</a>-->
+                        <a href="{{ URL::to('packages-knowmore/' . $product->slug) }}"
+                           class="btn btn-very-small btn-dark-gray btn-hover-animation-switch btn-round-edge btn-box-shadow">
+                           {{-- <i class="ti ti-pencil"></i>
+                         Know More --}}
+                         <span>
+                            <span class="btn-text">Know More</span>
+                            <span class="btn-icon"><i class="bi bi-arrow-up-right-square"></i></span>
+                            <span class="btn-icon"><i class="bi bi-arrow-up-right-square"></i></span>
+                        </span>
+                        
+                        </a>
 
-                        <!--    <button-->
-                        <!--        class="btn btn-very-small btn-base-color btn-hover-animation-switch btn-round-edge btn-box-shadow ms-5px"-->
-                        <!--        onclick="handleAddToCart({{ $product->id }})">-->
-                        <!--        <span>-->
-                        <!--            <span class="btn-text">Add to Cart</span>-->
-                        <!--            <span class="btn-icon"><i class="feather icon-feather-shopping-cart"></i></span>-->
-                        <!--            <span class="btn-icon"><i class="feather icon-feather-shopping-cart"></i></span>-->
-                        <!--        </span>-->
-                        <!--    </button>-->
-                        <!--</div>-->
-                        <div class="mt-30px">
-                            <button
-                                class="btn btn-very-small btn-dark-gray btn-hover-animation-switch btn-round-edge btn-box-shadow"
-                                data-bs-toggle="modal" data-bs-target="#productModal" data-name="{{ $product->name }}"
-                                data-description="{{ $product->description }}" data-price="₹{{ $product->price }}">
-                                <span>
-                                    <span class="btn-text">Know More</span>
-                                    <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
-                                    <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
-                                </span>
-                            </button>
                             <button
                                 class="btn btn-very-small btn-base-color btn-hover-animation-switch btn-round-edge btn-box-shadow ms-5px"
                                 onclick="handleAddToCart({{ $product->id }})">
                                 <span>
-                                    <span class="btn-text">Add to Cart</span>
-                                    <span class="btn-icon"><i class="feather icon-feather-shopping-cart"></i></span>
-                                    <span class="btn-icon"><i class="feather icon-feather-shopping-cart"></i></span>
+                                   <span class="btn-text">Add to Cart</span>
+                                   <span class="btn-icon"><i class="feather icon-feather-shopping-cart"></i></span>
+                                   <span class="btn-icon"><i class="feather icon-feather-shopping-cart"></i></span>
                                 </span>
                             </button>
                         </div>
+                       
                     </div>
                 </div>
             @endforeach

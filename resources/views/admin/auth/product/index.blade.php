@@ -12,6 +12,38 @@
                     </div>
                     <div class="card">
                         <div class="card-body p-4">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6  mx-auto">
+                                        <form action="{{ route('admin.auth.product.search') }}" method="POST">
+                                            @csrf
+                                            <div class="input-group">
+                                                <input type="text" name="query" class="form-control"
+                                                    placeholder="Search">
+                                                <div class="input-group-append">
+                                                    <button type="submit" class="btn btn-primary">Search</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            @if (count($product) == 0)
+                                <div class="alert alert-info" role="alert"  style="
+                             
+                                text-align: center;
+                                color: #763f98;
+                                font-size: 20px;
+                                font-weight: bold;
+                                margin-top: 20px;
+                                padding: 10px;
+                                border: 2px solid #763f98;
+                    border-radius: 5px;
+            background-color: rgb(238 226 246);
+                            ">
+                                    No results found.
+                                </div>
+                            @else
                             <div class="table-responsive">
                                 <table class="table mb-0 align-middle">
                                     <thead class="thead-dark">
@@ -46,6 +78,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                            @endif
                         </div>
                     </div>
 

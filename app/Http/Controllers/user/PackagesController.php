@@ -15,18 +15,35 @@ class PackagesController extends Controller
         
         return view('user.auth.doctors.packages', compact('packages'));
     }
-    public function knowmore($id)
-    {
-        $packages =Product::findOrFail($id);
+    // public function knowmore($id)
+    // {
+    //     $packages =Product::findOrFail($id);
         
-        return view('user.auth.patients.packageknowmore', compact('packages'));
+    //     return view('user.auth.patients.packageknowmore', compact('packages'));
+    // }
+
+    public function knowmore($slug)
+    {
+        $test =Product::all();   
+        $packages = Product::where('slug', $slug)->firstOrFail();
+        return view('user.auth.patients.packageknowmore', compact('packages','test'));
     }
-    public function testknowmore($id)
-    {
-        $packages =Test::findOrFail($id);
-        
-        return view('user.auth.patients.testknowmore', compact('packages'));
+
+    public function testknowmore($slug)
+{
+    // $test = Test::orderBY('id', 'desc')->paginate()->withQueryString();
+    $test =Test::all();   
+    $packages = Test::where('slug', $slug)->firstOrFail();
+    return view('user.auth.patients.testknowmore', compact('packages','test'));
 }
+
+//     public function testknowmore($slug)
+//     {
+
+//         $packages =Test::findOrFail($slug);
+        
+//         return view('user.auth.patients.testknowmore', compact('packages'));
+// }
 
     // public function ProductListAjax()
     // {

@@ -61,10 +61,9 @@
                             <p class="mb-10px lh-sm fs-18">₹ {{ $row->price }}</p>
                         </div>
                         <div class="w-100 d-flex justify-content-between">
-                            <a href="#"
+                          <a href="{{ URL::to('test-knowmore/' . $row->slug) }}"
                                 class="btn btn-link-gradient expand btn-large text-orange d-table d-lg-inline-block xl-mb-15px md-mb-10px"
-                                data-bs-toggle="modal" data-bs-target="#productModal" data-name="{{ $row->name }}"
-                                data-description="{{ $row->description }}" data-price="₹ {{ $row->price }}">
+                               >
                                 Know more
                                 <span class="bg-orange"></span>
                             </a>
@@ -127,7 +126,7 @@
 </script>
 
 
-<script>
+{{-- <script>
     function handleAddToCart(productId) {
         var isAuthenticated = {{ Auth::check() ? 'true' : 'false' }};
         if (isAuthenticated) {
@@ -192,5 +191,87 @@
             }
         });
     });
+</script> --}}
+
+<script>
+    function handleAddToCart(productId) {
+        var isAuthenticated = {{ Auth::check() ? 'true' : 'false' }};
+        if (isAuthenticated) {
+            addToCart(productId);
+         
+        } else {
+            // Show login modal
+            $('#loginModal').modal('show');
+        }
+    }
+
+    function addToCart(productId) {
+        $.ajax({
+            url: '{{ route('cart.add') }}',
+            method: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}',
+                product_id: productId,
+                 type: "test"
+            },
+            success: function(response) {
+                if (response.success) {
+                    toastr.success('test added to cart successfully!');
+                    
+                    setTimeout(() => {
+    window.location.reload();
+}, 1000);
+                } else {
+                    toastr.error('Failed to add test to cart. Please try again.');
+                }
+            },
+            error: function() {
+                toastr.error('An error occurred. Please try again.');
+            }
+        });
+    }
+
+    // Handle login form submission
+    $('#loginForm').submit(function(e) {
+        e.preventDefault();
+
+        var phone = $('#phone').val();
+
+        // Make AJAX request to login endpoint
+        $.ajax({
+            url: '/login', // Update with your login route
+            method: 'POST',
+            data: {
+                _token: $('input[name="_token"]').val(),
+                phone: phone
+            },
+            success: function(response) {
+                if (response.success) {
+                    // Hide the login modal
+                    $('#loginModal').modal('hide');
+
+                    // Set isAuthenticated to true
+                    isAuthenticated = true;
+
+                    // Optionally, call addToCart if it was interrupted
+                    // addToCart(productId); // Uncomment if you want to add to cart automatically after login
+                } else {
+                    alert('Login failed. Please check your credentials and try again.');
+                }
+            },
+            error: function() {
+                alert('An error occurred. Please try again.');
+            }
+        });
+    });
+
+
+
+
+
+
+
+
 </script>
+
 @include('layout.footer')

@@ -174,6 +174,16 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
+                    <a class="sidebar-link {{ request()->routeIs(['admin.contact.index']) ? 'active' : '' }}"
+                        href="{{ route('admin.contact.index') }}" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-message-2"></i>
+                           
+                        </span>
+                        <span class="hide-menu">User Contact</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
                     <a class="sidebar-link {{ request()->routeIs('admin.auth.appointement.index') ? 'active' : '' }}"
                         href="{{ route('admin.auth.appointement.index') }}" aria-expanded="false">
                         <span>

@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Toaster;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
+
 class UserRegistrationController extends Controller
 {
     public function index()
@@ -26,17 +27,18 @@ class UserRegistrationController extends Controller
         return view('user.auth.registration');
     }
 
-   public function loginCheck(Request $request)
+    public function loginCheck(Request $request)
     {
+
         $request->validate([
-            'phone' => 'required',
-          
+            'phone' => 'required|digits_between:10,15',
+
         ]);
 
         $credentials = $request->only('phone');
-        $user = User::where('phone',$request->phone)->first();
+        $user = User::where('phone', $request->phone)->first();
 
-        
+
         if ($user) {
             auth()->login($user);
             $user = Auth::user();
@@ -49,8 +51,6 @@ class UserRegistrationController extends Controller
                 $test = DB::table('test')->get();
                 $testimonial = DB::table('testimonial')->get();
                 $authUser = $user;
-                // Return the view with required data
-                // return view('welcome', compact('pageaboutitem', 'product', 'test', 'testimonial', 'pro', 'authUser'));
                 return redirect()->back();
             } else {
                 // Failed login attempt
@@ -64,7 +64,8 @@ class UserRegistrationController extends Controller
             // Failed login attempt
             Toastr::error('Login Unsuccessful', 'Invalid phone number!');
             return redirect()->back();
-}}
+        }
+    }
 
     // UserController.php
     // public function loginCheck(Request $request)
@@ -125,37 +126,37 @@ class UserRegistrationController extends Controller
     {
 
         try {
-        // Validate input
-        $request->validate([
-            'uname' => 'required|string',
-            'uphone' => 'required|string|unique:users,phone', // Ensure 'phone' is unique in 'users' table
-        ], [
-            'uphone.unique' => 'The phone number has already been taken.', // Custom error message for unique constraint
-        ]);
-    
-        // Create data array
-        $data = [
-            'name' => $request->input('uname'),
-            'phone' => $request->input('uphone'),
-            'role_id' => 2,
-        ];
-    
-        // Attempt to create new entry
-        Register::create($data);
-    
-        return redirect()->back()->with('success', 'Registration successful');
-    } catch (ValidationException $e) {
-        // Log the validation errors
-        Log::error('Validation errors:', $e->errors());
+            // Validate input
+            $request->validate([
+                'uname' => 'required|string',
+                'uphone' => 'required|string|unique:users,phone', // Ensure 'phone' is unique in 'users' table
+            ], [
+                'uphone.unique' => 'The phone number has already been taken.', // Custom error message for unique constraint
+            ]);
 
-        // Optionally, you can print the validation errors (useful for debugging)
-        
+            // Create data array
+            $data = [
+                'name' => $request->input('uname'),
+                'phone' => $request->input('uphone'),
+                'role_id' => 2,
+            ];
 
-        // Redirect back with errors
-        return redirect()->back()->withErrors($e->errors())->withInput();
+            // Attempt to create new entry
+            Register::create($data);
+
+            return redirect()->back()->with('success', 'Registration successful');
+        } catch (ValidationException $e) {
+            // Log the validation errors
+            Log::error('Validation errors:', $e->errors());
+
+            // Optionally, you can print the validation errors (useful for debugging)
+
+
+            // Redirect back with errors
+            return redirect()->back()->withErrors($e->errors())->withInput();
+        }
     }
-    }
-    
+
 
 
     public function logout(Request $request)
@@ -166,15 +167,4 @@ class UserRegistrationController extends Controller
 
         return redirect('/');
     }
-
-
-
-
-
-
-
-
-
-
-
 }

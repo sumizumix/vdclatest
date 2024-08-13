@@ -22,7 +22,12 @@ class CenterController extends Controller
     public function store(Request $request)
     {
       
-        
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required|digits_between:10,15',
+            'email' =>'required'
+       
+        ]);
         $location = new center();
         $data = $request->only($location->getFillable());
         $location->fill($data)->save();
@@ -37,7 +42,12 @@ class CenterController extends Controller
 
     public function update(Request $request, $id)
     {
-        
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required|digits_between:10,15',
+              'email' =>'required'
+       
+        ]);
         $location = center::findOrFail($id);
         $data = $request->only($location->getFillable());
   
@@ -47,9 +57,7 @@ class CenterController extends Controller
     }
     
     public function destroy($id)
-    {
-    
-        
+    {    
         $location = center::findOrFail($id);
         $location->delete();
         return Redirect()->back()->with('success', 'Center  deleted successfully!');

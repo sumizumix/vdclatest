@@ -18850,7 +18850,7 @@
         position: fixed;
         top: -100vh;
         left: 0;
-        z-index: 9999;
+        z-index: 999;
         display: flex !important;
         transition: all 0.4s ease-out;
         transition-delay: 0.6s;
@@ -18972,7 +18972,8 @@
         .dropdown-menu
         a {
         color: var(--white);
-        opacity: 0.6;
+        /* opacity: 0.6; */
+        opacity: 1;
     }
     [data-mobile-nav-style="full-screen-menu"]
         .navbar-full-screen-menu-inner

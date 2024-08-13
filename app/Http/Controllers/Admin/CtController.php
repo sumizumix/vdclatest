@@ -38,13 +38,16 @@ class CtController extends Controller
         // }
         // dd('h');
         
-        $Ctscan = new Ctscan();
-        $data = $request->only($Ctscan->getFillable());
 
         $request->validate([
-            // 'photo' => 'numeric|min:0|max:32767'
-            'patient_name'=>'required'
+         
+            'patient_name'=>'required',
+            'phone' => 'required|digits_between:10,15',
         ]);
+
+
+        $Ctscan = new Ctscan();
+        $data = $request->only($Ctscan->getFillable());
 
         // $statement = DB::select("SHOW TABLE STATUS LIKE 'product'");
        

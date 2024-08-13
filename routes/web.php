@@ -235,7 +235,7 @@ Route::get('find-nearest-lab', [ContactController::class,'index'])->name('user.c
 //cart
 Route::post('cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 Route::get('cart', [CartController::class, 'cart'])->name('cart.view');
-Route::get('cart-status', [CartController::class, 'cartorderindex'])->name('cartorderindex.view');
+Route::get('order-status', [CartController::class, 'cartorderindex'])->name('cartorderindex.view');
 Route::post('carttest/add', [CartController::class, 'addToCartTest'])->name('carttest.add');
 Route::post('cart/orderdelete/{id}', [CartController::class, 'destroyordershow'])->name('cartorderdelete.delete');
 
@@ -244,7 +244,7 @@ Route::post('cart/orderdelete/{id}', [CartController::class, 'destroyordershow']
 Route::get('homesamplecollection', [HomeSampleCollectionController::class, 'homesamplecollection'])->name('cart.homesamplecollection');
 Route::get('homesamplecollectionremove/{id}', [HomeSampleCollectionController::class,'destroysample']);
 Route::post('user/booksample/create', [HomeSampleCollectionController::class,'store'])->name('user.booksample.store');
-Route::get('previoushomesamplecollection', [HomeSampleCollectionController::class, 'previoussample'])->name('cart.previoushomesamplecollection');
+Route::get('home-sample-collection/previous-booking', [HomeSampleCollectionController::class, 'previoussample'])->name('cart.previoushomesamplecollection');
 Route::get('location-tracking', [HomeSampleCollectionController::class, 'locationtracking'])->name('cart.locationtracking');
 
 Route::get('download-result', [CartController::class,'downloadpage'])->name('user.downloadpage');
@@ -267,7 +267,7 @@ Route::get('admin/department/delete/{id}', [DepartmentController::class,'destroy
 Route::get('doctor-department', [DepartmentsController::class,'index'])->name('user.department');
 Route::get('doctors-test', [TestControllers::class,'index'])->name('user.test');
 Route::get('doctors-packages', [PackagesController::class,'index'])->name('user.packages');
-Route::get('doctors-contact', [ContactController::class,'contact'])->name('user.contactss');
+Route::get('contact-us', [ContactController::class,'contact'])->name('user.contactss');
 Route::post('patients-contact-store', [ContactController::class,'storecontact'])->name('contact.store');
 
 Route::post('contact-search', [ContactController::class, 'search'])->name('user.contactsearch');

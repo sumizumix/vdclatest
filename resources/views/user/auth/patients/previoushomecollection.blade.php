@@ -31,31 +31,17 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-12">
-                
-{{-- <div class="modal fade" id="bookSampleModal" tabindex="-1" 
-    aria-hidden="true" style="background-color: rgba(0, 0, 0, 0.8)">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-body p-40px">
-                <div class="modal-header p-0 border-0 pb-20px">
-                    <img src="{{ asset('frontend/vdc_images/vdc-logo.png') }}" class="h-20px" />
-                    <span class="px-2 opacity-5">|</span>
-                    <span class="fw-bold text-orange">Book Home Sample Collection</span>
-                    <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
-                </div> --}}
-                <span class="fw-bold text-orange">Book Home Sample Collection</span>
-                <table class="table mb-0 align-middle" id="dataTable">
-                    <thead class="thead-dark">
+                <h5 class="fw-600 fs-28 text-orange">Previous Booking</h5>
+                <table class="table table-hover mb-0 align-middle fs-15 lh-sm" id="dataTable">
+                    <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                           
-                            <th scope="col">Address</th>
-                            <th scope="col">Age</th>
-                            <th scope="col">Package</th>
-                            <th scope="col">Test</th>
-                            <th scope="col">Download Result</th>
-                     
+                            <th class="bg-base-color text-white">#</th>
+                            <th class="bg-base-color text-white">Name</th>
+                            <th class="bg-base-color text-white">Address</th>
+                            <th class="bg-base-color text-white">Age</th>
+                            <th class="bg-base-color text-white">Package</th>
+                            <th class="bg-base-color text-white">Test</th>
+                            <th class="bg-base-color text-white lh-sm">Download Result</th>
                         </tr>
                     </thead>
                     <tbody id="tableContent">
@@ -63,70 +49,66 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $row->usname }}</td>
-                              
+
                                 <td>{{ $row->address }}</td>
                                 <td>{{ $row->age }}</td>
 
                                 <td>
 
-                                    @if ($row->package == NULL)
-                                                    No package
-                                                    @else
-                                                    {{ $row->package }}
-                                                    @endif
-                                   
+                                    @if ($row->package == null)
+                                        No package
+                                    @else
+                                        {{ $row->package }}
+                                    @endif
+
                                 </td>
                                 <td>
 
-                                    @if ($row->test == NULL)
-                                                    No test
-                                                    @else
-                                                    {{ $row->test }}
-                                                    @endif
-                                   
-                                </td>
-                              
-                               <td>
-                                @if($row->image== Null)
+                                    @if ($row->test == null)
+                                        No test
+                                    @else
+                                        {{ $row->test }}
+                                    @endif
 
-                                
-                                <a href="{{ route('cart.locationtracking') }}" class="btn btn-warning btn btn-sm  btn-hover-animation-switch btn-round-edge btn-box-shadow">
-                                    Location tracking
-                                </a>
-                                {{-- <button class="btn btn-warning btn-sm" disabled>
-                                    <i class="fa-solid fa-hourglass"></i>
-                                     Pending
-                                </button> --}}
-                                @else
-                                <a href="{{ asset('uploads/' . $row->image) }}"
-                                    target="_blank" download
-                                    class="btn btn-sm btn-dark-gray btn-hover-animation-switch btn-round-edge btn-box-shadow btn-success">
-                                    <span>
-                                        <span class="btn-text">Download</span>
-                                        <span class="btn-icon"><i
-                                                class="feather icon-feather-download"></i></span>
-                                        <span class="btn-icon"><i
-                                                class="feather icon-feather-download"></i></span>
-                                    </span>
-                                </a>
-                                @endif
-                               </td>
+                                </td>
+
+                                <td>
+                                    @if ($row->image == null)
+                                        <a href="{{ route('cart.locationtracking') }}"
+                                            class="btn btn-sm btn-vdc-orange btn-hover-animation-switch btn-rounded btn-box-shadow lh-1">
+                                            Track Location
+                                        </a>
+                                        {{-- <button class="btn btn-warning btn-sm" disabled>
+                                                <i class="fa-solid fa-hourglass"></i>
+                                                Pending
+                                            </button> --}}
+                                    @else
+                                        <a href="{{ asset('uploads/' . $row->image) }}" target="_blank" download
+                                            class="btn btn-sm btn-dark-gray btn-hover-animation-switch btn-rounded btn-box-shadow btn-success">
+                                            <span>
+                                                <span class="btn-text">Download</span>
+                                                <span class="btn-icon"><i
+                                                        class="feather icon-feather-download"></i></span>
+                                                <span class="btn-icon"><i
+                                                        class="feather icon-feather-download"></i></span>
+                                            </span>
+                                        </a>
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
-            {{-- </div>
+                {{-- </div>
         </div>
     </div>
 </div> --}}
 
 
 
-</div>
-</div>
-</div>
+            </div>
+        </div>
+    </div>
 </section>
 
 @include('layout.footer')
-
-

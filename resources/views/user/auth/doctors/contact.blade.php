@@ -28,11 +28,11 @@
         <div class="row h-150px align-items-center">
             <div class="col-lg-5 col-sm-8 position-relative page-title-extra-small appear anime-child anime-complete"
                 data-anime="{ &quot;el&quot;: &quot;childs&quot;, &quot;opacity&quot;: [0, 1], &quot;translateX&quot;: [-30, 0], &quot;duration&quot;: 800, &quot;delay&quot;: 0, &quot;staggervalue&quot;: 300, &quot;easing&quot;: &quot;easeOutQuad&quot; }">
-                <h1 class="mb-20px xs-mb-20px text-white text-shadow-medium" >
+                <h1 class="mb-20px xs-mb-20px text-white text-shadow-medium">
                     <span
                         class="w-30px h-2px bg-yellow d-inline-block align-middle position-relative top-minus-2px me-10px"></span>VDC
                 </h1>
-                <h4 class="text-white text-shadow-medium fw-500 ls-minus-1px mb-0" >Contact us</h4>
+                <h4 class="text-white text-shadow-medium fw-500 ls-minus-1px mb-0">Contact us</h4>
             </div>
             <div class="col">
                 <div class="mt-auto justify-content-end breadcrumb breadcrumb-style-01 fs-14 text-white"
@@ -50,7 +50,7 @@
 <section class="bg-white">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-5 md-mb-50px"
+            <div class="col-lg-6"
                 data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
                 <h3 class="text-dark-gray fw-700 ls-minus-2px w-90 md-w-100">Get in touch!</h3>
                 <p class="w-95 md-w-100">Give us a call or drop by anytime, we try to answer all enquiries within 24
@@ -65,7 +65,8 @@
                             <div class="feature-box-content last-paragraph-no-margin">
                                 <span class="d-block ls-minus-05px">Mail us</span>
                                 <span class="d-block fs-22 text-dark-gray ls-minus-05px fw-600">
-                                    <a href="mailto:info@vijayadiagnosticcentre.com" class="text-dark-gray text-decoration-line-bottom">
+                                    <a href="mailto:info@vijayadiagnosticcentre.com"
+                                        class="text-dark-gray text-decoration-line-bottom">
                                         <span class="">info@vijayadiagnosticcentre.com</span>
                                     </a>
                                 </span>
@@ -74,70 +75,41 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="col-lg-7 ps-50px lg-ps-15px">
-                <div class="row row-cols-1 row-cols-sm-2 justify-content-center">
-                    @foreach ($contact as $location)
-                
-                        <div class="col xs-mb-30px"
-                            data-anime='{ "translateY": [50, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                            <div class="bg-very-light-gray h-100 fs-17 lh-30 p-20px lg-p-20px border-radius-5px">
-                                   {!! $location->mapcode !!}
-                                <h5 class="text-dark-gray fs-18 fw-600 d-inline-block">{{ $location->labname }}</h5>
-                                <p class="mb-15px fs-14 lh-sm">
-                                    <span class="text-dark-gray fw-600">
-                                        <i class="feather icon-feather-phone d-inline-block fs-14 lh-sm me-5px"></i>
-                                    </span>
-                                    {{ $location->address }}
-                                </p>
-                                <span class="d-block">
-                                    <span class="text-dark-gray fw-600">
-                                        <i class="feather icon-feather-map-pin d-inline-block fs-14 lh-sm me-5px"></i>
-                                    </span>
-                                    <a class="fs-14 lh-sm" href="{{ $location->phone }}"
-                                        class="">{{ $location->phone }}</a>
-                                </span>
-                                <span class="d-block">
-                                    <span class="text-dark-gray fw-600">
-                                        <i class="feather icon-feather-mail d-inline-block fs-14 lh-sm me-5px"></i>
-                                    </span>
-                                    <a href="#" class="text-decoration-line-bottom fs-14 lh-sm">
-                                        <span class="">{{ $location->email }}</span>
-                                    </a>
-                                </span>
-                            </div>
+            <div class="col-lg-6 md-mt-25px">
+                <div class="row justify-content-center">
+                    <div class="contact-form">
+                        <div class="bg-white box-shadow-extra-large border-radius-6px p-25px">
+                            <h5 class="text-dark-gray fw-700 ls-minus-1px">Contact Us</h5>
+                            <form action="{{ route('contact.store') }}" method="post" class="contact-form-style-03">
+                                @csrf
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <input type="text" id="name" name="name" placeholder="Name" required
+                                        style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                                </div>
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <input type="email" id="email" name="email" placeholder="Email" required
+                                        style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                                </div>
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <input type="text" id="phone" name="phone" placeholder="Phone Number"
+                                        required
+                                        style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                                </div>
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <textarea id="message" name="message" rows="3" placeholder="Message"
+                                        style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;"></textarea>
+                                </div>
+                                <button type="submit"
+                                    class="btn btn-base-color btn-large btn-rounded d-table d-lg-inline-block lg-mb-15px md-mx-auto">Send
+                                    Message</button>
+                            </form>
                         </div>
-                    @endforeach
+                    </div>
                 </div>
-            </div> --}}
-
-            <div class="col-lg-7 ps-50px lg-ps-15px">
-                <div class="row row-cols-1 row-cols-sm-2 justify-content-center">
-            <div class="contact-form">
-                <h3 class="text-dark-gray fw-700 ls-minus-2px w-90 md-w-100">Contact Us</h3>
-                <form action="{{ route('contact.store') }}" method="post" class="contact-form-style-03">
-                    @csrf
-                    <div class="form-group" style="margin-bottom: 15px;">
-                        <input type="text" id="name" name="name" placeholder="Name" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-                    </div>
-                    <div class="form-group" style="margin-bottom: 15px;">
-                        <input type="email" id="email" name="email" placeholder="Email" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-                    </div>
-                    <div class="form-group" style="margin-bottom: 15px;">
-                        <input type="text" id="phone" name="phone" placeholder="Phone Number" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-                    </div>
-                    <div class="form-group" style="margin-bottom: 15px;">
-                        <textarea id="message" name="message" rows="3" placeholder="Message" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;"></textarea>
-                    </div>
-                    
-                    <button type="submit" style="background-color: black; color: white; border-radius: 7px; padding: 10px 20px; border: none;">Send Message</button>
-
-                </form>
             </div>
         </div>
     </div>
-        </div>
-    </div>
-    
+
 </section>
 
 @include('layout.footer')

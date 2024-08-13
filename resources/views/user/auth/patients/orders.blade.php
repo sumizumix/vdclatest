@@ -49,7 +49,7 @@
 
 <section class="{{ $cart->isEmpty() ? 'bg-vdc-light-purple' : '' }}">
     <div class="container">
-        <div class="row gy-3 align-items-center justify-content-center">
+        <div class="row gy-3 align-items-start justify-content-center">
             <div class="col-lg-6">
                 @php
                     $totalAmount = 0;

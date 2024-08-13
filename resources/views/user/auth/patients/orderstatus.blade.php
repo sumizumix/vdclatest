@@ -29,120 +29,124 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-12">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th class="bg-base-color text-white">Sl No.</th>
-                            <th class="bg-base-color text-white">Product/ Test name</th>
-                            <th class="bg-base-color text-white">Payment Details</th>
-                            <th class="bg-base-color text-white">Amount</th>
-                            <th class="bg-base-color text-white">Date</th>
-                            <th class="bg-base-color text-white">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @if ($groupedCart && $groupedCart->count() > 0)
-                            @foreach ($groupedCart as $razorid => $rows)
-                                <tr class="order-row align-middle" data-id="{{ $razorid }}">
-                                    <td class="text-center">{{ $loop->iteration }}</td>
-                                    <td>
-                                        @foreach ($rows as $row)
-                                            @if ($row->type == 'package')
-                                                {{ $row->pname }}
-                                            @elseif($row->type == 'test')
-                                                {{ $row->tname }}
-                                            @endif
-                                            <br>
-                                        @endforeach
-                                    </td>
-                                    <td>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle fs-15 lh-base">
+                        <thead>
+                            <tr>
+                                <th class="bg-base-color text-white">Sl No.</th>
+                                <th class="bg-base-color text-white">Product/ Test name</th>
+                                <th class="bg-base-color text-white">Payment Details</th>
+                                <th class="bg-base-color text-white">Amount</th>
+                                <th class="bg-base-color text-white">Date</th>
+                                <th class="bg-base-color text-white">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if ($groupedCart && $groupedCart->count() > 0)
+                                @foreach ($groupedCart as $razorid => $rows)
+                                    <tr class="order-row align-middle" data-id="{{ $razorid }}">
+                                        <td class="text-center">{{ $loop->iteration }}</td>
+                                        <td>
+                                            @foreach ($rows as $row)
+                                                @if ($row->type == 'package')
+                                                    {{ $row->pname }}
+                                                @elseif($row->type == 'test')
+                                                    {{ $row->tname }}
+                                                @endif
+                                                <br>
+                                            @endforeach
+                                        </td>
+                                        <td>
 
-                                        @if ($row->razorid == null)
-                                            {{-- <button class="btn btn-warning btn-sm" disabled>
+                                            @if ($row->razorid == null)
+                                                {{-- <button class="btn btn-warning btn-sm" disabled>
                                                 <i class="fa-solid fa-hourglass"></i> No paid
                                             </button> --}}
-                                            <i class="fa-solid fa-hourglass text-yellow"></i>
-                                            <span class="text-capitalize fw-600 text-yellow">Not Paid</span>
-                                        @else
-                                            <input type="hidden" name="razorid" value="{{ $razorid }}">
-                                            {{ $razorid }}
-                                        @endif
+                                                <i class="fa-solid fa-hourglass text-yellow"></i>
+                                                <span class="text-capitalize fw-600 text-yellow">Not Paid</span>
+                                            @else
+                                                <input type="hidden" name="razorid" value="{{ $razorid }}">
+                                                {{ $razorid }}
+                                            @endif
 
-                                    </td>
-                                    <td>
-                                        {{-- @foreach ($rows as $row)
+                                        </td>
+                                        <td>
+                                            {{-- @foreach ($rows as $row)
                                                                         {{ $row->testprice ? $row->testprice : $row->productprice }}<br>
                                                                         @endforeach --}}
-                                        @php
-                                            $totalAmount = 0;
-                                        @endphp
+                                            @php
+                                                $totalAmount = 0;
+                                            @endphp
 
-                                        @foreach ($rows as $row)
-                                            @if ($row->type == 'package')
-                                                <img
-                                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='KjOd-Rupee-B' height='10'  viewBox='0 0 170 250'%3E%3Cpath d='M113 24h41l15-23H15L0 24h26c27 0 52 2 62 25H15L0 72h91v1c0 17-14 43-60 43H8v22l90 113h41L45 134c39-2 75-24 80-62h29l15-23h-45c-1-9-5-18-11-25zm0 0' fill='%23000000'/%3E%3C/svg%3E" />{{ $row->productprice }}/-
-                                                @php
-                                                    $totalAmount += $row->productprice;
-                                                @endphp
-                                            @elseif($row->type == 'test')
-                                                <img
-                                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='KjOd-Rupee-B' height='10'  viewBox='0 0 170 250'%3E%3Cpath d='M113 24h41l15-23H15L0 24h26c27 0 52 2 62 25H15L0 72h91v1c0 17-14 43-60 43H8v22l90 113h41L45 134c39-2 75-24 80-62h29l15-23h-45c-1-9-5-18-11-25zm0 0' fill='%23000000'/%3E%3C/svg%3E" />
-                                                {{ $row->testprice }}/-
-                                                @php
-                                                    $totalAmount += $row->testprice;
-                                                @endphp
+                                            @foreach ($rows as $row)
+                                                @if ($row->type == 'package')
+                                                    <img
+                                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='KjOd-Rupee-B' height='10'  viewBox='0 0 170 250'%3E%3Cpath d='M113 24h41l15-23H15L0 24h26c27 0 52 2 62 25H15L0 72h91v1c0 17-14 43-60 43H8v22l90 113h41L45 134c39-2 75-24 80-62h29l15-23h-45c-1-9-5-18-11-25zm0 0' fill='%23000000'/%3E%3C/svg%3E" />{{ $row->productprice }}/-
+                                                    @php
+                                                        $totalAmount += $row->productprice;
+                                                    @endphp
+                                                @elseif($row->type == 'test')
+                                                    <img
+                                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='KjOd-Rupee-B' height='10'  viewBox='0 0 170 250'%3E%3Cpath d='M113 24h41l15-23H15L0 24h26c27 0 52 2 62 25H15L0 72h91v1c0 17-14 43-60 43H8v22l90 113h41L45 134c39-2 75-24 80-62h29l15-23h-45c-1-9-5-18-11-25zm0 0' fill='%23000000'/%3E%3C/svg%3E" />
+                                                    {{ $row->testprice }}/-
+                                                    @php
+                                                        $totalAmount += $row->testprice;
+                                                    @endphp
+                                                @endif
+                                                <br>
+                                            @endforeach
+                                            ---------------------
+                                            {{-- <p>TOTAL: {{ $totalAmount }}/-</p> --}}
+
+                                            <p style="font-weight: bold; color: rgb(118, 14, 139);">TOTAL:
+                                                {{ $totalAmount }}/-
+                                            </p>
+
+
+                                        </td>
+                                        <td>
+                                            {{ \Carbon\Carbon::parse($rows->first()->cdate)->format('d-m-Y') }}
+                                        </td>
+                                        <td>
+                                            @php
+                                                $status = $rows->first()->status;
+                                                $paystatus = $rows->first()->paystatus;
+                                            @endphp
+                                            @if ($status == 'pending')
+                                                <i class="bi bi-exclamation-circle-fill text-yellow"></i>
+                                                <span
+                                                    class="text-capitalize fw-600 text-yellow">{{ $status }}</span>
+                                            @elseif ($status == 'approved' && $paystatus == 0)
+                                                <i class="bi bi-check-circle-fill text-yellow"></i>
+                                                <span class="text-capitalize fw-600 text-yellow">Pending</span>
+                                            @elseif ($status == 'approved' && $paystatus == 1)
+                                                {{-- <i class="bi bi-check-circle-fill text-success"></i> --}}
+                                                {{-- <span class="text-capitalize fw-600 text-success">Paid</span> --}}
+                                                <a href="javascript:void(0);" onclick="downloadPDF(this)"
+                                                    class="btn btn-base-color">
+                                                    <i class="bi bi-download"></i>
+                                                    Download Receipt
+                                                </a>
+                                            @else
+                                                <i class="bi bi-exclamation-circle-fill text-yellow"></i>
+                                                <span
+                                                    class="text-capitalize fw-600 text-yellow">{{ $status }}</span>
                                             @endif
-                                            <br>
-                                        @endforeach
-                                        ---------------------
-                                        {{-- <p>TOTAL: {{ $totalAmount }}/-</p> --}}
-
-                                        <p style="font-weight: bold; color: rgb(118, 14, 139);">TOTAL:
-                                            {{ $totalAmount }}/-
-                                        </p>
-
-
-                                    </td>
-                                    <td>
-                                        {{ \Carbon\Carbon::parse($rows->first()->cdate)->format('d-m-Y') }}
-                                    </td>
-                                    <td>
-                                        @php
-                                            $status = $rows->first()->status;
-                                            $paystatus = $rows->first()->paystatus;
-                                        @endphp
-                                        @if ($status == 'pending')
-                                            <i class="bi bi-exclamation-circle-fill text-yellow"></i>
-                                            <span class="text-capitalize fw-600 text-yellow">{{ $status }}</span>
-                                        @elseif ($status == 'approved' && $paystatus == 0)
-                                            <i class="bi bi-check-circle-fill text-yellow"></i>
-                                            <span class="text-capitalize fw-600 text-yellow">Pending</span>
-                                        @elseif ($status == 'approved' && $paystatus == 1)
-                                            {{-- <i class="bi bi-check-circle-fill text-success"></i> --}}
-                                            {{-- <span class="text-capitalize fw-600 text-success">Paid</span> --}}
-                                            <a href="javascript:void(0);" onclick="downloadPDF(this)"
-                                                class="btn btn-base-color">
-                                                <i class="bi bi-download"></i>
-                                                Download Receipt
-                                            </a>
-                                        @else
-                                            <i class="bi bi-exclamation-circle-fill text-yellow"></i>
-                                            <span class="text-capitalize fw-600 text-yellow">{{ $status }}</span>
-                                        @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @else
+                                <tr>
+                                    <td colspan="6" class="text-center pt-60px pb-60px">
+                                        <img src="{{ asset('frontend/vdc_images/no-reports-found.svg') }}"
+                                            alt="No reports found image" class="opacity-3">
+                                        <p class="pt-20px">No orders found</p>
                                     </td>
                                 </tr>
-                            @endforeach
-                        @else
-                            <tr>
-                                <td colspan="6" class="text-center pt-60px pb-60px">
-                                    <img src="{{ asset('frontend/vdc_images/no-reports-found.svg') }}"
-                                        alt="No reports found image" class="opacity-3">
-                                    <p class="pt-20px">No orders found</p>
-                                </td>
-                            </tr>
-                        @endif
-                    </tbody>
-                </table>
+                            @endif
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

@@ -177,7 +177,7 @@ body {
     line-height: 30px;
     font-weight: 400;
     -moz-osx-font-smoothing: grayscale;
-    word-break: break-word;
+    /* word-break: break-word; */
     -webkit-font-smoothing: antialiased;
 }
 section.half-section {
@@ -18779,3 +18779,14 @@ footer .footer-navbar .nav-item:last-child a {
 .order-tracking.completed:before{
     background-color: #27aa80;
 }
+
+
+/* tbody, td, tfoot, th, thead, tr{
+    text-wrap: nowrap !important;
+}
+
+@media (min-width: 992px) {
+    tbody, td, tfoot, th, thead, tr{
+        text-wrap: unset !important;
+    }
+ } */

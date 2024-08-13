@@ -32,92 +32,85 @@
         <div class="row align-items-center">
             <div class="col-lg-12">
                 <h5 class="fw-600 fs-28 text-orange">Previous Booking</h5>
-                <table class="table table-hover mb-0 align-middle fs-15 lh-sm" id="dataTable">
-                    <thead>
-
-                        <tr>
-                            <th class="bg-base-color text-white">#</th>
-                            <th class="bg-base-color text-white">Name</th>
-                            <th class="bg-base-color text-white">Address</th>
-                            <th class="bg-base-color text-white">Age</th>
-                            <th class="bg-base-color text-white">Package</th>
-                            <th class="bg-base-color text-white">Test</th>
-                            <th class="bg-base-color text-white lh-sm">Download Result</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableContent">
-
-                        @if ($booksamplecollection->isEmpty())
-                        <tr>
-                            <td colspan="7" class="text-center pt-60px pb-60px">
-                                <img src="{{ asset('frontend/vdc_images/no-reports-found.svg') }}"
-                                    alt="No reports found image" class="opacity-3">
-                                <p class="pt-20px">No orders found</p>
-                            </td>
-                        </tr>
-                    @else
-                        @foreach ($booksamplecollection as $row)
+                <div class="table-responsive">
+                    <table class="table -table-hover mb-0 align-middle fs-15 lh-sm" id="dataTable">
+                        <thead>
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $row->usname }}</td>
+                                <th class="bg-base-color text-white">#</th>
+                                <th class="bg-base-color text-white">Name</th>
+                                <th class="bg-base-color text-white">Address</th>
+                                <th class="bg-base-color text-white">Age</th>
+                                <th class="bg-base-color text-white">Package</th>
+                                <th class="bg-base-color text-white">Test</th>
+                                <th class="bg-base-color text-white lh-sm">Download Result</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableContent">
 
-                                <td>{{ $row->address }}</td>
-                                <td>{{ $row->age }}</td>
+                            @if ($booksamplecollection->isEmpty())
+                                <tr>
+                                    <td colspan="7" class="text-center pt-60px pb-60px">
+                                        <img src="{{ asset('frontend/vdc_images/no-reports-found.svg') }}"
+                                            alt="No reports found image" class="opacity-3">
+                                        <p class="pt-20px">No orders found</p>
+                                    </td>
+                                </tr>
+                            @else
+                                @foreach ($booksamplecollection as $row)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $row->usname }}</td>
+                                        <td>{{ $row->address }}</td>
+                                        <td>{{ $row->age }}</td>
+                                        <td>
 
-                                <td>
+                                            @if ($row->package == null)
+                                                No package
+                                            @else
+                                                {{ $row->package }}
+                                            @endif
 
-                                    @if ($row->package == null)
-                                        No package
-                                    @else
-                                        {{ $row->package }}
-                                    @endif
+                                        </td>
+                                        <td>
 
-                                </td>
-                                <td>
+                                            @if ($row->test == null)
+                                                No test
+                                            @else
+                                                {{ $row->test }}
+                                            @endif
 
-                                    @if ($row->test == null)
-                                        No test
-                                    @else
-                                        {{ $row->test }}
-                                    @endif
+                                        </td>
 
-                                </td>
-
-                                <td>
-                                    @if ($row->image == null)
-                                        <a href="{{ route('cart.locationtracking') }}"
-                                            class="btn btn-sm btn-vdc-orange btn-hover-animation-switch btn-rounded btn-box-shadow lh-1">
-                                            Track Location
-                                        </a>
-                                        {{-- <button class="btn btn-warning btn-sm" disabled>
+                                        <td>
+                                            @if ($row->image == null)
+                                                <a href="{{ route('cart.locationtracking') }}"
+                                                    class="btn btn-sm btn-vdc-orange btn-hover-animation-switch btn-rounded btn-box-shadow lh-1">
+                                                    Track Location
+                                                </a>
+                                                {{-- <button class="btn btn-warning btn-sm" disabled>
                                                 <i class="fa-solid fa-hourglass"></i>
                                                 Pending
                                             </button> --}}
-                                    @else
-                                        <a href="{{ asset('uploads/' . $row->image) }}" target="_blank" download
-                                            class="btn btn-sm btn-dark-gray btn-hover-animation-switch btn-rounded btn-box-shadow btn-success">
-                                            <span>
-                                                <span class="btn-text">Download</span>
-                                                <span class="btn-icon"><i
-                                                        class="feather icon-feather-download"></i></span>
-                                                <span class="btn-icon"><i
-                                                        class="feather icon-feather-download"></i></span>
-                                            </span>
-                                        </a>
-                                    @endif
-                                </td>
-                            </tr>
-                        @endforeach
-                        @endif
-                    </tbody>
-                </table>
-                {{-- </div>
-        </div>
-    </div>
-</div> --}}
-
-
-
+                                            @else
+                                                <a href="{{ asset('uploads/' . $row->image) }}" target="_blank"
+                                                    download
+                                                    class="btn btn-sm btn-dark-gray btn-hover-animation-switch btn-rounded btn-box-shadow btn-success">
+                                                    <span>
+                                                        <span class="btn-text">Download</span>
+                                                        <span class="btn-icon"><i
+                                                                class="feather icon-feather-download"></i></span>
+                                                        <span class="btn-icon"><i
+                                                                class="feather icon-feather-download"></i></span>
+                                                    </span>
+                                                </a>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

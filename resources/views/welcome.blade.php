@@ -1053,8 +1053,11 @@
             },
             success: function(response) {
                 if (response.success) {
-                    window.location.reload();
+                    // window.location.reload();
                     toastr.success('Added to cart successfully!');
+                    setTimeout(() => {
+    window.location.reload();
+}, 1000); 
                 } else {
                     toastr.error('Failed to add. Please try again.');
                 }

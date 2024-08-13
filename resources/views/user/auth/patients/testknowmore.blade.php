@@ -25,6 +25,7 @@
         </div>
     </div>
 </section>
+
 {{-- <section class="pb-0 mb-0">
     <div class="container">
         <div class="row">
@@ -34,56 +35,89 @@
         </div>
     </div>
 </section> --}}
+
 <section>
     <div class="service -page-content">
         <div class="container">
             <div class="row">
                 <div class="col-xl-8 wow fadeInUp">
                     <div
-                        class="bg-white box-shadow-quadruple-large border-0 border-radius-6px ps-30px pe-30px pt-40px pb-40px">
+                        class="bg-white box-shadow-quadruple-large border-0 border-radius-6px sm-p-15px p-25px">
                         <div class="">
                             {{-- <img src="{{ asset('uploads/' . $packages->image) }}" class="rounded h-240px w-100 object-fit-cover" /> --}}
-                            <h5 class="fw-700 text-dark-gray mb-">{{ $packages->name }}</h5>
+                            <h5 class="fw-700 text-dark-gray mb-15px">{{ $packages->name }}</h5>
                             <div class="row">
                                 <div class="col-12 col-md-8">
                                     <div class="bg-vdc-purple p-20px border-radius-6px h-100 text-white">
+
                                         <div class="row">
                                             <div class="col-5">
-                                                <span><i class="bi bi-caret-right-fill text-orange me-2"></i>Test code</span>
+                                                <div class="d-flex">
+                                                    <i class="bi bi-caret-right-fill lh-sm fs-15 text-orange me-2"></i>
+                                                    <span class="lh-sm fs-15">Test code</span>
+                                                </div>
                                             </div>
-                                            <div class="col-7  d-flex gap-1">
-                                                <span>:</span>
-                                                <h5 class="fw-600 fs-16 d-inline m-0 ">{{ $packages->testcode }}</h5>
+                                            <div class="col-7">
+                                                <div class="d-flex gap-1">
+                                                    <span class="lh-sm">:</span>
+                                                    <h5 class="fw-600 fs-16 d-inline m-0 lh-sm">
+                                                        {{ $packages->testcode }}
+                                                    </h5>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="row">
+
+                                        <div class="row mt-10px">
                                             <div class="col-5">
-                                                <span><i class="bi bi-caret-right-fill text-orange me-2"></i>Schedule</span>
+                                                <div class="d-flex">
+                                                    <i class="bi bi-caret-right-fill lh-sm fs-15 text-orange me-2"></i>
+                                                    <span class="lh-sm fs-15">Schedule</span>
+                                                </div>
                                             </div>
-                                            <div class="col-7  d-flex gap-1">
-                                                <span>:</span>
-                                                <h5 class="fw-600 fs-16 d-inline m-0 ">{{ $packages->Schedule }}</h5>
+                                            <div class="col-7">
+                                                <div class="d-flex gap-1">
+                                                    <span class="lh-sm">:</span>
+                                                    <h5 class="fw-600 fs-16 d-inline m-0 lh-sm">
+                                                        {{ $packages->Schedule }}
+                                                    </h5>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="row">
+
+                                        <div class="row mt-10px">
                                             <div class="col-5">
-                                                <span><i class="bi bi-caret-right-fill text-orange me-2"></i>Pre-requisite</span>
+                                                <div class="d-flex">
+                                                    <i class="bi bi-caret-right-fill lh-sm fs-15 text-orange me-2"></i>
+                                                    <span class="lh-sm fs-15">Pre-requisite</span>
+                                                </div>
                                             </div>
-                                            <div class="col-7  d-flex gap-1">
-                                                <span>:</span>
-                                                <h5 class="fw-600 fs-16 d-inline m-0 ">{{ $packages->prerequisite }}
-                                                </h5>
+                                            <div class="col-7">
+                                                <div class="d-flex gap-1">
+                                                    <span class="lh-sm">:</span>
+                                                    <h5 class="fw-600 fs-16 d-inline m-0 lh-sm">
+                                                        {{ $packages->prerequisite }}
+                                                    </h5>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="row">
+
+                                        <div class="row mt-10px">
                                             <div class="col-5">
-                                                <span><i class="bi bi-caret-right-fill text-orange me-2"></i>Report time</span>
+                                                <div class="d-flex">
+                                                    <i class="bi bi-caret-right-fill lh-sm fs-15 text-orange me-2"></i>
+                                                    <span class="lh-sm fs-15">Report time</span>
+                                                </div>
                                             </div>
-                                            <div class="col-7  d-flex gap-1">
-                                                <span>:</span>
-                                                <h5 class="fw-600 fs-16 d-inline m-0 ">{{ $packages->reporttime }}</h5>
+                                            <div class="col-7">
+                                                <div class="d-flex gap-1">
+                                                    <span class="lh-sm">:</span>
+                                                    <h5 class="fw-600 fs-16 d-inline m-0 lh-sm">
+                                                        {{ $packages->reporttime }}
+                                                    </h5>
+                                                </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-4 mt-0 sm-mt-4">
@@ -113,7 +147,7 @@
                             @else
                                 <div class="row">
                                     <div class="col-12 pt-4">
-                                        <h5 class="text-dark-gray fw-600 mb-10px fs-24 lh-sm">Parameter</h5>
+                                        <h5 class="text-dark-gray fw-600 mb-15px fs-24 lh-sm">Parameter</h5>
                                         <div class="d-flex flex-wrap gap-2">
                                             @foreach (explode(',', $packages->parameter) as $parameter)
                                                 <span
@@ -131,17 +165,17 @@
 
                 <div class="col-xl-4 wow fadeInUp mt-0 lg-mt-4">
                     <div
-                        class="bg-white box-shadow-quadruple-large border-0 border-radius-6px ps-30px pe-30px pt-40px pb-40px">
+                        class="bg-white box-shadow-quadruple-large border-0 border-radius-6px sm-p-15px p-25px">
                         <div class="card-body d-flex flex-column -ps-4">
-                            <h6 class="text-base-color fw-700 fs-26 text-start">Popular Tests</h6>
+                            <h6 class="text-base-color fw-700 fs-26 text-start mb-15px">Popular Tests</h6>
                             <div class="overflow-hidden">
                                 <div class="swiper slider-one-slide -slider-shadow-right sm-slider-shadow-none -magic-cursor overflow-hidden p-0"
-                                    data-slider-options='{ "slidesPerView": 1, "spaceBetween": 15, "loop": true, "pagination": { "el": ".slider-one-slide-pagination", "clickable": true, "dynamicBullets": false }, "navigation": { "nextEl": ".slider-one-slide-next-1", "prevEl": ".slider-one-slide-prev-1" }, "autoplay": { "delay": 3000, "disableOnInteraction": false }, "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "992": { "slidesPerView": 1 }, "768": { "slidesPerView": 1 }, "320": { "slidesPerView": 1 } }, "effect": "slide" }'>
+                                    data-slider-options='{ "slidesPerView": 1, "spaceBetween": 15, "loop": true, "pagination": { "el": ".slider-one-slide-pagination", "clickable": true, "dynamicBullets": false }, "navigation": { "nextEl": ".slider-one-slide-next-1", "prevEl": ".slider-one-slide-prev-1" }, "autoplay": { "delay": 3000, "disableOnInteraction": false }, "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "1200": { "slidesPerView": 1 }, "992": { "slidesPerView": 2 }, "768": { "slidesPerView": 2 }, "320": { "slidesPerView": 1 } }, "effect": "slide" }'>
                                     <div class="swiper-wrapper">
                                         @foreach ($test as $product)
                                             <div class="swiper-slide">
                                                 <div
-                                                    class="box-shadow-extra-large services-box-style-01 hover-box last-paragraph-no-margin border-radius-6px overflow-hidden border-bottom border-2 border-base-color pb-3">
+                                                    class="-box-shadow-extra-large services-box-style-01 hover-box last-paragraph-no-margin border-radius-6px overflow-hidden border-bottom border-2 border-base-color pb-3">
 
                                                     <div class="position-relative box-image">
                                                         <img src="{{ asset('uploads/' . $product->image) }}"
@@ -150,7 +184,7 @@
                                                     <div class="bg-white">
 
                                                         <div
-                                                            class="ps-20px min-h-150px pe-20px pt-35px sm-pt-35px sm-pe-20px sm-ps-20px sm-pb-0">
+                                                            class="p-15px">
                                                             <h5
                                                                 class="fw-600 lh-sm mb-10px text-dark-gray fs-18 line-2 ps-5px">
                                                                 {{ $product->name }}</h5>
@@ -166,9 +200,9 @@
                                                                 <span>
                                                                     <span class="btn-text">Know More</span>
                                                                     <span class="btn-icon"><i
-                                                                            class="bi bi-arrow-up-right-square"></i></span>
+                                                                            class="feather icon-feather-arrow-right"></i></span>
                                                                     <span class="btn-icon"><i
-                                                                            class="bi bi-arrow-up-right-square"></i></span>
+                                                                            class="feather icon-feather-arrow-right"></i></span>
                                                                 </span>
 
                                                             </a>

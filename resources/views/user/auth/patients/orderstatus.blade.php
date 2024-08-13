@@ -34,7 +34,7 @@
                         <tr>
                             <th class="bg-base-color text-white">Sl No.</th>
                             <th class="bg-base-color text-white">Product/ Test name</th>
-                            <th class="bg-base-color text-white">payment Details</th>
+                            <th class="bg-base-color text-white">Payment Details</th>
                             <th class="bg-base-color text-white">Amount</th>
                             <th class="bg-base-color text-white">Date</th>
                             <th class="bg-base-color text-white">Status</th>
@@ -43,8 +43,8 @@
                     <tbody>
                         @if ($groupedCart && $groupedCart->count() > 0)
                             @foreach ($groupedCart as $razorid => $rows)
-                                <tr class="order-row" data-id="{{ $razorid }}">
-                                    <td>{{ $loop->iteration }}</td>
+                                <tr class="order-row align-middle" data-id="{{ $razorid }}">
+                                    <td class="text-center">{{ $loop->iteration }}</td>
                                     <td>
                                         @foreach ($rows as $row)
                                             @if ($row->type == 'package')
@@ -58,9 +58,11 @@
                                     <td>
 
                                         @if ($row->razorid == null)
-                                            <button class="btn btn-warning btn-sm" disabled>
+                                            {{-- <button class="btn btn-warning btn-sm" disabled>
                                                 <i class="fa-solid fa-hourglass"></i> No paid
-                                            </button>
+                                            </button> --}}
+                                            <i class="fa-solid fa-hourglass text-yellow"></i>
+                                            <span class="text-capitalize fw-600 text-yellow">Not Paid</span>
                                         @else
                                             <input type="hidden" name="razorid" value="{{ $razorid }}">
                                             {{ $razorid }}
@@ -113,8 +115,8 @@
                                             <i class="bi bi-exclamation-circle-fill text-yellow"></i>
                                             <span class="text-capitalize fw-600 text-yellow">{{ $status }}</span>
                                         @elseif ($status == 'approved' && $paystatus == 0)
-                                            <i class="bi bi-check-circle-fill text-success"></i>
-                                            <span class="text-capitalize fw-600 text-success">Pending</span>
+                                            <i class="bi bi-check-circle-fill text-yellow"></i>
+                                            <span class="text-capitalize fw-600 text-yellow">Pending</span>
                                         @elseif ($status == 'approved' && $paystatus == 1)
                                             {{-- <i class="bi bi-check-circle-fill text-success"></i> --}}
                                             {{-- <span class="text-capitalize fw-600 text-success">Paid</span> --}}

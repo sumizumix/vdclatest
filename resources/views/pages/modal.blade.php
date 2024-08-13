@@ -17,7 +17,7 @@
                                 aria-label="Close"></button>
                         </div>
 
-                        <form class="-p-40px" id="registrationForm" action="{{ route('user.login.check') }}"
+                        {{-- <form class="-p-40px" id="registrationForm" action="{{ route('user.login.check') }}"
                             method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
@@ -35,7 +35,64 @@
                             </button>
 
 
-                        </form>
+                        </form> --}}
+                        {{-- <form class="-p-40px" id="registrationForm" action="{{ route('user.login.check') }}"
+                            method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="mb-3">
+                                <label for="loginInput" class="form-label text-dark-gray">Phone Number</label>
+                                <input type="number" class="form-control" id="loginInput" name="phone">
+                                <div class="text-danger" id="phone-validation"></div>
+                            </div>
+
+                            <button type="submit" onclick="validateForm()"
+                                class="btn btn-small btn-dark-gray btn-round-edge btn-hover-animation w-100 d-block mt-20px lg-mb-15px md-mx-auto">
+                                <span>
+                                    <span class="btn-text">Login</span>
+                                    <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                                </span>
+                            </button>
+
+
+                        </form> --}}
+               <script>
+                function validateForm(event) {
+                    const phoneInput = document.getElementById('loginInput').value;
+                    let validation = true;
+            
+                    // Validate the phone number length
+                    if (phoneInput.length < 10 || phoneInput.length > 15) {
+                        document.getElementById('phone-validation').innerHTML = "Please enter a valid number between 10 and 15 digits.";
+                        validation = false;
+                    } else {
+                        document.getElementById('phone-validation').innerHTML = ""; // Clear validation message
+                    }
+            
+                    // Prevent form submission if validation fails
+                    if (!validation) {
+                        event.preventDefault();
+                    }
+                }
+            </script>
+            
+            <form class="-p-40px" id="registrationForm" action="{{ route('user.login.check') }}"
+                  method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="mb-3">
+                    <label for="loginInput" class="form-label text-dark-gray">Phone Number</label>
+                    <input type="number" class="form-control" id="loginInput" name="phone">
+                    <div class="text-danger" id="phone-validation"></div>
+                </div>
+            
+                <button type="submit" onclick="validateForm(event)"
+                        class="btn btn-small btn-dark-gray btn-round-edge btn-hover-animation w-100 d-block mt-20px lg-mb-15px md-mx-auto">
+                    <span>
+                        <span class="btn-text">Login</span>
+                        <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                    </span>
+                </button>
+            </form>
+            
                         <div class="d-flex mt-20px justify-content-between">
                             <p class="fs-13 mb-0">Don't have an account?
                                 <button type="button" class="btn p-0 fs-13 text-base-color" id="showSignUp">
@@ -264,22 +321,7 @@
         @endif
     });
 </script>
-<script>
-function validateForm() {
-    const phoneInput = document.getElementById('loginInput').value;
 
-    var validation = true;
-    if (phoneInput.length <script 10 || phoneInput.length > 15) {
-        document.getElementById('phone-validation').innerHTML = "Please enter a valid number";
-        validation = false;
-    }
-    if (validation) {
-        document.getElementById('registrationForm').submit();
-
-    }
-}
-
-</script>
 {{-- <script>
     document.getElementById('sendOtpBtn').addEventListener('click', function() {
         var phone = document.getElementById('phoneInput').value;

@@ -68,7 +68,7 @@
                 this website if you disagree with any of these website standard terms
                 and conditions.</span> --}}
             <div class="row justify-content-center">
-
+                
                 <div class="col-auto">
                     <a href="#" class="process-step-item d-flex align-items-center" data-bs-toggle="modal"
                         data-bs-target="#Terms"> <span> Terms and Conditions</span>
@@ -159,7 +159,7 @@
                     <span class="fw-bold text-orange">Terms and Conditions</span>
                     <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-
+             
                     {{-- <h5>Terms and Conditions</h5> --}}
 
                    <h6 class="fs-22 fw-600"> 1. Introduction</h6>
@@ -170,9 +170,9 @@
                    <p>
                     Vijaya Diagnostic Centers offers diagnostic and medical testing services. The services provided are subject to availability and may vary based on the location and specific needs of each patient.
                    </p>
-
-
-
+                   
+                    
+                    
                     <h6 class="fs-22 fw-600">
                     3. Appointments and Scheduling</h6>
                     <p>
@@ -196,10 +196,10 @@
                  <h6 class="fs-22 fw-600">
                     8. Governing Law</h6>
                   <p>  These Terms and Conditions are governed by the laws of [Your Jurisdiction]. Any disputes arising out of or relating to these terms shall be subject to the exclusive jurisdiction of the courts in [Your Jurisdiction].
-                  </p>
+                  </p> 
                  <h6 class="fs-22 fw-600">   9. Contact Information</h6>
                    <p> For any questions or concerns regarding these Terms and Conditions, please contact us at:
-
+                    
                     Vijaya Diagnostic Centers<br>
                     Near Vijaya Jubilee Hospital, Pulamon, Kottarakkara<br>
                     +91 7034031188 / +917034031199<br>
@@ -263,25 +263,28 @@
                 <p>
 
                     Cancellations and returns are not accepted once services have been rendered at Vijaya Diagnostic Centers. Please review your appointments and purchases carefully before confirming.
-
+                    
                     </p>
             </div>
         </div>
     </div>
 </div>
 <!-- Toastr Notification Script -->
+
 @if (session()->has('toastr'))
     {!! session('toastr') !!}
 @endif
+
+
 @include('pages.modal')
-{{-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css"> --}}
-{{-- <script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script> --}}
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+{{--
+<script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script> --}}
 <script type="text/javascript" src="{{ asset('frontend/js/jquery.js') }}"></script>
 <script type="text/javascript" src="{{ asset('frontend/js/vendors.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('frontend/js/main.js') }}"></script>
 
-{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"> --}}
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> --}}
+
 
 {{-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> --}}
 
@@ -290,6 +293,7 @@
 {{-- <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet" /> --}}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js" integrity="sha512-FHZVRMUW9FsXobt+ONiix6Z0tIkxvQfxtCSirkKc5Sb4TKHmqq1dZa8DphF0XqKb3ldLu/wgMa8mT6uXiLlRlw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
 <script>
     // console.log($('.chosencontainer'))
@@ -305,7 +309,7 @@
 </script>
 
 {{-- dropdown --}}
-{{-- <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script> --}}
+<script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
 <script>
     function payment(amount, user_id) {
 

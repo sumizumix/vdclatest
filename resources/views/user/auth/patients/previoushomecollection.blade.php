@@ -11,14 +11,14 @@
                         class="w-30px h-2px bg-yellow d-inline-block align-middle position-relative top-minus-2px me-10px"></span>
                     VDC
                 </h1>
-                <h4 class="text-white text-shadow-medium fw-500 ls-minus-1px mb-0">Home Sample Collection</h4>
+                <h4 class="text-white text-shadow-medium fw-500 ls-minus-1px mb-0">Previous Home Sample Collection</h4>
             </div>
             <div class="col">
                 <div class="mt-auto justify-content-end breadcrumb breadcrumb-style-01 fs-14 text-white"
                     data-anime='{ "translateY": [30, 0], "opacity": [0, 1], "easing": "easeOutCubic", "duration": 500, "staggervalue": 300, "delay": 300 }'>
                     <ul>
                         <li><a href="{{ url('/') }}" class="text-white">Home</a></li>
-                        <li>Home Sample Collection</li>
+                        <li> Previous Home Sample Collection</li>
                     </ul>
                 </div>
             </div>
@@ -34,6 +34,7 @@
                 <h5 class="fw-600 fs-28 text-orange">Previous Booking</h5>
                 <table class="table table-hover mb-0 align-middle fs-15 lh-sm" id="dataTable">
                     <thead>
+
                         <tr>
                             <th class="bg-base-color text-white">#</th>
                             <th class="bg-base-color text-white">Name</th>
@@ -45,6 +46,16 @@
                         </tr>
                     </thead>
                     <tbody id="tableContent">
+
+                        @if ($booksamplecollection->isEmpty())
+                        <tr>
+                            <td colspan="7" class="text-center pt-60px pb-60px">
+                                <img src="{{ asset('frontend/vdc_images/no-reports-found.svg') }}"
+                                    alt="No reports found image" class="opacity-3">
+                                <p class="pt-20px">No orders found</p>
+                            </td>
+                        </tr>
+                    @else
                         @foreach ($booksamplecollection as $row)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
@@ -97,6 +108,7 @@
                                 </td>
                             </tr>
                         @endforeach
+                        @endif
                     </tbody>
                 </table>
                 {{-- </div>

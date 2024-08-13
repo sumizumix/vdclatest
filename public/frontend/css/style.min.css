@@ -43,8 +43,10 @@ a:hover {
 :root {
     --purple: #763F98;
     --orange: #F47920;
-    --light-purple: #D3B6D7;
     --medium-light-purple: #8F7BB9;
+    --light-purple: #DEB9D8;
+    --vdc-light-yellow: #F0EBE1;
+    --vdc-gray: #6D6E71;
     --secondary-gray: #808285;
 
     --alt-font: "Plus Jakarta Sans", sans-serif;
@@ -86,7 +88,6 @@ a:hover {
     --camarone: #20642b;
     --seal-brown: #0e0708;
     --Wasabi: #8ea63a;
-    --vdc-light-yellow: #F0EBE1;
 }
 .text-purple{
     color: var(--purple);
@@ -115,6 +116,12 @@ a:hover {
 
 .bg-vdc-medium-light-purple {
     background-color: var(--medium-light-purple);
+}
+.bg-vdc-gray {
+    background-color: var(--vdc-gray);
+}
+.text-vdc-gray {
+    background-color: var(--vdc-gray);
 }
 
 .bg-vdc-secondary-gray {

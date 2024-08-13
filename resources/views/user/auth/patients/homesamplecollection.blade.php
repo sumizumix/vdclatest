@@ -161,5 +161,7 @@
     }
 </script>
 
+
+
 @include('layout.footer')
 

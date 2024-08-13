@@ -229,13 +229,13 @@
             },
             success: function(response) {
                 if (response.success) {
-                    toastr.success('Product added to cart successfully!');
+                    toastr.success('Package added to cart successfully!');
                     setTimeout(() => {
                         window.location.reload();
                     }, 1000);
 
                 } else {
-                    toastr.error('Failed to add product to cart. Please try again.');
+                    toastr.error('Failed to add Package to cart. Please try again.');
                 }
             },
             error: function() {

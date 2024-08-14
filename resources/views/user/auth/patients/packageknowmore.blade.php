@@ -120,7 +120,7 @@
                                         <div class="d-flex flex-wrap gap-2">
                                             @foreach (explode(',', $packages->parameter) as $parameter)
                                                 <span
-                                                    class="p-5px border-radius-6px bg-white shadow-sm border border-2 lh-base border-base-color d-inline-flex text-base-color fw-600 fs-14 m-0">
+                                                    class="px-2 py-1 border-radius-6px shadow-sm border border-1 lh-base border-base-color d-inline-flex text-base-color fw-600 fs-14 m-0">
                                                     {{ $parameter }}
                                                 </span>
                                             @endforeach

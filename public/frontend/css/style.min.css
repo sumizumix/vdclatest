@@ -18678,12 +18678,12 @@ footer .footer-navbar .nav-item:last-child a {
 .max-h-240px{
     max-height: 240px !important;
 }
-.patient_packages .patient_packages_card:hover{
+/* .patient_packages .patient_packages_card:hover{
     background-color: var(--light-purple);
-}
-.patient_test .patient_test_card:hover{
+} */
+/* .patient_test .patient_test_card:hover{
     background-color: var(--light-purple);
-}
+} */
 .line-clamp-4 {
     display: -webkit-box;
     -webkit-line-clamp: 4;

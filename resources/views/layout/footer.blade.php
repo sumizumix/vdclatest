@@ -1,5 +1,5 @@
 <footer class="footer-dark bg-dark-blue pb-0 cover-background background-position-left-top"
-    style="background-image: url({{ asset('frontend/images/demo-hosting-footer-bg.jpg') }})">
+    style="background-image: url({{ asset('frontend/vdc_images/footer-bg.jpg') }})">
     <div class="container">
         <div class="row justify-content-center mb-5 md-mb-8 sm-mb-40px">
             <div class="col-6 col-lg-4 last-paragraph-no-margin order-sm-1 md-mb-40px xs-mb-30px">

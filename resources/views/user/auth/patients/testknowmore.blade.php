@@ -41,8 +41,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-8 wow fadeInUp">
-                    <div
-                        class="bg-white box-shadow-quadruple-large border-0 border-radius-6px sm-p-15px p-25px">
+                    <div class="bg-white box-shadow-quadruple-large border-0 border-radius-6px sm-p-15px p-25px">
                         <div class="">
                             {{-- <img src="{{ asset('uploads/' . $packages->image) }}" class="rounded h-240px w-100 object-fit-cover" /> --}}
                             <h5 class="fw-700 text-dark-gray mb-15px">{{ $packages->name }}</h5>
@@ -145,13 +144,16 @@
                             </div>
                             @if ($packages->parameter == null)
                             @else
+                                @php
+                                    $parameters = (array) json_decode($packages->parameter);
+                                @endphp
                                 <div class="row">
                                     <div class="col-12 pt-4">
                                         <h5 class="text-dark-gray fw-600 mb-15px fs-24 lh-sm">Parameter</h5>
                                         <div class="d-flex flex-wrap gap-2">
-                                            @foreach (explode(',', $packages->parameter) as $parameter)
+                                            @foreach ($parameters as $index => $parameter)
                                                 <span
-                                                    class="p-5px border-radius-6px bg-white shadow-sm border border-2 lh-base border-base-color d-inline-flex text-base-color fw-600 fs-14 m-0">
+                                                    class="px-2 py-1 border-radius-6px shadow-sm border border-1 lh-base border-base-color d-inline-flex text-base-color fw-600 fs-14 m-0">
                                                     {{ $parameter }}
                                                 </span>
                                             @endforeach
@@ -164,8 +166,7 @@
                 </div>
 
                 <div class="col-xl-4 wow fadeInUp mt-0 lg-mt-4">
-                    <div
-                        class="bg-white box-shadow-quadruple-large border-0 border-radius-6px sm-p-15px p-25px">
+                    <div class="bg-white box-shadow-quadruple-large border-0 border-radius-6px sm-p-15px p-25px">
                         <div class="card-body d-flex flex-column -ps-4">
                             <h6 class="text-base-color fw-700 fs-26 text-start mb-15px">Popular Tests</h6>
                             <div class="overflow-hidden">
@@ -183,8 +184,7 @@
                                                     </div>
                                                     <div class="bg-white">
 
-                                                        <div
-                                                            class="p-15px">
+                                                        <div class="p-15px">
                                                             <h5
                                                                 class="fw-600 lh-sm mb-10px text-dark-gray fs-18 line-2 ps-5px">
                                                                 {{ $product->name }}</h5>
@@ -195,8 +195,6 @@
                                                                 class="d-inline-block fs-20 primary-font fw-600 text-dark-gray mb-5px"></a>
                                                             <a href="{{ URL::to('test-knowmore/' . $product->slug) }}"
                                                                 class="btn btn-very-small btn-vdc-orange btn-hover-animation-switch btn-round-edge btn-box-shadow">
-                                                                {{-- <i class="ti ti-pencil"></i>
-                                               Know More --}}
                                                                 <span>
                                                                     <span class="btn-text">Know More</span>
                                                                     <span class="btn-icon"><i

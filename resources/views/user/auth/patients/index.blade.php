@@ -31,9 +31,8 @@
                         <form action="{{ route('search') }}" method="get" class="-search-form -d-flex">
                             <div class="input-group ">
                                 <input type="text" class="form-control" id="search-input"
-                                    placeholder="Search for packages"
-                                    aria-label="Search for packages" aria-describedby="button-addon2"
-                                    name="s">
+                                    placeholder="Search for packages" aria-label="Search for packages"
+                                    aria-describedby="button-addon2" name="s">
                                 <button class="btn btn-base-color -btn-box-shadow btn-round-edge" type="submit"
                                     id="button-addon2">
                                     <i class="feather icon-feather-search m-0 me-5px" aria-hidden="true"></i>Search
@@ -51,50 +50,64 @@
     <div class="container">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-4"
             data-anime='{ "el": "childs", "translateY": [30, 0], "scale":[0.8,1], "opacity": [0,1], "duration": 500, "delay": 0, "staggervalue": 200, "easing": "easeOutQuad" }'>
-            @foreach ($product as $product)
-            
-           
+            @foreach ($product as $products)
                 <div class="col icon-with-text-style-07 transition-inner-all md-mb-30px">
                     <div
-                        class="patient_packages_card feature-box justify-content-start -border text-start p-20px sm-p-20px border-radius-6px box-shadow-quadruple-large box-shadow-quadruple-large-hover">
-                        <div class="-feature-box-icon mb-20px w-100">
-                            <a href="{{ URL::to('packages-knowmore/' . $product->slug) }}"
-                                >  
-                                <img src="{{ asset('uploads/' . $product->image) }}"
-                                class="rounded h-240px w-100 object-fit-cover" />
-                        </div>
-                        <div class="feature-box-content min-h-100px">
-                            <h4 class="fw-600 lh-sm mb-10px text-dark-gray fs-18 line-2">{{ $product->name }}</h4>
-                            <p class="mb-10px lh-sm fs-18 fw-bold text-base-color">₹ {{ $product->price }}</p></a>
+                        class="patient_packages_card feature-box justify-content-between bg-white text-start p-20px sm-p-20px border-radius-6px box-shadow-quadruple-large box-shadow-quadruple-large-hover h-100">
+                        {{-- <div class="-feature-box-icon mb-20px w-100">
+                            <a href="{{ URL::to('packages-knowmore/' . $products->slug) }}">
+                                <img src="{{ asset('uploads/' . $products->image) }}"
+                                    class="rounded h-240px w-100 object-fit-cover" />
+                        </div> --}}
+                        <div class="feature-box-content">
+                            <h4 class="fw-600 lh-sm mb-10px text-dark-gray fs-18 line-2">{{ $products->name }}</h4>
+                            <p class="mb-10px lh-sm fs-18 fw-bold text-base-color">₹ {{ $products->price }}</p></a>
+
+                            @php
+                                $totalParameters = count(explode(',', $products->parameter));
+                                $limit = 3; // Maximum number of parameters to show
+                            @endphp
+
+                            <div class="mt-15px">
+                                <p class="fs-13 mb-10px lh-1 text-orange">Parameters</p>
+                                <div class="d-flex flex-wrap gap-2">
+                                    @foreach (explode(',', $products->parameter) as $index => $parameter)
+                                        @if ($index < $limit)
+                                        <span
+                                            class="px-2 py-1 border-radius-6px shadow-sm border border-1 lh-base border-base-color d-inline-flex text-base-color fw-600 fs-14 m-0">
+                                            {{ $parameter }}
+                                        </span>
+                                        @endif
+                                    @endforeach
+
+                                    @if ($totalParameters > $limit)
+                                        <span
+                                            class="px-2 py-1 border-radius-6px shadow-sm border border-1 lh-base border-base-color d-inline-flex text-base-color fw-600 fs-14 m-0">
+                                            +{{ $totalParameters - $limit }} more
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
                         <div class="mt-30px">
-                            
-                       
-
-
-                        <a href="{{ URL::to('packages-knowmore/' . $product->slug) }}"
-                           class="btn btn-very-small btn-dark-gray btn-hover-animation-switch btn-round-edge btn-box-shadow">
-                           {{-- <i class="ti ti-pencil"></i>
-                         Know More --}}
-                         <span>
-                            <span class="btn-text">Know More</span>
-                            <span class="btn-icon"><i class="bi bi-arrow-up-right-square"></i></span>
-                            <span class="btn-icon"><i class="bi bi-arrow-up-right-square"></i></span>
-                        </span>
-                        
-                        </a>
-
+                            <a href="{{ URL::to('packages-knowmore/' . $products->slug) }}"
+                                class="btn btn-very-small btn-dark-gray btn-hover-animation-switch btn-round-edge btn-box-shadow">
+                                <span>
+                                    <span class="btn-text">Know More</span>
+                                    <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
+                                </span>
+                            </a>
                             <button
                                 class="btn btn-very-small btn-base-color btn-hover-animation-switch btn-round-edge btn-box-shadow ms-5px"
-                                onclick="handleAddToCart({{ $product->id }})">
+                                onclick="handleAddToCart({{ $products->id }})">
                                 <span>
-                                   <span class="btn-text">Add to Cart</span>
-                                   <span class="btn-icon"><i class="feather icon-feather-shopping-cart"></i></span>
-                                   <span class="btn-icon"><i class="feather icon-feather-shopping-cart"></i></span>
+                                    <span class="btn-text">Add to Cart</span>
+                                    <span class="btn-icon"><i class="feather icon-feather-shopping-cart"></i></span>
+                                    <span class="btn-icon"><i class="feather icon-feather-shopping-cart"></i></span>
                                 </span>
                             </button>
                         </div>
-                       
                     </div>
                 </div>
             @endforeach
@@ -145,7 +158,7 @@
         var isAuthenticated = {{ Auth::check() ? 'true' : 'false' }};
         if (isAuthenticated) {
             addToCart(productId);
-         
+
         } else {
             // Show login modal
             $('#loginModal').modal('show');
@@ -159,14 +172,14 @@
             data: {
                 _token: '{{ csrf_token() }}',
                 product_id: productId,
-                type:"package"
+                type: "package"
             },
             success: function(response) {
                 if (response.success) {
                     toastr.success('Package added to cart successfully!');
                     setTimeout(() => {
-    window.location.reload();
-}, 1000); 
+                        window.location.reload();
+                    }, 1000);
 
                 } else {
                     toastr.error('Failed to add Package to cart. Please try again.');

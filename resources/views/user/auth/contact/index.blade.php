@@ -48,13 +48,11 @@
     </div>
 </section>
 
-
-
 <section class="p-0 pb-50px">
     <div class="container">
         <div class="row pt-40px pb-40px justify-content-evenly align-items-center">
-            <div class="col-10">
-                <div class="d-flex align-items-center justify-content-center">
+            <div class="col-12">
+                <div class="d-flex flex-column flex-xl-row gap-2 align-items-center justify-content-center">
                     <h5 class="fw-700 text-dark-gray text-center fs-30 m-0">
                         Vijaya Diagnostic Centers in
                     </h5>
@@ -66,9 +64,9 @@
             </div>
         </div>
 
-        <div class="row gy-5">
+        <div class="row gy-5 justify-content-center">
             @foreach ($center as $row)
-                <div class="col-12 col-md-4 transition-inner-all location-card" data-place="{{ $row->address }}">
+                <div class="col-12 col-md-6 col-xl-4 transition-inner-all location-card" data-place="{{ $row->address }}">
                     <div
                         class="feature-box justify-content-between border border-2 border-color-base-color text-start p-0 border-radius-6px -box-shadow-quadruple-large box-shadow-quadruple-large-hover">
                         <div class="feature-box-content min-h-200px p-20px">

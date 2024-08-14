@@ -7,11 +7,11 @@
         <div class="row h-150px align-items-center">
             <div class="col-lg-5 col-sm-8 position-relative page-title-extra-small appear anime-child anime-complete"
                 data-anime="{ &quot;el&quot;: &quot;childs&quot;, &quot;opacity&quot;: [0, 1], &quot;translateX&quot;: [-30, 0], &quot;duration&quot;: 800, &quot;delay&quot;: 0, &quot;staggervalue&quot;: 300, &quot;easing&quot;: &quot;easeOutQuad&quot; }">
-                <h1 class="mb-20px xs-mb-20px text-white text-shadow-medium" >
+                <h1 class="mb-20px xs-mb-20px text-white text-shadow-medium">
                     <span
                         class="w-30px h-2px bg-yellow d-inline-block align-middle position-relative top-minus-2px me-10px"></span>VDC
                 </h1>
-                <h4 class="text-white text-shadow-medium fw-500 ls-minus-1px mb-0" >Packages</h4>
+                <h4 class="text-white text-shadow-medium fw-500 ls-minus-1px mb-0">Packages</h4>
             </div>
             <div class="col">
                 <div class="mt-auto justify-content-end breadcrumb breadcrumb-style-01 fs-14 text-white"
@@ -26,54 +26,50 @@
     </div>
 </section>
 
-
-
-{{-- <section class="p-0 position-relative z-3" style="margin-top: -60px">
-    <div class="container">
-        <div class="row align-items-center justify-content-center">
-            <div class="col-lg-10 col-md-10">
-<div class="input-group mb-3">
-  
-    <input type="text" id="search-box" class="form-control" placeholder="Search products...">
-    <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>  <div id="search-results" class="list-group mt-3"></div>
-  </div>
-</div>
-</div>
-</div>
-</section> --}}
-{{-- <section class="p-0 position-relative z-3" style="margin-top: -60px">
-    <div class="container">
-        <div class="row align-items-center justify-content-center">
-            <div class="col-lg-10 col-md-10">
-<div class="input-group mb-3">
-  
-    <input type="search" class="form-control" id="search_product" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-    <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
-  </div>
-</div>
-</div>
-</div>
-</section> --}}
 <section class="">
     <div class="container">
-        <div class="row align-items-center justify-content-center gy-4"
+        <div class="row justify-content-start gy-4"
             data-anime='{ "el": "childs", "translateY": [30, 0], "scale":[0.8,1], "opacity": [0,1], "duration": 500, "delay": 0, "staggervalue": 200, "easing": "easeOutQuad" }'>
             @foreach ($packages as $row)
-                <div class="col-sm-12 col-md-6 col-lg-4 icon-with-text-style-07 transition-inner-all">
+                <div class="col-sm-12 col-md-6 col-lg-4 transition-inner-all">
                     <div
-                        class="bg-white feature-box justify-content-start -border text-start p-20px sm-p-20px border-radius-6px box-shadow-quadruple-large box-shadow-quadruple-large-hover">
-                        <div class="-feature-box-icon mb-20px">
+                        class="bg-white feature-box justify-content-between h-100 text-start p-20px sm-p-20px border-radius-6px box-shadow-quadruple-large box-shadow-quadruple-large-hover">
+                        {{-- <div class="-feature-box-icon mb-20px">
                             <img src="{{ asset('uploads/' . $row->image) }}"
                                 style="aspect-ratio:383/287;object-fit: cover;" class="rounded" />
-                        </div>
-                        <div class="feature-box-content min-h-100px">
+                        </div> --}}
+                        <div class="feature-box-content">
                             <h4 class="fw-600 lh-sm mb-10px text-dark-gray fs-18 line-2">{{ $row->name }}</h4>
-                            <p class="mb-10px lh-sm fs-18">₹ {{ $row->price }}</p>
+                            <p class="mb-10px lh-sm fs-18 fw-bold text-base-color">₹ {{ $row->price }}</p>
+                            @php
+                                $totalParameters = count(explode(',', $row->parameter));
+                                $limit = 3; // Maximum number of parameters to show
+                            @endphp
+
+                            <div class="mt-15px">
+                                <p class="fs-13 mb-10px lh-1 text-orange">Parameters</p>
+                                <div class="d-flex flex-wrap gap-2">
+                                    @foreach (explode(',', $row->parameter) as $index => $parameter)
+                                        @if ($index < $limit)
+                                            <span
+                                                class="px-2 py-1 border-radius-6px shadow-sm border border-1 lh-base border-base-color d-inline-flex text-base-color fw-600 fs-14 m-0">
+                                                {{ $parameter }}
+                                            </span>
+                                        @endif
+                                    @endforeach
+
+                                    @if ($totalParameters > $limit)
+                                        <span
+                                            class="px-2 py-1 border-radius-6px shadow-sm border border-1 lh-base border-base-color d-inline-flex text-base-color fw-600 fs-14 m-0">
+                                            +{{ $totalParameters - $limit }} more
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
-                        <div class="w-100 d-flex justify-content-between">
-                          <a href="{{ URL::to('packages-knowmore/' . $row->slug) }}"
-                                class="btn btn-link-gradient expand btn-large text-orange d-table d-lg-inline-block xl-mb-15px md-mb-10px"
-                              >
+                        <div class="w-100 d-flex justify-content-between mt-30px">
+                            <a href="{{ URL::to('packages-knowmore/' . $row->slug) }}"
+                                class="btn btn-link-gradient expand btn-large text-orange d-table d-lg-inline-block xl-mb-15px md-mb-10px">
                                 Know more
                                 <span class="bg-orange"></span>
                             </a>
@@ -139,7 +135,7 @@
         if (isAuthenticated) {
             addToCart(productId);
         } else {
-            
+
             $('#loginModal').modal('show');
         }
     }
@@ -165,14 +161,14 @@
         });
     }
 
-    
+
     $('#loginForm').submit(function(e) {
         e.preventDefault();
 
         var phone = $('#phone').val();
 
         $.ajax({
-            url: '/login', 
+            url: '/login',
             method: 'POST',
             data: {
                 _token: $('input[name="_token"]').val(),
@@ -180,12 +176,12 @@
             },
             success: function(response) {
                 if (response.success) {
-                
+
                     $('#loginModal').modal('hide');
 
                     isAuthenticated = true;
 
-               
+
                 } else {
                     alert('Login failed. Please check your credentials and try again.');
                 }
@@ -195,8 +191,8 @@
             }
         });
     });
- 
-  
+
+
 
 
 </script> --}}
@@ -207,7 +203,7 @@
         var isAuthenticated = {{ Auth::check() ? 'true' : 'false' }};
         if (isAuthenticated) {
             addToCart(productId);
-         
+
         } else {
             // Show login modal
             $('#loginModal').modal('show');
@@ -221,14 +217,14 @@
             data: {
                 _token: '{{ csrf_token() }}',
                 product_id: productId,
-                type:"package"
+                type: "package"
             },
             success: function(response) {
                 if (response.success) {
                     toastr.success('Product added to cart successfully!');
                     setTimeout(() => {
-    window.location.reload();
-}, 1000); 
+                        window.location.reload();
+                    }, 1000);
 
                 } else {
                     toastr.error('Failed to add product to cart. Please try again.');

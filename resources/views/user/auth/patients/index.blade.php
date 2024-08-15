@@ -59,9 +59,17 @@
                                 <img src="{{ asset('uploads/' . $products->image) }}"
                                     class="rounded h-240px w-100 object-fit-cover" />
                         </div> --}}
-                        <div class="feature-box-content">
-                            <h4 class="fw-600 lh-sm mb-10px text-dark-gray fs-18 line-2">{{ $products->name }}</h4>
-                            <p class="mb-10px lh-sm fs-18 fw-bold text-base-color">₹ {{ $products->price }}</p></a>
+                        <div class="feature-box-content position-relative w-100">
+                            <h4 class="fw-600 lh-sm mb-10px  fs-18 line-2">
+                                <a href="{{ URL::to('packages-knowmore/' . $products->slug) }}"
+                                    class="stretched-link text-dark-gray">
+                                    {{ $products->name }}
+                                </a>
+                            </h4>
+                            <p
+                                class="mb-10px lh-sm fs-18 fw-bold text-white bg-vdc-orange d-inline-block px-2 py-1 rounded-pill">
+                                <span class="">₹</span> {{ $products->price }}
+                            </p>
 
                             @php
                                 $totalParameters = count(explode(',', $products->parameter));
@@ -69,20 +77,20 @@
                             @endphp
 
                             <div class="mt-15px">
-                                <p class="fs-13 mb-10px lh-1 text-orange">Parameters</p>
-                                <div class="d-flex flex-wrap gap-2">
+                                <p class="fs-13 mb-10px lh-1 text-dark-gray">Parameters</p>
+                                <div class="d-flex flex-wrap gap-1">
                                     @foreach (explode(',', $products->parameter) as $index => $parameter)
                                         @if ($index < $limit)
-                                        <span
-                                            class="px-2 py-1 border-radius-6px shadow-sm border border-1 lh-base border-base-color d-inline-flex text-base-color fw-600 fs-14 m-0">
-                                            {{ $parameter }}
-                                        </span>
+                                            <span
+                                                class="px-2 py-1 rounded-pill border border-1 border-base-color d-inline text-base-color fw-600 fs-13 lh-1 m-0">
+                                                {{ strlen($parameter) > 6 ? substr($parameter, 0, 6) . '...' : $parameter }}
+                                            </span>
                                         @endif
                                     @endforeach
 
                                     @if ($totalParameters > $limit)
                                         <span
-                                            class="px-2 py-1 border-radius-6px shadow-sm border border-1 lh-base border-base-color d-inline-flex text-base-color fw-600 fs-14 m-0">
+                                            class="px-2 py-1 rounded-pill border border-1 border-base-color d-inline text-base-color fw-600 fs-13 lh-1 m-0">
                                             +{{ $totalParameters - $limit }} more
                                         </span>
                                     @endif
@@ -91,7 +99,7 @@
                         </div>
                         <div class="mt-30px">
                             <a href="{{ URL::to('packages-knowmore/' . $products->slug) }}"
-                                class="btn btn-very-small btn-dark-gray btn-hover-animation-switch btn-round-edge btn-box-shadow">
+                                class="btn btn-very-small btn-dark-gray btn-hover-animation-switch btn-rounded btn-box-shadow">
                                 <span>
                                     <span class="btn-text">Know More</span>
                                     <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
@@ -99,7 +107,7 @@
                                 </span>
                             </a>
                             <button
-                                class="btn btn-very-small btn-base-color btn-hover-animation-switch btn-round-edge btn-box-shadow ms-5px"
+                                class="btn btn-very-small btn-base-color btn-hover-animation-switch btn-rounded btn-box-shadow ms-5px"
                                 onclick="handleAddToCart({{ $products->id }})">
                                 <span>
                                     <span class="btn-text">Add to Cart</span>

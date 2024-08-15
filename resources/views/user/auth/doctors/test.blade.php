@@ -32,14 +32,22 @@
             @foreach ($test as $row)
                 <div class="col-sm-12 col-md-6 col-lg-4 transition-inner-all md-mb-30px">
                     <div
-                        class="bg-white feature-box justify-content-between h-100 text-start p-20px sm-p-20px border-radius-6px box-shadow-quadruple-large box-shadow-quadruple-large-hover">
+                        class="bg-white feature-box justify-content-between h-100 text-start p-20px sm-p-20px border-radius-6px box-shadow-quadruple-large box-shadow-quadruple-large-hover border-bottom border-2 border-base-color">
                         {{-- <div class="-feature-box-icon mb-20px w-100">
                             <img src="{{ asset('uploads/' . $row->image) }}"
                                 class="rounded h-250px w-100 object-fit-cover" />
                         </div> --}}
-                        <div class="feature-box-content">
-                            <h4 class="fw-600 lh-sm mb-10px text-dark-gray fs-18 line-2">{{ $row->name }}</h4>
-                            <p class="mb-10px lh-sm fs-18 fw-bold text-base-color">₹ {{ $row->price }}</p>
+                        <div class="feature-box-content position-relative w-100">
+                            <h4 class="fw-600 lh-sm mb-10px  fs-18 line-2">
+                                <a href="{{ URL::to('test-knowmore/' . $row->slug) }}"
+                                    class="stretched-link text-dark-gray">
+                                    {{ $row->name }}
+                                </a>
+                            </h4>
+                            <p
+                                class="mb-10px lh-1 fs-18 fw-bold text-white bg-vdc-orange d-inline-block px-2 py-1 rounded-pill">
+                                <span class="">₹</span> {{ $row->price }}
+                            </p>
                             @if (!empty($row->parameter))
                                 @php
                                     $parameters = (array) json_decode($row->parameter);
@@ -48,20 +56,20 @@
                                 @endphp
 
                                 <div class="mt-15px">
-                                    <p class="fs-13 mb-10px lh-1 text-orange">Parameters</p>
-                                    <div class="d-flex flex-wrap gap-2">
+                                    <p class="fs-13 mb-10px lh-1 text-dark-gray">Parameters</p>
+                                    <div class="d-flex flex-wrap gap-1">
                                         @foreach ($parameters as $index => $parameter)
                                             @if ($index < $limit)
                                                 <span
-                                                    class="px-2 py-1 border-radius-6px shadow-sm border border-1 lh-base border-base-color d-inline-flex text-base-color fw-600 fs-14 m-0">
-                                                    {{ $parameter }}
+                                                    class="px-2 py-1 rounded-pill border border-1 border-base-color d-inline text-base-color fw-600 fs-13 lh-1 m-0">
+                                                    {{ strlen($parameter) > 6 ? substr($parameter, 0, 6) . '...' : $parameter }}
                                                 </span>
                                             @endif
                                         @endforeach
 
                                         @if ($totalParameters > $limit)
                                             <span
-                                                class="px-2 py-1 border-radius-6px shadow-sm border border-1 lh-base border-base-color d-inline-flex text-base-color fw-600 fs-14 m-0">
+                                                class="px-2 py-1 rounded-pill border border-1 border-base-color d-inline text-base-color fw-600 fs-13 lh-1 m-0">
                                                 +{{ $totalParameters - $limit }} more
                                             </span>
                                         @endif

@@ -113,8 +113,7 @@ a:hover {
 .bg-vdc-light-purple {
     background-color: var(--light-purple);
 }
-
-.bg-vdc-medium-light-purple {
+ .bg-vdc-medium-light-purple {
     background-color: var(--medium-light-purple);
 }
 .bg-vdc-gray {
@@ -18790,3 +18789,4 @@ footer .footer-navbar .nav-item:last-child a {
         text-wrap: unset !important;
     }
  } */
+

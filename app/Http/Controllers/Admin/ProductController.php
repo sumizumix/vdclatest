@@ -152,40 +152,69 @@ class ProductController extends Controller
         return view('admin.auth.product.edit', compact('product'));
     }
 
+    // public function update(Request $request, $id)
+    // {
+      
+    //     $product = Product::findOrFail($id);
+
+    //     $request->validate([
+    //         'name' => 'required',
+    //     ]);
+    //     $data = $request->only($product->getFillable());
+       
+    //     if ($request->hasFile('image')) {
+    //         $path = public_path('uploads/' . $product->image);
+    //         if (file_exists($path)) {
+    //             unlink($path);
+    //         }
+      
+    //         $ext = $request->file('image')->extension();
+    //         $final_name = 'package-' . $id . '.' . $ext;
+    //         $request->file('image')->move(public_path('uploads/'), $final_name);
+    //         $data['image'] = $final_name;
+    //     }
+    //     $data['parameter'] = implode(',', $request->input('parameter'));
+     
+    //     $product->update($data);
+
+    //     return redirect()->route('admin.product.index')->with('success', 'package is updated successfully!');
+    // }
+
     public function update(Request $request, $id)
     {
-        // Find the product by its ID
         $product = Product::findOrFail($id);
-
-        // Validate the incoming request data
+    
         $request->validate([
             'name' => 'required',
         ]);
 
-        // Update the product data
         $data = $request->only($product->getFillable());
-
-        // If a new image file is uploaded, update the image
+  
         if ($request->hasFile('image')) {
+ 
             $path = public_path('uploads/' . $product->image);
-
-            // Check if the file exists before trying to delete it
-            if (file_exists($path)) {
+    
+           
+            if (is_file($path) && file_exists($path)) {
                 unlink($path);
             }
-            // Upload the new image file
+    
+         
             $ext = $request->file('image')->extension();
             $final_name = 'package-' . $id . '.' . $ext;
             $request->file('image')->move(public_path('uploads/'), $final_name);
             $data['image'] = $final_name;
         }
+    
+     
         $data['parameter'] = implode(',', $request->input('parameter'));
-        // Save the updated product data
+    
+      
         $product->update($data);
 
-        // Redirect back with success message
-        return redirect()->route('admin.product.index')->with('success', 'package is updated successfully!');
+        return redirect()->route('admin.product.index')->with('success', 'Package is updated successfully!');
     }
+    
 
     public function destroy($id)
     {

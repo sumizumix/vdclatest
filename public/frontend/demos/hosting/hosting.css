@@ -149,7 +149,7 @@ footer ul li {
 }
 @media (max-width: 991px) {
     [data-mobile-nav-style="full-screen-menu"] .navbar-full-screen-menu-inner {
-        background-image: url(../../images/demo-hosting-mobile-menu-bg.jpg);
+        background-image: url(../../vdc_images/mobile-menu-bg.jpg);
         background-position: center center;
         background-size: cover;
     }

@@ -7763,8 +7763,8 @@ header.sticky .navbar.disable-fixed {
 }
 .header-language-icon .header-language .language-dropdown li a {
     color: var(--medium-gray);
-    font-size: 12px;
-    line-height: 28px;
+    font-size: 15px;
+    line-height: 1.5;
     padding: 0;
 }
 .header-language-icon .header-language .language-dropdown li a .icon-country {

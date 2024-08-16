@@ -68,18 +68,18 @@
             @foreach ($center as $row)
                 <div class="col-12 col-md-6 col-xl-4 transition-inner-all location-card" data-place="{{ $row->address }}">
                     <div
-                        class="feature-box justify-content-between border border-2 border-color-base-color text-start p-0 border-radius-6px -box-shadow-quadruple-large box-shadow-quadruple-large-hover">
+                        class="feature-box justify-content-between border-bottom border-3 border-color-base-color text-start p-0 border-radius-6px -box-shadow-quadruple-large box-shadow-quadruple-large-hover bg-white">
                         <div class="feature-box-content min-h-200px p-20px">
                             <h4 class="fw-600 lh-sm mb-10px text-dark-gray fs-20 line-2">{{ $row->name }}
                             </h4>
                             <p class="mb-10px lh-sm fs-15 fw-500 text-base-color">
-                                <i class="bi bi-clock-history me-10px"></i>{{ $row->time }}
+                                <i class="bi bi-clock-fill text-orange me-10px"></i>{{ $row->time }}
                             </p>
                             <p class="mb-10px lh-sm fs-15 fw-500 text-base-color">
-                                <i class="bi bi-geo-alt me-10px"></i>{{ $row->location }}
+                                <i class="bi bi-geo-alt-fill text-orange me-10px"></i>{{ $row->location }}
                             </p>
                             <p class="mb-10px lh-sm fs-15 fw-500 text-base-color">
-                                <i class="bi bi-building-add me-10px"></i>{{ $row->address }}
+                                <i class="bi bi-building-fill-add text-orange me-10px"></i>{{ $row->address }}
                             </p>
                         </div>
 

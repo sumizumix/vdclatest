@@ -29,8 +29,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> --}}
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css" integrity="sha512-mR/b5Y7FRsKqrYZou7uysnOdCIJib/7r5QeJMFvLNHNhtye3xJp1TdJVPLtetkukFn227nKpXD9OjUc09lx97Q==" crossorigin="anonymous"
-  referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css"
+        integrity="sha512-mR/b5Y7FRsKqrYZou7uysnOdCIJib/7r5QeJMFvLNHNhtye3xJp1TdJVPLtetkukFn227nKpXD9OjUc09lx97Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     {{-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> --}}
 
@@ -293,7 +295,7 @@
                         @endif
 
                         @if (Auth::check() && Auth::user()->role_id == 0)
-                            <div class="nav-item dropdown">
+                            {{-- <div class="nav-item dropdown">
                                 <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     <img src="{{ asset('assets/images/profile/user-1.jpg') }}" alt=""
@@ -309,14 +311,44 @@
                                         <a href="#" class="d-flex align-items-center gap-2 dropdown-item"
                                             data-bs-toggle="modal" data-bs-target="#changepassword">
                                             My profile
-
                                         </a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                             @csrf
-                                            <button class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</button>
+                                            <button
+                                                class="d-flex align-items-center gap-2 dropdown-item">Logout</button>
                                         </form>
                                     </div>
+                                </div>
+                            </div> --}}
 
+                            <div class="header-language-icon icon">
+                                <div class="header-language dropdown">
+                                    <a class="lh-base" href="javascript:void(0)" id="drop2">
+                                        <img src="{{ asset('assets/images/profile/user-1.jpg') }}" alt=""
+                                            width="35" height="35" class="rounded-circle">
+                                    </a>
+                                    <ul class="language-dropdown">
+                                        <li>
+                                            <a href="{{ route('admin.dashboard') }}"
+                                                class="dropdown-item d-block lh-base my-2 fs-15">
+                                                Dashboard
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <button class="dropdown-item d-block lh-base my-2 fs-15"
+                                                data-bs-toggle="modal" data-bs-target="#changepassword">
+                                                My profile
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                                @csrf
+                                                <button class="dropdown-item d-block lh-base my-2 fs-15">
+                                                    Logout
+                                                </button>
+                                            </form>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         @else
@@ -474,7 +506,4 @@
                 loginModal.show();
             });
         });
-
-
-
     </script>

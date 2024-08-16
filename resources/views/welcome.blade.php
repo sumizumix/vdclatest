@@ -117,7 +117,7 @@
                     <div class="process-step-icon-wrap position-relative">
                         <div
                             class="process-step-icon d-flex justify-content-center align-items-center mx-auto rounded-circle -bg-black h-40px w-40px bg-base-color fs-17 fw-500">
-                            
+
                             <img class="-bg-vdc-orange rounded p-10px"
                                 src="{{ asset('frontend/vdc_images/blood-tube.png') }}" style="filter: invert(1);">
                         </div>
@@ -204,7 +204,7 @@
 </section>
 
 <section class="bg-very-light-gray cover-background pt-5 xs-pt-8"
-    style="background-image: url({{ asset('images/demo-hosting-home-06.jpg') }})">
+    style="background-image: url({{ asset('frontend/vdc_images/home-06.jpg') }})">
     <div class="container">
         <div class="row justify-content-center mb-3">
             <div class="col-lg-8 text-center"
@@ -223,7 +223,7 @@
                         <div class="feature-box-content">
                             <span
                                 class="d-inline-block fw-600 text-dark-gray fs-18 ls-minus-05px">{{ $rows->name }}</span>
-                            <p class="mb-10px fs-20">Rs {{ $rows->price }}/-</p>
+                            <p class="mb-10px fs-20 text-orange fw-bold"><span>₹</span> {{ $rows->price }}/-</p>
                         </div>
                         <div class="d-flex justify-content-between w-100">
 
@@ -452,9 +452,9 @@
                 </div>
 
 
-                
+
             </div>
-       
+
         </div>
         <div class="row justify-content-center mt-2">
             <div class="col-auto icon-with-text-style-08 sm-mb-10px"
@@ -541,7 +541,7 @@
 <section class="overflow-hidden pt-0">
     <div class="container">
         <div class="row align-items-center justify-content-center border-radius-8px p-4 xs-p-7 text-center text-lg-start g-0 cover-background"
-            style="background-image: url({{ asset('frontend/images/demo-hosting-home-03.jpg') }})"
+            style="background-image: url({{ asset('frontend/vdc_images/home-03.jpg') }})"
             data-bottom-top="transform:scale(1.1, 1.1) translateY(30px);"
             data-top-bottom="transform:scale(1.0, 1.0) translateY(-30px);">
             <div class="col-lg-6 col-md-9 md-mb-10px icon-with-text-style-08">
@@ -1057,7 +1057,7 @@
                     toastr.success('Added to cart successfully!');
                     setTimeout(() => {
     window.location.reload();
-}, 1000); 
+}, 1000);
                 } else {
                     toastr.error('Failed to add. Please try again.');
                 }
@@ -1156,15 +1156,15 @@
         if (!emailPattern.test(emailInput)) {
             document.getElementById('email-validation').innerHTML = "Please enter a valid email";
             validation = false;
-        } 
+        }
         if (nameInput.length === 0) {
             document.getElementById('name-validation').innerHTML = "Please enter the name";
             validation = false;
-        } 
+        }
         if (addInput.length === 0) {
             document.getElementById('add-validation').innerHTML = "Please enter the additional information";
             validation = false;
-        } 
+        }
         if (dateInput.length === 0) {
             document.getElementById('date-validation').innerHTML = "select the date";
             validation = false;
@@ -1181,25 +1181,25 @@
 
 <script>
     function validateFormprescription() {
-        const phoneInput = document.getElementById('prephone').value;   
+        const phoneInput = document.getElementById('prephone').value;
         const nameInput = document.getElementById('prename').value;
         const preInput = document.getElementById('prepre').value;
-     
+
         var validation = true;
         if (phoneInput.length < 10 || phoneInput.length > 15) {
             document.getElementById('Phone-val').innerHTML = "Please enter a valid number";
             validation = false;
         }
-    
+
         if (nameInput.length === 0) {
             document.getElementById('name-val').innerHTML = "Please enter the name";
             validation = false;
-        } 
+        }
         if (preInput.length === 0) {
             document.getElementById('pre-val').innerHTML = "Upload the prescription";
             validation = false;
-        } 
-       
+        }
+
         if (validation) {
             document.getElementById('uploadprescription').submit();
 

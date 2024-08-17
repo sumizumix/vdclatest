@@ -117,7 +117,7 @@
                     <div class="process-step-icon-wrap position-relative">
                         <div
                             class="process-step-icon d-flex justify-content-center align-items-center mx-auto rounded-circle -bg-black h-40px w-40px bg-base-color fs-17 fw-500">
-                            
+
                             <img class="-bg-vdc-orange rounded p-10px"
                                 src="{{ asset('frontend/vdc_images/blood-tube.png') }}" style="filter: invert(1);">
                         </div>
@@ -402,10 +402,10 @@
                                     <div class="col icon-with-text-style-07 transition-inner-all md-mb-30px">
                                         <div
                                             class="bg-white feature-box justify-content-start border text-start p-20px sm-p-20px border-radius-6px">
-                                            <div class="-feature-box-icon mb-20px">
+                                            {{-- <div class="-feature-box-icon mb-20px">
                                                 <img src="{{ asset('frontend/vdc_images/test-01.svg') }}"
                                                     class="h-50px" alt="" />
-                                            </div>
+                                            </div> --}}
                                             <div class="feature-box-content min-h-150px">
                                                 <h4 class="fw-600 lh-sm mb-10px text-dark-gray fs-18 line-2">
                                                     {{ $row->name }}</h4>
@@ -452,9 +452,9 @@
                 </div>
 
 
-                
+
             </div>
-       
+
         </div>
         <div class="row justify-content-center mt-2">
             <div class="col-auto icon-with-text-style-08 sm-mb-10px"
@@ -506,10 +506,10 @@
                             <div class="swiper-slide">
                                 <div
                                     class="box-shadow-extra-large services-box-style-01 hover-box last-paragraph-no-margin border-radius-4px overflow-hidden">
-                                    <div class="position-relative box-image">
+                                    {{-- <div class="position-relative box-image">
                                         <img src="{{ asset('uploads/' . $row->image) }}"
                                         class="rounded h-240px w-100 object-fit-cover" />
-                                    </div>
+                                    </div> --}}
                                     <div class="bg-white" style="min-height: 150px;">
                                         <div class="ps-50px min-h-150px pe-50px pt-35px sm-p-35px sm-pb-0">
                                             <a href="{{ route('user.patientspage') }}"
@@ -1057,7 +1057,7 @@
                     toastr.success('Added to cart successfully!');
                     setTimeout(() => {
     window.location.reload();
-}, 1000); 
+}, 1000);
                 } else {
                     toastr.error('Failed to add. Please try again.');
                 }
@@ -1156,15 +1156,15 @@
         if (!emailPattern.test(emailInput)) {
             document.getElementById('email-validation').innerHTML = "Please enter a valid email";
             validation = false;
-        } 
+        }
         if (nameInput.length === 0) {
             document.getElementById('name-validation').innerHTML = "Please enter the name";
             validation = false;
-        } 
+        }
         if (addInput.length === 0) {
             document.getElementById('add-validation').innerHTML = "Please enter the additional information";
             validation = false;
-        } 
+        }
         if (dateInput.length === 0) {
             document.getElementById('date-validation').innerHTML = "select the date";
             validation = false;
@@ -1181,25 +1181,25 @@
 
 <script>
     function validateFormprescription() {
-        const phoneInput = document.getElementById('prephone').value;   
+        const phoneInput = document.getElementById('prephone').value;
         const nameInput = document.getElementById('prename').value;
         const preInput = document.getElementById('prepre').value;
-     
+
         var validation = true;
         if (phoneInput.length < 10 || phoneInput.length > 15) {
             document.getElementById('Phone-val').innerHTML = "Please enter a valid number";
             validation = false;
         }
-    
+
         if (nameInput.length === 0) {
             document.getElementById('name-val').innerHTML = "Please enter the name";
             validation = false;
-        } 
+        }
         if (preInput.length === 0) {
             document.getElementById('pre-val').innerHTML = "Upload the prescription";
             validation = false;
-        } 
-       
+        }
+
         if (validation) {
             document.getElementById('uploadprescription').submit();
 

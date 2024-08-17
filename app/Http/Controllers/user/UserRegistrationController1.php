@@ -29,7 +29,8 @@ class UserRegistrationController extends Controller
     {
         $request->validate([
             'phone' => 'required',
-            'password' => 'required'
+            '
+            ' => 'required'
         ]);
 
         $credentials = $request->only('phone', 'password');

@@ -27,8 +27,75 @@ class UserRegistrationController extends Controller
         return view('user.auth.registration');
     }
 
+    // public function loginCheck(Request $request)
+    // {
+
+    //     $request->validate([
+    //         'phone' => 'required|digits_between:10,15',
+
+    //     ]);
+
+    //     $credentials = $request->only('phone');
+    //     $user = User::where('phone', $request->phone)->first();
+
+    //     if ($user) {
+
+    //         $otp = random_int(1000, 9999);
+
+    //         http: //prioritysms.a4add.com/api/sendhttp.php?authkey=341137A6fjmQ8YSgq95f588459P1&mobiles={num}&message={msg}&sender=AMCSFN&route=4&country=91&unicode=1&DLT_TE_ID={tid}'
+
+
+
+    //         $fullApi = 'http://prioritysms.a4add.com/api/sendhttp.php?authkey=427291Ad1DNUVtJw1t66bb4aedP1&mobiles={num}&message={msg}&sender=VDCKTR&route=4&country=91&unicode=1&DLT_TE_ID={tid}';
+    //         $tid = '1207172354696576927';
+    //         $msg = "Your one-time password is: " . $otp;;
+    //         $msg = urlencode($msg);
+    //         $num = $request->phone;
+    //         $api     = str_replace(['{msg}', '{num}', '{tid}'], [$msg, $num, $tid], $fullApi);
+
+    //         $url = $api;
+    //         $ch = curl_init($url);
+    //         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+    //         curl_setopt($ch, CURLOPT_URL, $url);
+    //         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    //         $output = curl_exec($ch);
+    //         $info = curl_getinfo($ch);
+    //         $http_result = $info['http_code'];
+    //         dd($info);
+    //         curl_close($ch);
+    //     }
+
+    //     // if ($user) {
+    //     //     auth()->login($user);
+    //     //     $user = Auth::user();
+    //     //     if ($user->role_id == 2) {
+    //     //         Toastr::success('Successfully logged in', 'Welcome!');
+    //     //         // Fetch required data after login
+    //     //         $pageaboutitem = DB::table('pageaboutitem')->get();
+    //     //         $product = DB::table('product')->limit(3)->get();
+    //     //         $pro = DB::table('product')->get();
+    //     //         $test = DB::table('test')->get();
+    //     //         $testimonial = DB::table('testimonial')->get();
+    //     //         $authUser = $user;
+    //     //         return redirect()->back();
+    //     //     } else {
+    //     //         // Failed login attempt
+    //     //         $authUser = null;
+    //     //         Toastr::error('Login Unsuccessful', 'Invalid!');
+    //     //         return redirect()->back();
+    //     //     }
+    //     // } else {
+    //     //     // Initialize $authUser with null if authentication fails
+    //     //     $authUser = null;
+    //     //     // Failed login attempt
+    //     //     Toastr::error('Login Unsuccessful', 'Invalid phone number!');
+    //     //     return redirect()->back();
+    //     // }
+    // }
+
+
     public function loginCheck(Request $request)
-    {
+    {   
 
         $request->validate([
             'phone' => 'required|digits_between:10,15',
@@ -66,6 +133,7 @@ class UserRegistrationController extends Controller
             return redirect()->back();
         }
     }
+
 
     // UserController.php
     // public function loginCheck(Request $request)

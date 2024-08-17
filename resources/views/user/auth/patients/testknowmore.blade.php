@@ -176,49 +176,72 @@
                                         @foreach ($test as $product)
                                             <div class="swiper-slide">
                                                 <div
-                                                    class="-box-shadow-extra-large services-box-style-01 hover-box last-paragraph-no-margin border-radius-6px overflow-hidden border-bottom border-2 border-base-color pb-3">
-
-                                                    <div class="position-relative box-image">
-                                                        <img src="{{ asset('uploads/' . $product->image) }}"
-                                                            class="rounded h-200px w-100 object-fit-cover" />
-                                                    </div>
-                                                    <div class="bg-white">
-
-                                                        <div class="p-15px">
-                                                            <h5
-                                                                class="fw-600 lh-sm mb-10px text-dark-gray fs-18 line-2 ps-5px">
-                                                                {{ $product->name }}</h5>
-                                                            <p
-                                                                class="mb-10px lh-sm fs-18 fw-bold text-base-color ps-5px">
-                                                                ₹ {{ $product->price }}</p>
-                                                            <a href="#"
-                                                                class="d-inline-block fs-20 primary-font fw-600 text-dark-gray mb-5px"></a>
+                                                    class="patient_packages_card feature-box justify-content-between bg-white text-start p-15px sm-p-15px border-radius-6px border-start border-2 border-base-color">
+                                                    <div class="feature-box-content position-relative w-100">
+                                                        <h4 class="fw-600 lh-sm mb-10px  fs-18 line-2">
                                                             <a href="{{ URL::to('test-knowmore/' . $product->slug) }}"
-                                                                class="btn btn-very-small btn-vdc-orange btn-hover-animation-switch btn-round-edge btn-box-shadow">
-                                                                <span>
-                                                                    <span class="btn-text">Know More</span>
-                                                                    <span class="btn-icon"><i
-                                                                            class="feather icon-feather-arrow-right"></i></span>
-                                                                    <span class="btn-icon"><i
-                                                                            class="feather icon-feather-arrow-right"></i></span>
-                                                                </span>
-
+                                                                class="stretched-link text-dark-gray">
+                                                                {{ $product->name }}
                                                             </a>
-                                                            <button
-                                                                class="btn btn-very-small btn-base-color btn-hover-animation-switch btn-round-edge btn-box-shadow"
-                                                                onclick="handleAddToCart({{ $product->id }})">
-                                                                <span>
-                                                                    <span class="btn-text">Add to Cart</span>
-                                                                    <span class="btn-icon"><i
-                                                                            class="feather icon-feather-shopping-cart"></i></span>
-                                                                    <span class="btn-icon"><i
-                                                                            class="feather icon-feather-shopping-cart"></i></span>
-                                                                </span>
-                                                            </button>
-                                                        </div>
+                                                        </h4>
+                                                        <p
+                                                            class="mb-10px lh-sm fs-18 fw-bold text-orange d-inline-block">
+                                                            <span class="">₹</span> {{ $product->price }}
+                                                        </p>
+
+                                                        @if (!empty($product->parameter))
+                                                            @php
+                                                                $parameters = (array) json_decode($product->parameter);
+                                                                $totalParameters = count($parameters);
+                                                                $limit = 3; // Maximum number of parameters to show
+                                                            @endphp
+
+                                                            <div class="mt-15px">
+                                                                <p class="fs-13 mb-10px lh-1 text-dark-gray">Parameters
+                                                                </p>
+                                                                <div class="d-flex flex-wrap gap-1">
+                                                                    @foreach ($parameters as $index => $parameter)
+                                                                        @if ($index < $limit)
+                                                                            <span
+                                                                                class="px-2 py-1 rounded-pill border border-1 border-base-color d-inline text-base-color fw-600 fs-13 lh-1 m-0">
+                                                                                {{ strlen($parameter) > 6 ? substr($parameter, 0, 6) . '...' : $parameter }}
+                                                                            </span>
+                                                                        @endif
+                                                                    @endforeach
+
+                                                                    @if ($totalParameters > $limit)
+                                                                        <span
+                                                                            class="px-2 py-1 rounded-pill border border-1 border-base-color d-inline text-base-color fw-600 fs-13 lh-1 m-0">
+                                                                            +{{ $totalParameters - $limit }} more
+                                                                        </span>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
+                                                        @endif
                                                     </div>
-
-
+                                                    <div class="mt-30px">
+                                                        <a href="{{ URL::to('test-knowmore/' . $product->slug) }}"
+                                                            class="btn btn-very-small btn-dark-gray btn-hover-animation-switch btn-rounded btn-box-shadow">
+                                                            <span>
+                                                                <span class="btn-text">Know More</span>
+                                                                <span class="btn-icon"><i
+                                                                        class="feather icon-feather-arrow-right"></i></span>
+                                                                <span class="btn-icon"><i
+                                                                        class="feather icon-feather-arrow-right"></i></span>
+                                                            </span>
+                                                        </a>
+                                                        <button
+                                                            class="btn btn-very-small btn-base-color btn-hover-animation-switch btn-rounded btn-box-shadow ms-5px"
+                                                            onclick="handleAddToCart({{ $product->id }})">
+                                                            <span>
+                                                                <span class="btn-text">Add to Cart</span>
+                                                                <span class="btn-icon"><i
+                                                                        class="feather icon-feather-shopping-cart"></i></span>
+                                                                <span class="btn-icon"><i
+                                                                        class="feather icon-feather-shopping-cart"></i></span>
+                                                            </span>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         @endforeach

@@ -402,10 +402,10 @@
                                     <div class="col icon-with-text-style-07 transition-inner-all md-mb-30px">
                                         <div
                                             class="bg-white feature-box justify-content-start border text-start p-20px sm-p-20px border-radius-6px">
-                                            <div class="-feature-box-icon mb-20px">
+                                            {{-- <div class="-feature-box-icon mb-20px">
                                                 <img src="{{ asset('frontend/vdc_images/test-01.svg') }}"
                                                     class="h-50px" alt="" />
-                                            </div>
+                                            </div> --}}
                                             <div class="feature-box-content min-h-150px">
                                                 <h4 class="fw-600 lh-sm mb-10px text-dark-gray fs-18 line-2">
                                                     {{ $row->name }}</h4>
@@ -506,10 +506,10 @@
                             <div class="swiper-slide">
                                 <div
                                     class="box-shadow-extra-large services-box-style-01 hover-box last-paragraph-no-margin border-radius-4px overflow-hidden">
-                                    <div class="position-relative box-image">
+                                    {{-- <div class="position-relative box-image">
                                         <img src="{{ asset('uploads/' . $row->image) }}"
                                         class="rounded h-240px w-100 object-fit-cover" />
-                                    </div>
+                                    </div> --}}
                                     <div class="bg-white" style="min-height: 150px;">
                                         <div class="ps-50px min-h-150px pe-50px pt-35px sm-p-35px sm-pb-0">
                                             <a href="{{ route('user.patientspage') }}"
